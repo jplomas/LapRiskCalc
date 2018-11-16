@@ -32,7 +32,7 @@ export class PPOSSUMPage {
         message: 'Error processing risk data fields',
         buttons: ['Ok']
       });
-      alert.present()
+      alert.present();
     } else {
       if (mortality < 5) {
         var exp = "Morbidity estimate: " + morbidity + "% <br>" + "Mortality estimate: " + mortality + "%";
@@ -50,14 +50,14 @@ export class PPOSSUMPage {
           message: exp,
           buttons: ['Ok']
         });
-        alert.present()
+        alert.present();
       } else {
         let alert = this.alerCtrl.create({
           title: 'Error',
           message: 'Error processing risk data fields',
           buttons: ['Ok']
         });
-        alert.present()
+        alert.present();
       }
     }
   }
@@ -68,7 +68,7 @@ export class PPOSSUMPage {
       message: 'All fields reset.',
       buttons: ['Ok']
     });
-    alert.present()
+    alert.present();
   }
   doAlert() {
     let alert = this.alerCtrl.create({
@@ -76,7 +76,7 @@ export class PPOSSUMPage {
       message: 'XXXX- available <a href="#" onclick="window.open(\'http://www.nela.org.uk/download.php/?fn=NELA%20Technical%20Document%20-%20Development%20of%20the%20Risk%20Adjustment%20Model%20July%202016.pdf&mime=application/pdf&pureFn=NELA%20Technical%20Document%20-%20Development%20of%20the%20Risk%20Adjustment%20Model%20July%202016.pdf\', \'_system\', \'location=yes\'); return false;">at NELA website</a>',
       buttons: ['Ok']
     });
-    alert.present()
+    alert.present();
   }
 
 }
