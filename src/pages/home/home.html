@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar text-center>
+    <ion-title>v1.0</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="start-background">
+  
+  <h2 center text-center>Laparotomy Risk Calculator</h2>
+  <img src="/assets/imgs/surgery-1822458_1920.jpg">
+  <p>
+    This app generate morbidity and mortality risk estimates using the NELA and P-POSSUM risk prediction models.
+  </p>
+  <ion-row align-items-center><ion-col></ion-col><ion-col text-center><button (click)="goNELA()" ion-button>NELA model</button> <button (click)="goPPOSSUM()" ion-button>P-POSSUM</button></ion-col><ion-col></ion-col></ion-row>
+<ion-item no-lines class="transparent" text-wrap><ion-icon name="logo-github" item-start></ion-icon>This is <strong>open source</strong> software and uses a CE marked algorithm for risk prediction.</ion-item>
+</ion-content>

@@ -1,0 +1,8 @@
+{
+  "name": "LapRiskCalc",
+  "app_id": "8d2cc5bf",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

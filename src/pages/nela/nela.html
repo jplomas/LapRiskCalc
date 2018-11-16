@@ -1,0 +1,288 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+
+    <ion-title>
+      NELA model
+    </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="doAlert()">
+        <ion-icon name="information-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+          <p>
+                  Select the appropriate option from each category then click the calculate button.<br><br>
+           </p>
+
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Age<small style="font-weight: 300;"><br>Select the patient's age</small></div>
+      <div class="item item-text-wrap item-body">
+          <form class="list">
+              <div class="list list-inset">
+                  <label class="item item-input">
+                      <ion-input style="font-size:16px;" ng-model='risk.age' type="tel" placeholder="Age"></ion-input>
+                  </label>
+              </div>
+          </form>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">ASA<small style="font-weight: 300;"><br>What is the patient's ASA grade?</small></div>
+          <ion-list radio-group>
+              <ion-item text-wrap><ion-radio ng-model="risk.asa" ng-value="1"></ion-radio><ion-label>1: No systemic disease</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.asa" ng-value="2"></ion-radio><ion-label>2: Mild systemic disease</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.asa" ng-value="4"></ion-radio><ion-label>3: Severe systemic disease, not life-threatening</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.asa" ng-value="8"></ion-radio><ion-label>4: Severe, life-threatening systemic disease</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.asa" ng-value="16"></ion-radio><ion-label>5: Moribund</ion-label></ion-item>
+          </ion-list>
+    </ion-card-content></ion-card>
+    <ion-card>
+      <ion-card-content>
+      <div class="item item-divider item-text-wrap">Gender<small style="font-weight: 300;"><br>What is the patient's gender?</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item text-wrap><ion-radio ng-model="risk.gender" ng-value="1"></ion-radio><ion-label>Female</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.gender" ng-value="2"></ion-radio><ion-label>Male</ion-label></ion-item>
+          </ion-list>
+      </div>
+ </ion-card-content></ion-card>
+ <ion-card>
+   <ion-card-content>
+      <div class="item item-divider item-text-wrap">Cardiac<small style="font-weight: 300;"><br>Select an option that best describes this patient's cardiac signs and chest xray appearance</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item text-wrap><ion-radio ng-model="risk.cardiac" ng-value="1"></ion-radio><ion-label>No cardiac failure</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.cardiac" ng-value="2"></ion-radio><ion-label>Diuretic, digoxin, Rx for angina or hypertension</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.cardiac" ng-value="4"></ion-radio><ion-label>Peripheral oedema, warfarin therapy or CXR: borderline cardiomegaly</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.cardiac" ng-value="8"></ion-radio><ion-label>Raised JVP, cardiomegaly</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Respiratory<small style="font-weight: 300"><br>Select an option that best describes this patient's respiratory history and chest xray appearance</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item text-wrap><ion-radio ng-model="risk.respiratory" ng-value="1"></ion-radio><ion-label>No dyspnoea</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.respiratory" ng-value="2"></ion-radio><ion-label>Dyspnoea on exertion or CXR: mild COPD</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.respiratory" ng-value="4"></ion-radio><ion-label>Dyspnoea limiting exertion to &lt;1 flight or CXR: moderate COPD</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.respiratory" ng-value="8"></ion-radio><ion-label>Dyspnoea at rest/rate &gt;30 at rest or CXR: fibrosis or consolidation</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">ECG<small style="font-weight: 300"><br>Select an option that best describes this patient's ECG</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item text-wrap><ion-radio ng-model="risk.ecg" ng-value="1"></ion-radio><ion-label>Normal</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.ecg" ng-value="2"></ion-radio><ion-label>AF, rate 60-90</ion-label></ion-item>
+              <ion-item text-wrap><ion-radio ng-model="risk.ecg" ng-value="4"></ion-radio><ion-label>AF rate >90 or any other abnormal rhythm/paced rhythm or &gt;5VE/min or Q, ST or T wave abnormalities</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Systolic BP<small style="font-weight: 300"><br>What was the most recent pre-operative systolic blood pressure? (mmHg)</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <div class="list list-inset">
+                  <label class="item item-input">
+                      <ion-input style="font-size:16px;" ng-model='risk.bp' type="tel" placeholder="Systolic BP"></ion-input>
+                  </label>
+              </div>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Pulse Rate<small style="font-weight: 300"><br>What was the most recent pre-operative pulse rate? (min<sup>-1</sup>)</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <div class="list list-inset">
+                  <label class="item item-input">
+                      <ion-input style="font-size:16px;" ng-model='risk.pulse' type="tel" placeholder="Pulse"></ion-input>
+                  </label>
+              </div>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">White cell count<small style="font-weight: 300"><br>What was the most recent pre-operative value for white cell count? (x10<sup>9</sup> litre<sup>-1</sup>)</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <div class="list list-inset">
+                  <label class="item item-input">
+                      <ion-input style="font-size:16px;" ng-model='risk.wcc' type="number" placeholder="WCC"></ion-input>
+                  </label>
+              </div>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Urea<small style="font-weight: 300"><br>What was the most recent pre-operative value for serum urea?  (mmol.L<sup>-1</sup>)</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <div class="list list-inset">
+                  <label class="item item-input">
+                      <ion-input style="font-size:16px;" ng-model='risk.urea' type="number" placeholder="Urea"></ion-input>
+                  </label>
+              </div>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Creatinine<small style="font-weight: 300"><br>What was the most recent pre-operative value for serum Creatinine?  (micromol.L<sup>-1</sup>)</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <div class="list list-inset">
+                  <label class="item item-input">
+                      <ion-input style="font-size:16px;" ng-model='risk.creatinine' type="tel" placeholder="Creatinine"></ion-input>
+                  </label>
+              </div>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Sodium<small style="font-weight: 300"><br>What was the most recent pre-operative value for serum sodium?  (mmol.L<sup>-1</sup>)</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <div class="list list-inset">
+                  <label class="item item-input">
+                      <ion-input style="font-size:16px;" ng-model='risk.sodium' type="tel" placeholder="Sodium"></ion-input>
+                  </label>
+              </div>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Potassium<small style="font-weight: 300"><br>What was the most recent pre-operative value for serum potassium?  (mmol.L<sup>-1</sup>)</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <div class="list list-inset">
+                  <label class="item item-input">
+                      <ion-input style="font-size:16px;" ng-model='risk.potassium' type="number" placeholder="Potassium"></ion-input>
+                  </label>
+              </div>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">GCS<small style="font-weight: 300"><br>Select the patient's conscious level on the Glasgow coma scale</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item><ion-radio ng-model="risk.gcs" ng-value="1"></ion-radio><ion-label>13 - 15</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.gcs" ng-value="2"></ion-radio><ion-label>9 - 12</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.gcs" ng-value="4"></ion-radio><ion-label>3 - 8</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Operation type<small style="font-weight: 300"><br>Select the operative severity of the intended surgical intervention</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <!--    <ion-radio ng-model="risk.severity" ng-value="1">Minor Operation</ion-radio>
+              <ion-radio ng-model="risk.severity" ng-value="2">Moderate Operation</ion-radio> -->
+              <ion-item><ion-radio ng-model="risk.severity" ng-value="4"></ion-radio><ion-label>Major Operation</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.severity" ng-value="8"></ion-radio><ion-label>Complex Major Operation</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Number of procedures<small style="font-weight: 300"><br>Including this operation, how many operations has the patient had in the 30 day period prior to this procedure?</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item><ion-radio ng-model="risk.number" ng-value="1"></ion-radio><ion-label>One</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.number" ng-value="2"></ion-radio><ion-label>Two</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.number" ng-value="4"></ion-radio><ion-label>Three or more</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Operative blood loss<small style="font-weight: 300"><br>Based on your clinical experience of the intended surgery, please estimate the likely intraoperative blood loss</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item><ion-radio ng-model="risk.blood" ng-value="1"></ion-radio>ion-radio><ion-label>&le; 100 mls</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.blood" ng-value="2"></ion-radio><ion-label>101 - 500 mls</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.blood" ng-value="4"></ion-radio><ion-label>501-999 mls</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.blood" ng-value="8"></ion-radio>ion-radio><ion-label>&ge; 1000 mls</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Peritoneal contamination<small style="font-weight: 300"><br>Please select a value that best describes the likely degree of peritoneal soiling</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item><ion-radio ng-model="risk.soiling" ng-value="1"></ion-radio><ion-label>No soiling</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.soiling" ng-value="2"></ion-radio><ion-label>Serous fluid</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.soiling" ng-value="4"></ion-radio><ion-label>Local pus</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.soiling" ng-value="8"></ion-radio><ion-label>Free bowel content, pus or blood</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Malignancy status<small style="font-weight: 300"><br>What severity of malignancy is anticipated to be present?</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item><ion-radio ng-model="risk.cancer" ng-value="1"></ion-radio><ion-label>Not malignant</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.cancer" ng-value="2"></ion-radio><ion-label>Primary malignancy only</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.cancer" ng-value="4"></ion-radio><ion-label>Malignancy and nodal metastases</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.cancer" ng-value="8"></ion-radio><ion-label>Malignancy and distant metastases</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+  <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">Urgency / CEPOD<small style="font-weight: 300"><br>What was global impression of the urgency of surgery at the time of booking the case?</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+              <ion-item><ion-radio ng-model="risk.cepod" ng-value="1"></ion-radio><ion-label>3: Expedited (&gt;18 hours)</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.cepod" ng-value="2"></ion-radio><ion-label>2B. Urgent (6-18 hours)</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.cepod" ng-value="4"></ion-radio><ion-label>2A. Urgent (2-6 hours)</ion-label></ion-item>
+              <ion-item><ion-radio ng-model="risk.cepod" ng-value="8"></ion-radio><ion-label>1. Immediate (&lt;2 hours)</ion-label></ion-item>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+          <ion-grid><ion-row text-center align-items-center>
+          <ion-col text-center><button ion-button type="button" ng-click="ppcalc(risk)">
+              Calculate
+          </button>
+          <button ion-button color="light" type="button" ng-click="reset()">
+              Reset
+          </button></ion-col></ion-row>
+        </ion-grid>
+<!--   <form (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label>Todo</ion-label>
+      <ion-input type="text" [(ngModel)]="todo.title" name="title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Description</ion-label>
+      <ion-textarea [(ngModel)]="todo.description" name="description"></ion-textarea>
+    </ion-item>
+    <button ion-button type="submit" block>Add Todo</button>
+  </form> -->
+</ion-content>
