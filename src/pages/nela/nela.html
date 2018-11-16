@@ -6,7 +6,7 @@
     </button>
 
     <ion-title>
-      NELA model
+      NELA
     </ion-title>
 
     <ion-buttons end>
@@ -267,7 +267,7 @@
       </div>
   </ion-card-content></ion-card>
           <ion-grid><ion-row text-center align-items-center>
-          <ion-col text-center><button ion-button type="button" (click)="calcNELA(risk)">
+          <ion-col text-center><button ion-button type="button" (click)="calcNELA(risk)" [disabled]="checkParams(risk)">
               Calculate
           </button>
           <button ion-button color="light" type="button" ng-click="reset()">
