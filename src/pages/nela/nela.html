@@ -31,7 +31,7 @@
           <form class="list">
               <div class="list list-inset">
                   <label class="item item-input">
-                      <ion-input style="font-size:16px;" [ngModelOptions]="{standalone: true}" [(ngModel)]='risk.age' type="tel" placeholder="Age"></ion-input>
+                      <ion-input style="font-size:16px;" [ngModelOptions]="{standalone: true}" [(ngModel)]='risk.age' type="number" placeholder="Age"></ion-input>
                   </label>
               </div>
           </form>
@@ -100,7 +100,7 @@
           <ion-list radio-group>
               <div class="list list-inset">
                   <label class="item item-input">
-                      <ion-input style="font-size:16px;" [(ngModel)]='risk.bp' type="tel" placeholder="Systolic BP"></ion-input>
+                      <ion-input style="font-size:16px;" [(ngModel)]='risk.bp' type="number" placeholder="Systolic BP"></ion-input>
                   </label>
               </div>
           </ion-list>
@@ -113,7 +113,7 @@
           <ion-list radio-group>
               <div class="list list-inset">
                   <label class="item item-input">
-                      <ion-input style="font-size:16px;" [ngModelOptions]="{standalone: true}" [(ngModel)]='risk.pulse' type="tel" placeholder="Pulse"></ion-input>
+                      <ion-input style="font-size:16px;" [ngModelOptions]="{standalone: true}" [(ngModel)]='risk.pulse' type="number" placeholder="Pulse"></ion-input>
                   </label>
               </div>
           </ion-list>
@@ -152,7 +152,7 @@
           <ion-list radio-group>
               <div class="list list-inset">
                   <label class="item item-input">
-                      <ion-input style="font-size:16px;" [ngModelOptions]="{standalone: true}" [(ngModel)]='risk.creatinine' type="tel" placeholder="Creatinine"></ion-input>
+                      <ion-input style="font-size:16px;" [ngModelOptions]="{standalone: true}" [(ngModel)]='risk.creatinine' type="number" placeholder="Creatinine"></ion-input>
                   </label>
               </div>
           </ion-list>
@@ -165,7 +165,7 @@
           <ion-list radio-group>
               <div class="list list-inset">
                   <label class="item item-input">
-                      <ion-input style="font-size:16px;" [ngModelOptions]="{standalone: true}" [(ngModel)]='risk.sodium' type="tel" placeholder="Sodium"></ion-input>
+                      <ion-input style="font-size:16px;" [ngModelOptions]="{standalone: true}" [(ngModel)]='risk.sodium' type="number" placeholder="Sodium"></ion-input>
                   </label>
               </div>
           </ion-list>
@@ -273,6 +273,7 @@
           <button ion-button color="light" type="button" ng-click="reset()">
               Reset
           </button></ion-col></ion-row>
+          <div class="alert-danger" [hidden]="!(checkParams(risk))">{{errMessage(risk)}}</div>
         </ion-grid>
 <!--   <form (ngSubmit)="logForm()">
     <ion-item>
