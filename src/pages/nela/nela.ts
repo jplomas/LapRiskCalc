@@ -9,29 +9,7 @@ import { AlertController } from 'ionic-angular';
 export class NELAPage {
 
   constructor(public alerCtrl: AlertController) {}
-  risk = {
-    asa: "",
-    gender: "",
-    creatinine: "",
-    age: "",
-    cardiac: "",
-    respiratory: "",
-    ecg: "",
-    bp: "",
-    pulse: "",
-    hb: "",
-    wcc: "",
-    urea: "",
-    sodium: "",
-    potassium: "",
-    gcs: "",
-    severity: "",
-    number: "",
-    blood: "",
-    soiling: "",
-    cancer: "",
-    cepod: ""
-  };
+  risk = {};
   doAlert() {
     let alert = this.alerCtrl.create({
       title: 'About this risk prediction model',
@@ -112,9 +90,9 @@ export class NELAPage {
       var potassium = parseFloat(risk.potassium); // get this from form
       if (potassium > 5.9) { potassium = 5.9 }
       if (potassium < 2.8) { potassium = 2.8 }
-      var p1 = -0.1140542 * (potassium - 4);
-      var p2 = 0.2394057 * Math.pow((potassium - 4), 2);
-      potassium = p1 + p2;
+      var k1 = -0.1140542 * (potassium - 4);
+      var k2 = 0.2394057 * Math.pow((potassium - 4), 2);
+      potassium = k1 + k2;
 
       // now display grabbed data from form
 
@@ -124,29 +102,30 @@ export class NELAPage {
       // resp here too...
       var asa = 1;
       var resp = 0;
+      var asanum = 0
       switch (parseInt(risk.asa)) {
         case 1:
-          var asanum = 1;
+          asanum = 1;
           if (parseInt(risk.respiratory) == 2) { resp = 0.7285072 }
           if (parseInt(risk.respiratory) > 3) { resp = 1.251223 }
           break;
         case 2:
-          var asanum = 2;
+          asanum = 2;
           if (parseInt(risk.respiratory) == 2) { resp = 0.7285072 }
           if (parseInt(risk.respiratory) > 3) { resp = 1.251223 }
           break;
         case 4:
-          var asanum = 3;
+          asanum = 3;
           if (parseInt(risk.respiratory) == 2) { resp = 0.3464632 }
           if (parseInt(risk.respiratory) > 3) { resp = 0.653518 }
           break;
         case 8:
-          var asanum = 4;
+          asanum = 4;
           if (parseInt(risk.respiratory) == 2) { resp = 0.1954411 }
           if (parseInt(risk.respiratory) > 3) { resp = 0.3856067 }
           break;
         case 16:
-          var asanum = 5;
+          asanum = 5;
           if (parseInt(risk.respiratory) == 2) { resp = -0.1005167 }
           if (parseInt(risk.respiratory) > 3) { resp = 0.144061 }
           break;
