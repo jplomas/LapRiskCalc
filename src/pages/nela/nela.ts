@@ -21,6 +21,9 @@ export class NELAPage {
   checkParams(risk) {
     return this.NELADATACHECK(risk).err
   }
+  errMessage(risk) {
+    return this.NELADATACHECK(risk).erm
+  }
   calcNELA(risk) {
     // check parameters
     const sanityCheck = this.NELADATACHECK(risk)
@@ -313,10 +316,10 @@ export class NELAPage {
         exp = "NELA Mortality estimate: " + mortality + "%";
       } else {
         if (mortality < 10) {
-          exp = "NELA Mortality estimate: " + mortality + "%<br><br>This patient is <strong>higher risk</strong> and should: <ul style='padding-left:1em'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>have active input by a consultant surgeon and consultant anaesthetist</li></ul>";
+          exp = "NELA Mortality estimate: " + mortality + "%<br><br>This patient is <strong>higher risk</strong> and should: <ul style='padding-left:1em;text-align:left;'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>have active input by a consultant surgeon and consultant anaesthetist</li></ul>";
         } else {
           // greater than or equal to 10%
-          exp = "NELA Mortality estimate: " + mortality + "%<br><br>This patient is <strong>high risk</strong> and should: <ul style='padding-left:1em'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>be admitted to HDU or ITU post-operatively</li></ul>";
+          exp = "NELA Mortality estimate: " + mortality + "%<br><br>This patient is <strong>high risk</strong> and should: <ul style='padding-left:1em;text-align:left;'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>be admitted to HDU or ITU post-operatively</li></ul>";
         }
       }
       let alert = this.alerCtrl.create({
@@ -333,7 +336,8 @@ export class NELAPage {
       erm = "";
 
     // AGE VALIDATION
-    if (risk.age == "") {
+    console.log(risk.age)
+    if (risk.age === undefined || risk.age === '') {
       erm = "You forgot to enter an age";
       err = true;
       return { erm: erm, err: err }
@@ -358,21 +362,21 @@ export class NELAPage {
     }
 
     // ASA VALIDATION
-    if (risk.asa == "") {
+    if (risk.asa === undefined || risk.asa === '') {
       erm = "You forgot to enter an ASA grade";
       err = true;
       return { erm: erm, err: err }
     }
 
     // GENDER VALIDATION
-    if (risk.gender == "") {
+    if (risk.gender === undefined || risk.gender === '') {
       erm = "You forgot to enter a gender";
       err = true;
       return { erm: erm, err: err }
     }
 
     // CARDIAC VALIDATION
-    if (risk.cardiac == "") {
+    if (risk.cardiac === undefined || risk.cardiac === '') {
       console.log("You forgot to enter cardiac data");
       erm = "You forgot to enter cardiac data";
       err = true;
@@ -380,7 +384,7 @@ export class NELAPage {
     }
 
     // RESPIRATORY VALIDATION
-    if (risk.respiratory == "") {
+    if (risk.respiratory === undefined || risk.respiratory === '') {
       console.log("You forgot to enter respiratory data");
       erm = "You forgot to enter respiratory data";
       err = true;
@@ -388,7 +392,7 @@ export class NELAPage {
     }
 
     // ECG VALIDATION
-    if (risk.ecg == "") {
+    if (risk.ecg === undefined || risk.ecg === '') {
       console.log("You forgot to enter ECG data");
       erm = "You forgot to enter ECG data";
       err = true;
@@ -396,7 +400,7 @@ export class NELAPage {
     }
 
     // BLOOD PRESSURE VALIDATION - the calculator itself handles excessively high/low numbers
-    if (risk.bp == "") {
+    if (risk.bp === undefined || risk.bp === '') {
       console.log("You forgot to enter BP data");
       erm = "You forgot to enter BP data";
       err = true;
@@ -414,7 +418,7 @@ export class NELAPage {
     }
 
     // PULSE VALIDATION - the calculator itself handles excessively high/low numbers
-    if (risk.pulse == "") {
+    if (risk.pulse === undefined || risk.pulse === '') {
       console.log("You forgot to enter pulse rate data");
       erm = "You forgot to enter pulse rate data";
       err = true;
@@ -432,7 +436,7 @@ export class NELAPage {
     }
 
     // WCC VALIDATION - the calculator itself handles excessively high/low numbers
-    if (risk.wcc == "") {
+    if (risk.wcc === undefined | risk.wcc === '') {
       console.log("You forgot to enter WCC data");
       erm = "You forgot to enter White Cell Count data";
       err = true;
@@ -450,7 +454,7 @@ export class NELAPage {
     }
 
     // UREA VALIDATION - the calculator itself handles excessively high/low numbers
-    if (risk.urea == "") {
+    if (risk.urea === undefined || risk.urea === '') {
       console.log("You forgot to enter urea concentration");
       erm = "You forgot to enter urea concentration";
       err = true;
@@ -468,7 +472,7 @@ export class NELAPage {
     }
 
     // CREATININE VALIDATION - the calculator itself handles excessively high/low numbers
-    if (risk.creatinine === "") {
+    if (risk.creatinine === undefined || risk.creatinine === '') {
       erm = "You forgot to enter a creatinine";
       err = true;
       return { erm: erm, err: err }
@@ -485,7 +489,7 @@ export class NELAPage {
     }
 
     // SODIUM VALIDATION
-    if (risk.sodium == "") {
+    if (risk.sodium === undefined || risk.sodium === '') {
       console.log("You forgot to enter sodium concentration");
       erm = "You forgot to enter sodium concentration";
       err = true;
@@ -503,7 +507,7 @@ export class NELAPage {
     }
 
     // POTASSIUM VALIDATION
-    if (risk.potassium == "") {
+    if (risk.potassium === undefined || risk.potassium ==='') {
       console.log("You forgot to enter potassium concentration");
       erm = "You forgot to enter potassium concentration";
       err = true;
@@ -521,7 +525,7 @@ export class NELAPage {
     }
 
     // GCS VALIDATION
-    if (risk.gcs == "") {
+    if (risk.gcs === undefined || risk.gcs === '') {
       console.log("You forgot to enter the patient's GCS");
       erm = "You forgot to enter the patient's GCS";
       err = true;
@@ -529,7 +533,7 @@ export class NELAPage {
     }
 
     // SEVERITY VALIDATION
-    if (risk.severity == "") {
+    if (risk.severity === undefined || risk.severity === '') {
       console.log("You forgot to enter the operative severity");
       erm = "You forgot to enter the operative severity";
       err = true;
@@ -537,31 +541,31 @@ export class NELAPage {
     }
 
     // NUMBER OF PROCEDURE VALIDATION
-    if (risk.number == "") {
+    if (risk.number === undefined || risk.number === '') {
       console.log("You forgot to enter the number of procedures");
       erm = "You forgot to enter the number of procedures";
       err = true;
       return { erm: erm, err: err }
     }
-    if (risk.blood == "") {
+    if (risk.blood === undefined || risk.blood === '') {
       console.log("You forgot to enter the blood loss");
       erm = "You forgot to enter the blood loss";
       err = true;
       return { erm: erm, err: err }
     }
-    if (risk.soiling == "") {
+    if (risk.soiling === undefined || risk.soiling === '') {
       console.log("You forgot to enter degree of soiling");
       erm = "You forgot to enter degree of soiling";
       err = true;
       return { erm: erm, err: err }
     }
-    if (risk.cancer == "") {
+    if (risk.cancer === undefined || risk.cancer === '') {
       console.log("You forgot to enter the cancer status");
       erm = "You forgot to enter the cancer status";
       err = true;
       return { erm: erm, err: err }
     }
-    if (risk.cepod == "") {
+    if (risk.cepod === undefined || risk.cepod === '') {
       console.log("You forgot to enter the urgency of surgery");
       erm = "You forgot to enter the urgency of surgery";
       err = true;
