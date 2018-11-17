@@ -4,3 +4,6 @@ page-about {
 .transparent {  border-color: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
  }
+ .alert-message > ul > li {
+  text-align: left;
+ }
