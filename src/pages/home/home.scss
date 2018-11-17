@@ -11,3 +11,79 @@ page-home {
 .transparent {  border-color: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
  }
+.pass {
+      border-color: #28a54c;
+    background-color: #33cd5f;
+    background-image: linear-gradient(0deg, #28a54c, #28a54c 50%, transparent 50%);
+    color: #fff;
+        top: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    right: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    height: 44px;
+    position: relative;
+        border: none;
+    background-position: bottom;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+}
+.pass h1 {
+  position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    margin: 0 10px;
+    min-width: 30px;
+    height: 43px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 44px;
+    margin-top: 2px !important;
+}
+.fail {
+  border-color: #e42112;
+    background-color: #ef473a;
+    background-image: linear-gradient(0deg, #e42112, #e42112 50%, transparent 50%);
+    color: #fff;
+            top: 0;
+    border-top-width: 0;
+    border-bottom-width: 1px;
+    right: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 5px;
+    width: 100%;
+    height: 44px;
+    position: relative;
+        border: none;
+    background-position: bottom;
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+}
+.fail h1 {
+  position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    margin: 0 10px;
+    min-width: 30px;
+    height: 43px;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 44px;
+    margin-top: 2px !important;
+}
