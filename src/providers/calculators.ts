@@ -295,24 +295,7 @@ export class Calculators {
       var mortality = section_three;
       mortality = Math.round(mortality * 1000) / 10;
       console.log('mortality: ' + mortality);
-      let exp = "";
-      if (mortality < 5) {
-        exp = "NELA Mortality estimate: " + mortality + "%";
-      } else {
-        if (mortality < 10) {
-          exp = "NELA Mortality estimate: " + mortality + "%<br><br>This patient is <strong>higher risk</strong> and should: <ul style='padding-left:1em;text-align:left;'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>have active input by a consultant surgeon and consultant anaesthetist</li></ul>";
-        } else {
-          // greater than or equal to 10%
-          exp = "NELA Mortality estimate: " + mortality + "%<br><br>This patient is <strong>high risk</strong> and should: <ul style='padding-left:1em;text-align:left;'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>be admitted to HDU or ITU post-operatively</li></ul>";
-        }
-      }
-      let alert = this.alerCtrl.create({
-        title: 'Results',
-        message: exp,
-        buttons: ['Ok']
-      });
-      alert.present();
-      // return { mortality: mortality, error: { state: false, message: 'PASSED' } }
+      return { mortality: mortality, error: { state: false, message: 'PASSED' } }
     }
   }
   NELADATACHECK(risk) {
@@ -420,7 +403,7 @@ export class Calculators {
     }
 
     // WCC VALIDATION - the calculator itself handles excessively high/low numbers
-    if (risk.wcc === undefined | risk.wcc === '') {
+    if (risk.wcc === undefined || risk.wcc === '') {
       console.log("You forgot to enter WCC data");
       erm = "You forgot to enter White Cell Count data";
       err = true;
@@ -575,40 +558,7 @@ export class Calculators {
     console.log("mortality = " + mortality + "%");
     console.log('morbidity: ' + morbidity);
     console.log('mortality: ' + mortality);
-    if (!mortality || !morbidity) {
-      let alert = this.alerCtrl.create({
-        title: 'Error',
-        message: 'Error processing risk data fields',
-        buttons: ['Ok']
-      });
-      alert.present();
-    } else {
-      if (mortality < 5) {
-        var exp = "Morbidity estimate: " + morbidity + "% <br>" + "Mortality estimate: " + mortality + "%";
-      } else {
-        if (mortality < 10) {
-          var exp = "Morbidity estimate: " + morbidity + "% <br>" + "Mortality estimate: " + mortality + "%<br><br>This patient is <strong>higher risk</strong> and should: <ul style='padding-left:1em'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>have active input by a consultant surgeon and consultant anaesthetist</li></ul>";
-        } else {
-          // greater than or equal to 10%
-          var exp = "Morbidity estimate: " + morbidity + "% <br>" + "Mortality estimate: " + mortality + "%<br><br>This patient is <strong>high risk</strong> and should: <ul style='padding-left:1em'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>be admitted to HDU or ITU post-operatively</li></ul>";
-        }
-      }
-      if (mortality && morbidity) {
-        let alert = this.alerCtrl.create({
-          title: 'Results',
-          message: exp,
-          buttons: ['Ok']
-        });
-        alert.present();
-      } else {
-        let alert = this.alerCtrl.create({
-          title: 'Error',
-          message: 'Error processing risk data fields',
-          buttons: ['Ok']
-        });
-        alert.present();
-      }
-    }
+    return { morbidity, mortality}
   }
 
 }

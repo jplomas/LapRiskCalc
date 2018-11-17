@@ -26,7 +26,24 @@ export class NELAPage {
     return this.calcService.NELADATACHECK(risk).erm
   }
   calcNELA(risk) {
-    return this.calcService.calcNELA(risk)
+    const mortality = this.calcService.calcNELA(risk).mortality;
+    let exp = "";
+    if (mortality < 5) {
+      exp = "NELA Mortality estimate: " + mortality + "%";
+    } else {
+      if (mortality < 10) {
+        exp = "NELA Mortality estimate: " + mortality + "%<br><br>This patient is <strong>higher risk</strong> and should: <ul style='padding-left:1em;text-align:left;'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>have active input by a consultant surgeon and consultant anaesthetist</li></ul>";
+      } else {
+        // greater than or equal to 10%
+        exp = "NELA Mortality estimate: " + mortality + "%<br><br>This patient is <strong>high risk</strong> and should: <ul style='padding-left:1em;text-align:left;'><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li><li style='list-style-type: square;list-style-position: inside;text-indent: -2em;padding-left: 2em;'>be admitted to HDU or ITU post-operatively</li></ul>";
+      }
+    }
+    let alert = this.alerCtrl.create({
+      title: 'Results',
+      message: exp,
+      buttons: ['Ok']
+    });
+    alert.present();
   }
   reset() {
     this.risk = {}
