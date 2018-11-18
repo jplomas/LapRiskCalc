@@ -270,7 +270,7 @@
           <ion-col text-center><button ion-button type="button" (click)="calcNELA(risk)" [disabled]="checkParams(risk)">
               Calculate
           </button>
-          <button ion-button color="light" type="button" ng-click="reset()">
+          <button ion-button color="light" type="button" (click)="reset()">
               Reset
           </button></ion-col></ion-row>
           <div class="alert-danger" [hidden]="!(checkParams(risk))">{{errMessage(risk)}}</div>

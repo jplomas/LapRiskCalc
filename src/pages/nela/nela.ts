@@ -46,7 +46,29 @@ export class NELAPage {
     alert.present();
   }
   reset() {
-    this.risk = {}
+    this.risk = {
+      asa: "",
+      gender: "",
+      creatinine: "",
+      age: "",
+      cardiac: "",
+      respiratory: "",
+      ecg: "",
+      bp: "",
+      pulse: "",
+      hb: "",
+      wcc: "",
+      urea: "",
+      sodium: "",
+      potassium: "",
+      gcs: "",
+      severity: "",
+      number: "",
+      blood: "",
+      soiling: "",
+      cancer: "",
+      cepod: ""
+    }
     let alert = this.alerCtrl.create({
       title: 'Success',
       message: 'All fields reset.',
