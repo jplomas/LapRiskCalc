@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+// import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Calculators } from '../../providers/calculators'
 
@@ -63,7 +63,7 @@ export class PPOSSUMPage {
   doAlert() {
     let alert = this.alerCtrl.create({
       title: 'About this risk prediction model',
-      message: 'XXXX- available <a href="#" onclick="window.open(\'http://www.nela.org.uk/download.php/?fn=NELA%20Technical%20Document%20-%20Development%20of%20the%20Risk%20Adjustment%20Model%20July%202016.pdf&mime=application/pdf&pureFn=NELA%20Technical%20Document%20-%20Development%20of%20the%20Risk%20Adjustment%20Model%20July%202016.pdf\', \'_system\', \'location=yes\'); return false;">at NELA website</a>',
+      message: 'P-POSSUM: Prytherch DR, Whiteley MS, Higgins B, Weaver PC, Prout WG and Powell SJ. POSSUM and Porstmouth POSSUM for predicting mortality. <a href="https://www.ncbi.nlm.nih.gov/pubmed/9752863">Br J Surg 1998;85: 1217-20</a>',
       buttons: ['Ok']
     });
     alert.present();
