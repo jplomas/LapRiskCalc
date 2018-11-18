@@ -1,6 +1,6 @@
 <ion-tabs>
   <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" enabled=false tabTitle="NELA" tabIcon="calculator"></ion-tab>
-  <ion-tab [root]="tab3Root" enabled=false tabTitle="P-POSSUM" tabIcon="calculator"></ion-tab>
+  <ion-tab [root]="tab2Root" enabled="{{cEnable()}}" tabTitle="NELA" tabIcon="calculator"></ion-tab>
+  <ion-tab [root]="tab3Root" enabled="{{cEnable()}}" tabTitle="P-POSSUM" tabIcon="calculator"></ion-tab>
   <ion-tab [root]="tab4Root" tabTitle="Info" tabIcon="information-circle"></ion-tab>
 </ion-tabs>

@@ -6,7 +6,7 @@ export class Calculators {
   constructor(public alerCtrl: AlertController) {
 
   }
-
+  selfCheck = false;
   calcNELA(risk) {
     // check parameters
     const sanityCheck = this.NELADATACHECK(risk)

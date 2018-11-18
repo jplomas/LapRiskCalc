@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NELAPage } from '../nela/nela';
 import { PPOSSUMPage } from '../ppossum/ppossum';
-import { Calculators } from '../../providers/calculators'
+import { Calculators } from '../../providers/calculators';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -21,7 +21,7 @@ export class HomePage {
   ionViewDidLoad() {
        var TestCasesRun = 0, PassedTests = 0;
    var FloatSafeTest = function(a,b) {
-        return parseInt(a*100) === parseInt(b*100)
+        return (a*100) === (b*100)
    };
    let TestData = {};
    let ExpectedResult = 0;
@@ -116,7 +116,7 @@ export class HomePage {
        // $scope.selftestBOOL = false;
        console.log('self test = PASS');
        this.selfCheck = { status: 'PASS', PassedTests, TestCasesRun };
-       // TO DO: need to enable calculator tabs here
+       this.calcService.selfCheck = true;
    } else {
        // FAIL
        // $scope.selftest = "<div class=\"bar bar-assertive\"><h1 class=\"title\">Check status: FAIL [" + PassedTests + "/" + TestCasesRun + "]</h1></div>";
