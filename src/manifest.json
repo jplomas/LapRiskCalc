@@ -1,6 +1,6 @@
 {
-  "name": "LapRiskCalc",
-  "short_name": "LapRiskCalc",
+  "name": "PoRC",
+  "short_name": "PoRC",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{
