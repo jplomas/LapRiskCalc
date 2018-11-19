@@ -1,7 +1,9 @@
 # PoRC: Perioperative Risk Calculator
 
 
-![GitHub](https://img.shields.io/github/license/jplomas/lapriskcalc.svg) ![GitHub release](https://img.shields.io/github/release/jplomas/lapriskcalc.svg)
+![GitHub](
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+) ![GitHub release](https://img.shields.io/github/tag/jplomas/lapriskcalc.svg)
 
 
 ## Background
