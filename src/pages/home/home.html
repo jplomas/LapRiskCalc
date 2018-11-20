@@ -10,7 +10,7 @@
   <p>
     This app is for medical professionals.  It is used to generate morbidity and mortality risk estimates using the NELA and P-POSSUM risk prediction models.
   </p>
-  <ion-row align-items-center><ion-col text-center><img src="/assets/imgs/nela.svg" style="min-width: 100%" (click)="goNELA()"><button (click)="goNELA()" ion-button>NELA model</button></ion-col><ion-col text-center><img src="/assets/imgs/ppossum.svg" (click)="goPPOSSUM()" style="min-width: 100%"><button (click)="goPPOSSUM()" ion-button>P-POSSUM</button></ion-col></ion-row>
+  <ion-row align-items-center><ion-col text-center><img src="./assets/imgs/nela.svg" style="min-width: 100%" (click)="goNELA()"><button (click)="goNELA()" ion-button>NELA model</button></ion-col><ion-col text-center><img src="./assets/imgs/ppossum.svg" (click)="goPPOSSUM()" style="min-width: 100%"><button (click)="goPPOSSUM()" ion-button>P-POSSUM</button></ion-col></ion-row>
 <ion-item no-lines class="transparent" text-wrap><ion-icon name="logo-github" item-start></ion-icon>This is <strong>open source</strong> software and uses a CE marked algorithm for risk prediction.</ion-item>
 <div class="pass" [hidden]='!(didPass())'><h1><ion-icon name="checkmark-circle"></ion-icon> PASSED app self-check [10/10]</h1></div>
 <div class="fail" [hidden]='!(didFail())'><h1><ion-icon name="close-circle"></ion-icon> FAILED app self-check [{{selfCheck.PassedTests}} /{{selfCheck.TestCasesRun}}]</h1></div>
