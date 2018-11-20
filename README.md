@@ -24,7 +24,7 @@ These are available for iOS and Android at the Apple and Google Play stores:
 - [Apple](https://itunes.apple.com/us/app/perioperative-risk-calculator/id1443388402?ls=1&mt=8)
 - [Google](https://play.google.com/store/apps/details?id=com.jplomas.porc)
 
-A web version is available at [Github Pages](http://www). _link available shortly_
+A web version is available at [Github Pages](https://jplomas.github.io/LapRiskCalc).
 
 ## Building from source
 
