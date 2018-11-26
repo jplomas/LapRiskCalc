@@ -28,7 +28,12 @@ A web version is available at [Github Pages](https://jplomas.github.io/LapRiskCa
 
 ## Building from source
 
-This is build using ionic, so you’ll need that installed:
+node.js and npm will be required.  If you're using a Mac:
+- Make sure Xcode is installed along with its command line tools (`xcode-select --install`)
+- [Homebrew](https://brew.sh/) is your friend
+- [This](https://blog.teamtreehouse.com/install-node-js-npm-mac) is a decent setup guide
+
+The calculator is built using the ionic framework, so you’ll need that installed (globally):
 
 `npm install -g ionic cordova`
 
