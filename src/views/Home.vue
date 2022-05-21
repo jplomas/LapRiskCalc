@@ -23,7 +23,14 @@
   <p>
     This app is for medical professionals.  It is used to generate morbidity and mortality risk estimates using the NELA and P-POSSUM risk prediction models.
   </p>
-  <ion-row align-items-center><ion-col class="ion-text-center"><img src="@/assets/imgs/nela.svg" style="min-width: 100%"><ion-button>NELA model</ion-button></ion-col><ion-col class="ion-text-center"><img src="@/assets/imgs/ppossum.svg" style="min-width: 100%"><ion-button>P-POSSUM</ion-button></ion-col></ion-row>
+  <ion-row align-items-center>
+    <ion-col class="ion-text-center">
+      <img src="@/assets/imgs/nela.svg" style="min-width: 100%">
+      <ion-button @click="goNela()">NELA model</ion-button>
+    </ion-col>
+    <ion-col class="ion-text-center">
+      <img src="@/assets/imgs/ppossum.svg" style="min-width: 100%">
+      <ion-button @click="goPPossum()">P-POSSUM</ion-button></ion-col></ion-row>
 <ion-item no-lines class="transparent ion-text-wrap"><ion-icon :icon="logoGithub" slot="start"></ion-icon>This is <strong>open source</strong> software and uses a CE marked algorithm for risk prediction.</ion-item>
 <div class="pass"><h1><ion-icon :icon="checkmarkCircle"></ion-icon> PASSED app self-check [10/10]</h1></div>
 <div class="fail"><h1><ion-icon :icon="closeCircle"></ion-icon> FAILED app self-check [TODO / TODO]</h1></div>
@@ -48,7 +55,15 @@ export default  defineComponent({
     return {
       logoGithub, checkmarkCircle, closeCircle,
     }
-},
+  },
+  methods: {
+    goNela() {
+      this.$router.push('/tabs/nela');
+    },
+    goPPossum() {
+      this.$router.push('/tabs/p-possum');
+    },
+  },
 });
 </script>
 <style scoped>

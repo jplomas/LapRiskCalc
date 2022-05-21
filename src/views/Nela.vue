@@ -2,13 +2,13 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>NELA score</ion-title>
+        <ion-title>NELA mortality risk</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">NELA score</ion-title>
+          <ion-title size="large">NELA mortality risk</ion-title>
         </ion-toolbar>
       </ion-header>
         <ion-item>
@@ -348,12 +348,16 @@
       </div>
   </ion-card-content></ion-card>
           <ion-grid><ion-row text-center align-items-center>
-          <ion-col text-center><ion-button :disabled="(checkParams())" type="button" @click="go()">
+          <ion-col text-center><ion-button :disabled="!(checkParams())" type="button" @click="go()">
               Calculate
           </ion-button>
           <ion-button color="light" type="button" @click="reset()">
               Reset
-          </ion-button></ion-col></ion-row>
+          </ion-button>
+          <!-- <ion-button color="light" type="button" @click="mock()">
+              Mock
+          </ion-button> -->
+          </ion-col></ion-row>
           <ion-item color="danger" v-if="!(checkParams())">
             Some data fields are missing or invalid
           </ion-item>
@@ -372,8 +376,17 @@
         <ion-content class="ion-padding">
           <ion-grid>
           <ion-row>
-            <ion-col>
-              foo
+            <ion-col class="ion-text-center">
+              <p>NELA Mortality Risk:</p>
+              <h1>{{ showResult().percentage }}</h1>
+              <br>
+              <div class="ion-text-left" v-if="showResult().extra === 'higher'">
+              This patient is <strong>higher risk</strong> and should:
+              <ul><li>have active input by a consultant surgeon and consultant anaesthetist</li></ul>
+              </div>
+              <div class="ion-text-left" v-if="showResult().extra === 'high'">
+              This patient is <strong>high risk</strong> and should: <ul><li>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li><li>be admitted to HDU or ITU post-operatively</li></ul>
+              </div>
             </ion-col>
           </ion-row>
           </ion-grid>
@@ -395,6 +408,10 @@ export default defineComponent({
   data: () => ({
     ready: false,
     open: false,
+    result: {
+      percentage: '',
+      extra: '',
+    },
     risk:{
       age: '',
       cepod: '',
@@ -427,7 +444,35 @@ export default defineComponent({
     }
   },
   methods: {
+    mock() {
+      this.risk = {
+        age: '30',
+        cepod: '1',
+        soiling: '1',
+        cancer: '1',
+        blood: '1',
+        number: '1',
+        severity: '4',
+        gcs: '1',
+        asa: '1',
+        gender: '1',
+        cardiac: '1',
+        respiratory: '1',
+        ecg: '1',
+        bp: '139',
+        pulse: '102',
+        urea: '4.3',
+        creatinine: '55',
+        sodium: '134',
+        potassium: '4.3',
+        wcc: '5.4',
+      };
+    },
     reset() {
+      this.result = {
+        percentage: '',
+        extra: ''
+      };
       this.risk = {
         age: '',
         cepod: '',
@@ -789,10 +834,36 @@ export default defineComponent({
       }
       return output
     },
+    showResult() {
+      console.log(this.result)
+      if (this.result) {
+        return this.result
+      }
+      return { percentage: '', extra: ''}
+    },
     go() {
       this.open = true;
-      console.log(this.risk);
-      console.log(this.calcNELA(this.risk));
+      const calc = this.calcNELA(this.risk);
+      if (!(calc)) {
+        this.open = false;
+        return;
+      }
+      const mortality = calc.mortality
+      let exp = '';
+      if (mortality < 5) {
+        exp = '';
+      } else {
+        if (mortality < 10) {
+          exp = "higher";
+        } else {
+          // greater than or equal to 10%
+          exp = "high";
+        }
+      }
+      this.result = {
+        percentage: `${mortality}%`,
+        extra: exp
+      };
     },
       calcNELA(risk: any) {
     // check parameters
@@ -815,40 +886,40 @@ export default defineComponent({
       // log('*log of creatinine = ' + creatinine + '*');
       if (creatinine > 6) { creatinine = 6 }
       if (creatinine < 3.3) { creatinine = 3.3 }
-      var cr1 = -0.2518047 * (creatinine - 4);
-      var cr2 = 0.2250538 * Math.pow((creatinine - 4), 2);
+      var cr1 = -0.3093507 * (creatinine - 4);
+      var cr2 = 0.2428102 * Math.pow((creatinine - 4), 2);
       creatinine = cr1 + cr2;
 
       // sodium
       var sodium = parseInt(risk.sodium); // get this from form
       if (sodium > 148) { sodium = 148 }
       if (sodium < 124) { sodium = 124 }
-      var na1 = -0.000816 * (Math.pow((sodium - 123), 3));
-      var na2 = 0.0002584 * Math.pow((sodium - 123), 3) * Math.log((sodium - 123));
+      var na1 = -0.0007271 * (Math.pow((sodium - 123), 3));
+      var na2 = 0.0002304 * Math.pow((sodium - 123), 3) * Math.log((sodium - 123));
       sodium = na1 + na2;
 
       // bp
       var bp = parseInt(risk.bp); // get this from form
       if (bp > 190) { bp = 190 }
       if (bp < 70) { bp = 70 }
-      var b1 = -0.008065 * (bp - 128);
-      var b2 = 0.0001201 * Math.pow((bp - 128), 2);
+      var b1 = -0.0090343 * (bp - 128);
+      var b2 = 0.0001137 * Math.pow((bp - 128), 2);
       bp = b1 + b2;
 
       // pulse
       var pulse = parseInt(risk.pulse); // get this from form
       if (pulse > 145) { pulse = 145 }
       if (pulse < 55) { pulse = 55 }
-      var p1 = 0.011922 * (pulse - 92);
-      var p2 = -0.0001129 * Math.pow((pulse - 92), 2);
+      var p1 = 0.0132113 * (pulse - 92);
+      var p2 = -0.0001264 * Math.pow((pulse - 92), 2);
       pulse = p1 + p2;
 
       // wcc
       var wcc = parseFloat(risk.wcc); // get this from form
       if (wcc > 42.7) { wcc = 42.7 }
       if (wcc < 1) { wcc = 1 }
-      var w1 = -0.0006156 * (wcc - 13);
-      var w2 = 0.0009041 * Math.pow((wcc - 13), 2);
+      var w1 = -0.0072917 * (wcc - 13);
+      var w2 = 0.0013263 * Math.pow((wcc - 13), 2);
       wcc = w1 + w2;
 
       // urea
@@ -856,16 +927,16 @@ export default defineComponent({
       urea = Math.log(urea);
       if (urea > 3.7) { urea = 3.7 }
       if (urea < 0) { urea = 0 }
-      var u1 = 0.323096 * (urea - 1.9);
-      var u2 = -0.0406424 * Math.pow((urea - 1.9), 2);
+      var u1 = 0.4227387 * (urea - 1.9);
+      var u2 = -0.0542346 * Math.pow((urea - 1.9), 2);
       urea = u1 + u2;
 
       // potassium
       var potassium = parseFloat(risk.potassium); // get this from form
       if (potassium > 5.9) { potassium = 5.9 }
       if (potassium < 2.8) { potassium = 2.8 }
-      var k1 = -0.1140542 * (potassium - 4);
-      var k2 = 0.2394057 * Math.pow((potassium - 4), 2);
+      var k1 = -0.0994759 * (potassium - 4);
+      var k2 = 0.1699467 * Math.pow((potassium - 4), 2);
       potassium = k1 + k2;
 
       // now display grabbed data from form
@@ -880,28 +951,28 @@ export default defineComponent({
       switch (parseInt(risk.asa)) {
         case 1:
           asanum = 1;
-          if (parseInt(risk.respiratory) == 2) { resp = 0.7285072 }
-          if (parseInt(risk.respiratory) > 3) { resp = 1.251223 }
+          if (parseInt(risk.respiratory) == 2) { resp = 0.5395227 }
+          if (parseInt(risk.respiratory) > 3) { resp = 1.2601628 }
           break;
         case 2:
           asanum = 2;
-          if (parseInt(risk.respiratory) == 2) { resp = 0.7285072 }
-          if (parseInt(risk.respiratory) > 3) { resp = 1.251223 }
+          if (parseInt(risk.respiratory) == 2) { resp = 0.5395227 }
+          if (parseInt(risk.respiratory) > 3) { resp = 1.2601628 }
           break;
         case 4:
           asanum = 3;
-          if (parseInt(risk.respiratory) == 2) { resp = 0.3464632 }
-          if (parseInt(risk.respiratory) > 3) { resp = 0.653518 }
+          if (parseInt(risk.respiratory) == 2) { resp = 0.5395227 + -0.1807609 }
+          if (parseInt(risk.respiratory) > 3) { resp = 1.2601628 + -0.5437609 }
           break;
         case 8:
           asanum = 4;
-          if (parseInt(risk.respiratory) == 2) { resp = 0.1954411 }
-          if (parseInt(risk.respiratory) > 3) { resp = 0.3856067 }
+          if (parseInt(risk.respiratory) == 2) { resp = 0.5395227 + -0.3157025 }
+          if (parseInt(risk.respiratory) > 3) { resp = 1.2601628 + -0.8688040 }
           break;
         case 16:
           asanum = 5;
-          if (parseInt(risk.respiratory) == 2) { resp = -0.1005167 }
-          if (parseInt(risk.respiratory) > 3) { resp = 0.144061 }
+          if (parseInt(risk.respiratory) == 2) { resp = 0.5395227 + -0.3012922 }
+          if (parseInt(risk.respiratory) > 3) { resp = 1.2601628 + -0.9052032 }
           break;
       }
 
@@ -912,43 +983,43 @@ export default defineComponent({
       asa = 0;
       switch (asanum) {
         case 3:
-          lookup = -0.0163981;
-          second_lookup = -0.0002042;
-          asa = 0.8959784;
+          lookup = -0.0235901;
+          second_lookup = -0.0001441;
+          asa = 1.0573609;
           break;
         case 4:
-          lookup = -0.0253105;
-          second_lookup = -0.0000425;
-          asa = 1.822416;
+          lookup = -0.0276586;
+          second_lookup = 0.0000669;
+          asa = 1.854601;
           break;
         case 5:
-          lookup = -0.0270848;
-          second_lookup = -0.0002982;
-          asa = 2.606994;
+          lookup = -0.0337041;
+          second_lookup = 0.0002500;
+          asa = 2.6489194;
           break;
       }
-      var a1 = (0.0556509 + lookup) * (parseInt(risk.age) - 64);
+      var a1 = (0.0572932 + lookup) * (parseInt(risk.age) - 64);
 
       // now do 2nd age lookup
-      var a2 = (0.0003635 + second_lookup) * (Math.pow((parseInt(risk.age) - 64), 2));
+      var a2 = (0.0001274 + second_lookup) * (Math.pow((parseInt(risk.age) - 64), 2));
       var age = a1 + a2;
 
 
       // gender
       var gender = 0; // male default, 0
-      if (parseInt(risk.gender) == 1) { gender = 0.0319972 } // females have this factor
+      if (parseInt(risk.gender) == 1) { gender = 0.0280548 } // females have this factor
 
       // cardiac
       var cardiac = 0;
       switch (parseInt(risk.cardiac)) {
         case 2:
-          cardiac = 0.0893796;
+          cardiac = 0.1054722;
           break;
         case 4:
-          cardiac = 0.3259647;
+          cardiac = 0.2655433;
           break;
         case 8:
-          cardiac = 0.2444367;
+          cardiac = 0.3017798;
           break;
       }
 
@@ -956,13 +1027,13 @@ export default defineComponent({
       var urgency = 0;
       switch (parseInt(risk.cepod)) {
         case 2:
-          urgency = -0.1148433;
+          urgency = -0.0617987;
           break;
         case 4:
-          urgency = 0.0132196;
+          urgency = 0.0787992;
           break;
         case 8:
-          urgency = 0.4247453;
+          urgency = 0.4708663;
           break;
       }
 
@@ -970,10 +1041,10 @@ export default defineComponent({
       var ecg = 0;
       switch (parseInt(risk.ecg)) {
         case 2:
-          ecg = 0.165503;
+          ecg = 0.3375291;
           break;
         case 4:
-          ecg = 0.2100931;
+          ecg = 0.1411111;
           break;
       }
 
@@ -981,28 +1052,28 @@ export default defineComponent({
       var number = 0;
       switch (parseInt(risk.number)) {
         case 2:
-          number = -0.3064644;
+          number = -0.2888454;
           break;
         case 4:
-          number = -0.312474;
+          number = -0.1316191;
           break;
       }
 
       // severity - only if Major+
       var severity = 0;
-      if (parseInt(risk.severity) == 8) { severity = 0.1455086; }
+      if (parseInt(risk.severity) == 8) { severity = 0.2043578; }
 
       // blood
       var blood = 0;
       switch (parseInt(risk.blood)) {
         case 2:
-          blood = 0.0114858;
+          blood = 0.0563362;
           break;
         case 4:
-          blood = 0.0476965;
+          blood = 0.3148512;
           break;
         case 8:
-          blood = -0.1231749;
+          blood = -0.0278452;
           break;
       }
 
@@ -1010,13 +1081,13 @@ export default defineComponent({
       var soiling = 0;
       switch (parseInt(risk.soiling)) {
         case 2:
-          soiling = 0.195923;
+          soiling = 0.1727508;
           break;
         case 4:
-          soiling = -0.0096394;
+          soiling = -0.083714;
           break;
         case 8:
-          soiling = 0.3513096;
+          soiling = 0.4387634;
           break;
       }
 
@@ -1024,13 +1095,13 @@ export default defineComponent({
       var cancer = 0;
       switch (parseInt(risk.cancer)) {
         case 2:
-          cancer = 0.0995358;
+          cancer = 0.0332072;
           break;
         case 4:
-          cancer = 0.4416856;
+          cancer = 0.3666088;
           break;
         case 8:
-          cancer = 1.176124;
+          cancer = 0.9988459;
           break;
       }
 
@@ -1038,10 +1109,10 @@ export default defineComponent({
       var gcs = 0;
       switch (parseInt(risk.gcs)) {
         case 2:
-          gcs = 0.6055811;
+          gcs = 0.6355512;
           break;
         case 4:
-          gcs = 0.8295203;
+          gcs = 0.7842625;
           break;
       }
 
@@ -1068,9 +1139,9 @@ export default defineComponent({
       console.log('`CREATININE:` ' + creatinine);
       console.log('NELA year 2 factor: -0.0388465');
 
-      var section_three = -4.079478 + asa + age + gender + cardiac + resp + ecg + bp + pulse + wcc +
+      var section_three = -4.3488269 + asa + age + gender + cardiac + resp + ecg + bp + pulse + wcc +
         urea + sodium + potassium + gcs + severity + number + blood +
-        soiling + cancer + urgency + creatinine - 0.0388465;
+        soiling + cancer + urgency + creatinine;
       section_three = Math.exp(section_three);
       section_three = section_three / (1 + section_three);
 
