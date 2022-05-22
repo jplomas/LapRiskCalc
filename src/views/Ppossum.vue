@@ -28,185 +28,184 @@
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Cardiac</strong></div>
-                <ion-list radio-group v-model="risk.cardiac">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>No cardiac failure</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>Diuretic, digoxin, Rx for angina or hypertension</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>Peripheral oedema, warfarin or CXR: borderline cardiomegaly</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>Raised JVP or CXR: cardiomegaly</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.cardiac">
+                    <ion-item><ion-label text-wrap>No cardiac failure</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Diuretic, digoxin, Rx for angina or hypertension</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Peripheral oedema, warfarin or CXR: borderline cardiomegaly</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Raised JVP or CXR: cardiomegaly</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Respiratory</strong></div>
-                <ion-list radio-group v-model="risk.respiratory">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>No dyspnoea</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>Dyspnoea on exertion or CXR: mild COPD</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>Limiting dyspnoea, or CXR: moderate COPD</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>Dyspnoea at rest or CXR: fibrosis/consolidation</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.respiratory">
+                    <ion-item><ion-label text-wrap>No dyspnoea</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Dyspnoea on exertion or CXR: mild COPD</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Limiting dyspnoea, or CXR: moderate COPD</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Dyspnoea at rest or CXR: fibrosis/consolidation</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>ECG</strong></div>
-                <ion-list radio-group v-model="risk.ecg">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>Normal</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>AF, rate 60-90 bpm</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>Any other abnormal rhythm, &ge;5/min
-                      ectopics, Q waves, ST/T changes</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.ecg">
+                    <ion-item><ion-label text-wrap>Normal</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>AF, rate 60-90 bpm</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Any other abnormal rhythm, &ge;5/min ectopics, Q waves, ST/T changes</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Systolic BP</strong></div>
-                <ion-list radio-group v-model="risk.bp">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>110 - 130 mmHg</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>100 - 109 or 131 - 170 mmHg</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>&ge;171, or 90 - 99 mmHg</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>&le; 89 mmHg</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.bp">
+                    <ion-item><ion-label text-wrap>110 - 130 mmHg</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>100 - 109 or 131 - 170 mmHg</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>&ge;171, or 90 - 99 mmHg</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>&le; 89 mmHg</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Pulse Rate</strong></div>
-                <ion-list radio-group v-model="risk.pulse">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>50 - 80 bpm</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>40 - 49 or 81 -100 bpm</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>101 - 120 bpm</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>&le;39 or &ge;121 bpm</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.pulse">
+                    <ion-item><ion-label text-wrap>50 - 80 bpm</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>40 - 49 or 81 -100 bpm</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>101 - 120 bpm</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>&le;39 or &ge;121 bpm</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Haemoglobin (g.dL<sup>-1</sup>)</strong></div>
-                <ion-list radio-group v-model="risk.hb">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>13 - 16</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>11.5 - 12.9 or 16.1 - 17</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>10 - 11.4 or 17.1 - 18</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>&le;9.9 or &ge;18.1</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.hb">
+                    <ion-item><ion-label text-wrap>13 - 16</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>11.5 - 12.9 or 16.1 - 17</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>10 - 11.4 or 17.1 - 18</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>&le;9.9 or &ge;18.1</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>White blood cells (x10<sup>12</sup> litre<sup>-1</sup>)</strong></div>
-                <ion-list radio-group v-model="risk.wcc">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>4.1 - 10</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>10.1 - 20 or 3.1 - 4.0</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>&ge;20.1 or &le;3.0</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.wcc">
+                    <ion-item><ion-label text-wrap>4.1 - 10</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>10.1 - 20 or 3.1 - 4.0</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>&ge;20.1 or &le;3.0</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Urea (mmol.L<sup>-1</sup>)</strong></div>
-                <ion-list radio-group v-model="risk.urea">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>&le;7.5</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>7.6 - 10</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>10.1 - 15</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>&ge;15.1</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.urea">
+                    <ion-item><ion-label text-wrap>&le;7.5</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>7.6 - 10</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>10.1 - 15</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>&ge;15.1</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Sodium (mmol.L<sup>-1</sup>)</strong></div>
-                <ion-list radio-group v-model="risk.sodium">
-                <ion-radio-group>
-                <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>&ge;136 mmol/l</ion-label></ion-item>
-                <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>131 - 135 mmol/l</ion-label></ion-item>
-                <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>126 - 130 mmol/l</ion-label></ion-item>
-                <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>&le;125 mmol/l</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.sodium">
+                <ion-item><ion-label text-wrap>&ge;136 mmol/l</ion-label><ion-radio value=1></ion-radio></ion-item>
+                <ion-item><ion-label text-wrap>131 - 135 mmol/l</ion-label><ion-radio value=2></ion-radio></ion-item>
+                <ion-item><ion-label text-wrap>126 - 130 mmol/l</ion-label><ion-radio value=4></ion-radio></ion-item>
+                <ion-item><ion-label text-wrap>&le;125 mmol/l</ion-label><ion-radio value=8></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Potassium (mmol.L<sup>-1</sup>)</strong></div>
-                <ion-list radio-group v-model="risk.potassium">
-                <ion-radio-group>
-                <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>3.5 - 5 mmol/l</ion-label></ion-item>
-                <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>3.2 - 3.4 or 5.1 - 5.3 mmol/l</ion-label></ion-item>
-                <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>2.9 - 3.1 or 5.4 - 5.9 mmol/l</ion-label></ion-item>
-                <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>&le;2.8 or &ge;6.0 mmol/l</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.potassium">
+                <ion-item><ion-label text-wrap>3.5 - 5 mmol/l</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                <ion-item><ion-label text-wrap>3.2 - 3.4 or 5.1 - 5.3 mmol/l</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                <ion-item><ion-label text-wrap>2.9 - 3.1 or 5.4 - 5.9 mmol/l</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                <ion-item><ion-label text-wrap>&le;2.8 or &ge;6.0 mmol/l</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>GCS</strong></div>
-                <ion-list radio-group v-model="risk.gcs">
-                <ion-radio-group>
-                <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>15</ion-label></ion-item>
-                <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>12 - 14</ion-label></ion-item>
-                <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>9 - 11</ion-label></ion-item>
-                <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>&le;8</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.gcs">
+                <ion-item><ion-label text-wrap>15</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                <ion-item><ion-label text-wrap>12 - 14</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                <ion-item><ion-label text-wrap>9 - 11</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                <ion-item><ion-label text-wrap>&le;8</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Operation type</strong></div>
-                <ion-list radio-group v-model="risk.severity">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>Minor Operation</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>Moderate Operation</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>Major Operation</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>Complex Major Operation</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.severity">
+                    <ion-item><ion-label text-wrap>Minor Operation</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Moderate Operation</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Major Operation</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Complex Major Operation</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Number of procedures</strong></div>
-                <ion-list radio-group v-model="risk.number">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>One</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>Two</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>Three or more</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.number">
+                    <ion-item><ion-label text-wrap>One</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Two</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Three or more</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Operative blood loss</strong></div>
-                <ion-list radio-group v-model="risk.blood">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>&le; 100 mls</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>101 - 500 mls</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>501-999 mls</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>&ge; 1000 mls</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.blood">
+                    <ion-item><ion-label text-wrap>&le; 100 mls</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>101 - 500 mls</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>501-999 mls</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>&ge; 1000 mls</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Peritoneal contamination</strong></div>
-                <ion-list radio-group v-model="risk.soiling">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>No soiling</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>Minor (serous fluid)</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>Local pus</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>Free bowel content, pus or blood</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.soiling">
+                    <ion-item><ion-label text-wrap>No soiling</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Minor (serous fluid)</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Local pus</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Free bowel content, pus or blood</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Malignancy status</strong></div>
-                <ion-list radio-group v-model="risk.cancer">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>Not malignant</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=2></ion-radio><ion-label>Primary malignancy only</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>Malignancy and nodal metastases</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>Malignancy and distant metastases</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.cancer">
+                    <ion-item><ion-label text-wrap>Not malignant</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Primary malignancy only</ion-label><ion-radio value=2 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Malignancy and nodal metastases</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Malignancy and distant metastases</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
         <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Urgency / CEPOD</strong></div>
-                <ion-list radio-group v-model="risk.cepod">
-                <ion-radio-group>
-                    <ion-item text-wrap><ion-radio value=1></ion-radio><ion-label>Elective</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=4></ion-radio><ion-label>Urgent (within 24 hours)</ion-label></ion-item>
-                    <ion-item text-wrap><ion-radio value=8></ion-radio><ion-label>Emergency (within 2 hrs)</ion-label></ion-item>
+                <ion-list radio-group>
+                <ion-radio-group v-model="risk.cepod">
+                    <ion-item><ion-label text-wrap>Elective</ion-label><ion-radio value=1 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Urgent (within 24 hours)</ion-label><ion-radio value=4 slot="start"></ion-radio></ion-item>
+                    <ion-item><ion-label text-wrap>Emergency (within 2 hrs)</ion-label><ion-radio value=8 slot="start"></ion-radio></ion-item>
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
