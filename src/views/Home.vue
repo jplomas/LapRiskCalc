@@ -20,10 +20,10 @@
 <ion-content class="ion-padding">
   <h2 center class="ion-text-center">Perioperative Risk Calculator</h2>
   <!-- <img src="/assets/imgs/surgery-1822458_1920.jpg"> -->
-  <p>
+  <p v-if="passedAll">
     This app is for medical professionals.  It is used to generate morbidity and mortality risk estimates using the NELA and P-POSSUM risk prediction models.
   </p>
-  <ion-row align-items-center>
+  <ion-row align-items-center v-if="passedAll">
     <ion-col class="ion-text-center">
       <img src="@/assets/imgs/nela.svg" @click="goNela()" style="min-width: 100%">
       <ion-button size="default" @click="goNela()">NELA model</ion-button>
@@ -31,11 +31,11 @@
     <ion-col class="ion-text-center">
       <img src="@/assets/imgs/ppossum.svg" @click="goPPossum()" style="min-width: 100%">
       <ion-button size="default" @click="goPPossum()">P-POSSUM</ion-button></ion-col></ion-row>
-<p>&nbsp;</p>
-<div class="bar ion-text-wrap"><h1>This is <strong><ion-icon :icon="logoGithub"></ion-icon> open source</strong> software and uses a CE marked algorithm for risk prediction.</h1></div>
-<div class="pass"><h1><ion-icon :icon="checkmarkCircle"></ion-icon> PASSED app self-check [10/10]</h1></div>
-<div class="fail"><h1><ion-icon :icon="closeCircle"></ion-icon> FAILED app self-check [TODO / TODO]</h1></div>
-<div><p>As the self check failed, calculators are disabled.  Please report this error to jp@lomas.doctor</p></div>
+<p v-if="passedAll">&nbsp;</p>
+<div class="bar ion-text-wrap" v-if="passedAll"><h1>This is <strong><ion-icon :icon="logoGithub"></ion-icon> open source</strong> software and uses a CE marked algorithm for risk prediction.</h1></div>
+<div class="pass" v-if="passedAll"><h1><ion-icon :icon="checkmarkCircle"></ion-icon> PASSED app self-check [10/10]</h1></div>
+<div class="fail" v-if="!passedAll"><h1><ion-icon :icon="closeCircle"></ion-icon> FAILED app self-check [{{ PassedTests }}/{{ TestCasesRun }} tests passed]</h1></div>
+<div v-if="!passedAll"><p>As the self check failed, calculators are disabled.  Please report this error to jp@lomas.doctor</p></div>
 <p style="text-align: center">&copy; 2022</p>
 </ion-content>
 
@@ -48,7 +48,7 @@ import { defineComponent } from 'vue';
 import { IonButton, IonCol, IonIcon, IonRow, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { logoGithub, checkmarkCircle, closeCircle } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
-
+import { store } from '../store'
 export default  defineComponent({
   name: 'HomePage',
   components: { IonButton, IonCol, IonIcon, IonRow, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
@@ -69,28 +69,28 @@ var TestCasesRun = 0, PassedTests = 0;
 
    // NELA CALCULATOR TESTS
    TestData = JSON.parse('{"asa":1,"gender":2,"creatinine":"132","age":"43","cardiac":4,"respiratory":4,"ecg":2,"bp":"125","pulse":"54","hb":"","wcc":8,"urea":2.4,"sodium":"143","potassium":4.1,"gcs":1,"severity":4,"number":1,"blood":1,"soiling":2,"cancer":2,"cepod":2}');
-   ExpectedResult = 1.1;
+   ExpectedResult = 0.7;
    mortality = calcService.calcNELA(TestData)?.mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
    if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
    TestCasesRun +=1;
 
    TestData = JSON.parse('{"asa":8,"gender":1,"creatinine":"111","age":"67","cardiac":2,"respiratory":2,"ecg":4,"bp":"99","pulse":"117","hb":"","wcc":21.2,"urea":11.5,"sodium":"100","potassium":10,"gcs":4,"severity":8,"number":4,"blood":4,"soiling":1,"cancer":4,"cepod":8}');
-   ExpectedResult = 78.0;
+   ExpectedResult = 78.3;
    mortality = calcService.calcNELA(TestData)?.mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
    if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
    TestCasesRun +=1;
 
    TestData = JSON.parse('{"asa":16,"gender":2,"creatinine":"1200","age":"105","cardiac":8,"respiratory":8,"ecg":4,"bp":"45","pulse":"200","hb":"","wcc":65,"urea":89,"sodium":"178","potassium":1.1,"gcs":4,"severity":8,"number":4,"blood":8,"soiling":8,"cancer":8,"cepod":8}');
-   ExpectedResult = 99.8;
+   ExpectedResult = 99.9;
    mortality = calcService.calcNELA(TestData)?.mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
    if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
    TestCasesRun +=1;
 
    TestData = JSON.parse('{"asa":8,"gender":1,"creatinine":"128","age":"77","cardiac":4,"respiratory":4,"ecg":4,"bp":"102","pulse":"102","hb":"","wcc":5.4,"urea":7.8,"sodium":"139","potassium":5.1,"gcs":1,"severity":4,"number":1,"blood":2,"soiling":8,"cancer":2,"cepod":2}');
-   ExpectedResult = 41.7;
+   ExpectedResult = 37.6;
    mortality = calcService.calcNELA(TestData)?.mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
    if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
@@ -104,7 +104,7 @@ var TestCasesRun = 0, PassedTests = 0;
    TestCasesRun +=1;
 
    TestData = JSON.parse('{"age":"83","asa":2,"gender":2,"cardiac":1,"respiratory":2,"ecg":1,"bp":"182","pulse":"98","wcc":10.2,"urea":5.6,"creatinine":"111","sodium":"142","potassium":5.1,"gcs":2,"severity":4,"number":1,"blood":2,"soiling":4,"cancer":4,"cepod":8}');
-   ExpectedResult = 25.5;
+   ExpectedResult = 15.6;
    mortality = calcService.calcNELA(TestData)?.mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
    if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
@@ -147,7 +147,11 @@ var TestCasesRun = 0, PassedTests = 0;
    if ((FloatSafeTest(mortality,ExpectedMortality)) && (FloatSafeTest(morbidity,ExpectedMorbidity))) { PassedTests+=1; }
    TestCasesRun +=1;
 
+    let passedAll = false;
+
    if (PassedTests === TestCasesRun) {
+     store.pass = true;
+       passedAll = true;
        // PASS
        // $scope.selftest = "<div class=\"bar bar-balanced\"><h1 class=\"title\">Check status: OK [" + PassedTests + "/" + TestCasesRun + "]</h1></div>";
        // $scope.selftestBOOL = false;
@@ -155,16 +159,16 @@ var TestCasesRun = 0, PassedTests = 0;
       //  this.selfCheck = { status: 'PASS', PassedTests, TestCasesRun };
       //  calcService.selfCheck = true;
    } else {
+     passedAll = false;
+     
        // FAIL
        // $scope.selftest = "<div class=\"bar bar-assertive\"><h1 class=\"title\">Check status: FAIL [" + PassedTests + "/" + TestCasesRun + "]</h1></div>";
        // $scope.selftestBOOL = true;
        console.log('self test = FAIL');
       //  this.selfCheck = { status: 'FAIL', PassedTests, TestCasesRun };
    }
-
-
     return {
-      logoGithub, checkmarkCircle, closeCircle,
+      logoGithub, checkmarkCircle, closeCircle, passedAll, PassedTests, TestCasesRun, store
     }
   },
   methods: {

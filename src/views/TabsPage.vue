@@ -2,7 +2,7 @@
   <ion-page>
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
-      <ion-tab-bar slot="bottom">
+      <ion-tab-bar slot="bottom" v-if="store.pass">
         <ion-tab-button tab="tab1" href="/tabs/home">
           <ion-icon :icon="home" />
           <ion-label>Home</ion-label>
@@ -30,6 +30,7 @@
 import { defineComponent } from 'vue';
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
 import { calculator, home, informationCircle } from 'ionicons/icons';
+import { store } from '../store'
 
 export default defineComponent({
   name: 'TabsPage',
@@ -37,6 +38,11 @@ export default defineComponent({
   setup() {
     return {
       calculator, home, informationCircle
+    }
+  },
+  data() {
+    return {
+      store
     }
   }
 });
