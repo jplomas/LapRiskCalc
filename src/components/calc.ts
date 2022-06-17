@@ -531,24 +531,18 @@ calcNELA(risk: any) {
     // should return success...
     return { erm: erm, err: err }
   }
-  ppcalc(risk: any) {
+  ppcalc(risk: any, test?: boolean) {
     console.log(JSON.stringify(risk));
-    const physiology = this.PPossumAge(parseInt(risk.age, 10)) + parseInt(risk.cardiac, 10) + parseInt(risk.respiratory, 10) + parseInt(risk.ecg, 10) + this.PPossumBP(parseInt(risk.bp, 10)) + this.PPossumPulse(parseInt(risk.pulse, 10)) + parseInt(risk.gcs, 10) + parseInt(risk.hb, 10) + this.PPossumWCC(parseInt(risk.wcc, 10)) + this.PPossumUrea(parseInt(risk.urea, 10)) + this.PPossumSodium(parseInt(risk.sodium, 10)) + this.PPossumPotassium(parseInt(risk.potassium, 10));
-    console.log({
-      age: this.PPossumAge(parseInt(risk.age, 10)),
-      cardiac: parseInt(risk.cardiac, 10),
-      resp: parseInt(risk.respiratory, 10),
-      ecg: parseInt(risk.ecg, 10),
-      bp: this.PPossumBP(parseInt(risk.bp, 10)),
-      pulse: this.PPossumPulse(parseInt(risk.pulse, 10)),
-      gcs: parseInt(risk.gcs, 10),
-      hb: parseInt(risk.hb, 10),
-      wcc: this.PPossumWCC(parseInt(risk.wcc, 10)),
-      urea: this.PPossumUrea(parseInt(risk.urea, 10)),
-      na: this.PPossumSodium(parseInt(risk.sodium, 10)),
-      k: this.PPossumPotassium(parseInt(risk.potassium, 10))
-    });
-    const operative = parseInt(risk.severity, 10) + parseInt(risk.number, 10) + parseInt(risk.blood, 10) + parseInt(risk.soiling, 10) + parseInt(risk.cancer, 10) + this.PPossumUrgency(parseInt(risk.cepod, 10));
+    let physiology = 0;
+    let operative = 0;
+    if (test) {
+      physiology = risk.age + risk.cardiac + risk.respiratory + risk.ecg + risk.bp + risk.pulse + risk.gcs + risk.hb + risk.wcc + risk.urea + risk.sodium + risk.potassium;
+      operative = risk.severity + risk.number + risk.blood + risk.soiling + risk.cancer + risk.cepod;
+    } else {
+      physiology = this.PPossumAge(parseInt(risk.age, 10)) + parseInt(risk.cardiac, 10) + parseInt(risk.respiratory, 10) + parseInt(risk.ecg, 10) + this.PPossumBP(parseInt(risk.bp, 10)) + this.PPossumPulse(parseInt(risk.pulse, 10)) + parseInt(risk.gcs, 10) + parseInt(risk.hb, 10) + this.PPossumWCC(parseInt(risk.wcc, 10)) + this.PPossumUrea(parseInt(risk.urea, 10)) + this.PPossumSodium(parseInt(risk.sodium, 10)) + this.PPossumPotassium(parseInt(risk.potassium, 10));
+      operative = parseInt(risk.severity, 10) + parseInt(risk.number, 10) + parseInt(risk.blood, 10) + parseInt(risk.soiling, 10) + parseInt(risk.cancer, 10) + this.PPossumUrgency(parseInt(risk.cepod, 10));
+    }
+    
     console.log("physiology score = " + physiology);
     console.log("operative score = " + operative);
 
