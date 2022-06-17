@@ -2,13 +2,13 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title class="ion-text-center">NELA</ion-title>
+        <ion-title class="ion-text-center">NELA & P-POSSUM</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title class="ion-text-center" size="large">NELA</ion-title>
+          <ion-title class="ion-text-center" size="large">NELA & P-POSSUM</ion-title>
         </ion-toolbar>
       </ion-header>
         <ion-item>
@@ -144,6 +144,24 @@
                       <ion-input style="font-size:16px;" v-model='risk.pulse' type="number" placeholder="Pulse"></ion-input>
                   </label>
               </div>
+          </ion-list>
+      </div>
+  </ion-card-content></ion-card>
+    <ion-card>
+    <ion-card-content>
+      <div class="item item-divider item-text-wrap">
+        <strong>Haemoglobin</strong>
+        <ion-text color="danger" v-if="validateHb().err"> * </ion-text>
+        <ion-text color="danger">{{ validateHb().erm }}</ion-text>
+        <small style="font-weight: 300"><br>What was the most recent pre-operative value for haemoglobin? (g.dL<sup>-1</sup>)</small></div>
+      <div class="item item-text-wrap item-body">
+          <ion-list radio-group>
+            <ion-radio-group v-model="risk.hb">
+              <ion-item><ion-label text-wrap>13 - 16</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item><ion-label text-wrap>11.5 - 12.9 or 16.1 - 17</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item><ion-label text-wrap>10 - 11.4 or 17.1 - 18</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item><ion-label text-wrap>&le;9.9 or &ge;18.1</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+            </ion-radio-group>
           </ion-list>
       </div>
   </ion-card-content></ion-card>
@@ -389,6 +407,18 @@
               </div>
             </ion-col>
           </ion-row>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <p>P-POSSUM MorbidityRisk:</p>
+              <h1>{{ showResult().ppossum.morbidity}}%</h1>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-text-center">
+              <p>P-POSSUM Mortality Risk:</p>
+              <h1>{{ showResult().ppossum.mortality }}%</h1>
+            </ion-col>
+          </ion-row>
           </ion-grid>
         </ion-content>
         </ion-content>
@@ -411,6 +441,10 @@ export default defineComponent({
     result: {
       percentage: '',
       extra: '',
+      ppossum: {
+        morbidity: -1,
+        mortality: -1
+      }
     },
     risk:{
       age: '',
@@ -427,6 +461,7 @@ export default defineComponent({
       respiratory: '',
       ecg: '',
       bp: '',
+      hb: '',
       pulse: '',
       urea: '',
       creatinine: '',
@@ -459,6 +494,7 @@ export default defineComponent({
         cardiac: '1',
         respiratory: '1',
         ecg: '1',
+        hb: '8',
         bp: '139',
         pulse: '102',
         urea: '4.3',
@@ -471,7 +507,11 @@ export default defineComponent({
     reset() {
       this.result = {
         percentage: '',
-        extra: ''
+        extra: '',
+        ppossum: {
+          morbidity: -1,
+          mortality: -1
+        }
       };
       this.risk = {
         age: '',
@@ -488,6 +528,7 @@ export default defineComponent({
         respiratory: '',
         ecg: '',
         bp: '',
+        hb: '',
         pulse: '',
         urea: '',
         creatinine: '',
@@ -724,6 +765,16 @@ export default defineComponent({
       }
       return output
     },
+    validateHb() {
+     let output = {
+        erm: '',
+        err: false
+      }
+      if (this.risk.hb === '') {
+        output.err = true;
+      }
+      return output
+    },
     validateGender() {
      let output = {
         erm: '',
@@ -839,12 +890,17 @@ export default defineComponent({
       if (this.result) {
         return this.result
       }
-      return { percentage: '', extra: ''}
+      return { percentage: '', extra: '', ppossum: {
+        morbidity: -1,
+        mortality: -1,
+      }}
     },
     go() {
       this.open = true;
       const nelacalc = new Calculators
       const calc = nelacalc.calcNELA(this.risk);
+      const pp = nelacalc.ppcalc(this.risk);
+      console.log({pp});
       if (!(calc)) {
         this.open = false;
         return;
@@ -863,7 +919,8 @@ export default defineComponent({
       }
       this.result = {
         percentage: `${mortality}%`,
-        extra: exp
+        extra: exp,
+        ppossum: pp,
       };
     },
   }

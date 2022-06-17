@@ -533,8 +533,22 @@ calcNELA(risk: any) {
   }
   ppcalc(risk: any) {
     console.log(JSON.stringify(risk));
-    const physiology = parseInt(risk.age, 10) + parseInt(risk.cardiac, 10) + parseInt(risk.respiratory, 10) + parseInt(risk.ecg, 10) + parseInt(risk.bp, 10) + parseInt(risk.pulse, 10) + parseInt(risk.gcs, 10) + parseInt(risk.hb, 10) + parseInt(risk.wcc, 10) + parseInt(risk.urea, 10) + parseInt(risk.sodium, 10) + parseInt(risk.potassium, 10);
-    const operative = parseInt(risk.severity, 10) + parseInt(risk.number, 10) + parseInt(risk.blood, 10) + parseInt(risk.soiling, 10) + parseInt(risk.cancer, 10) + parseInt(risk.cepod, 10);
+    const physiology = this.PPossumAge(parseInt(risk.age, 10)) + parseInt(risk.cardiac, 10) + parseInt(risk.respiratory, 10) + parseInt(risk.ecg, 10) + this.PPossumBP(parseInt(risk.bp, 10)) + this.PPossumPulse(parseInt(risk.pulse, 10)) + parseInt(risk.gcs, 10) + parseInt(risk.hb, 10) + this.PPossumWCC(parseInt(risk.wcc, 10)) + this.PPossumUrea(parseInt(risk.urea, 10)) + this.PPossumSodium(parseInt(risk.sodium, 10)) + this.PPossumPotassium(parseInt(risk.potassium, 10));
+    console.log({
+      age: this.PPossumAge(parseInt(risk.age, 10)),
+      cardiac: parseInt(risk.cardiac, 10),
+      resp: parseInt(risk.respiratory, 10),
+      ecg: parseInt(risk.ecg, 10),
+      bp: this.PPossumBP(parseInt(risk.bp, 10)),
+      pulse: this.PPossumPulse(parseInt(risk.pulse, 10)),
+      gcs: parseInt(risk.gcs, 10),
+      hb: parseInt(risk.hb, 10),
+      wcc: this.PPossumWCC(parseInt(risk.wcc, 10)),
+      urea: this.PPossumUrea(parseInt(risk.urea, 10)),
+      na: this.PPossumSodium(parseInt(risk.sodium, 10)),
+      k: this.PPossumPotassium(parseInt(risk.potassium, 10))
+    });
+    const operative = parseInt(risk.severity, 10) + parseInt(risk.number, 10) + parseInt(risk.blood, 10) + parseInt(risk.soiling, 10) + parseInt(risk.cancer, 10) + this.PPossumUrgency(parseInt(risk.cepod, 10));
     console.log("physiology score = " + physiology);
     console.log("operative score = " + operative);
 
@@ -549,4 +563,121 @@ calcNELA(risk: any) {
     console.log('mortality: ' + mortality);
     return { morbidity, mortality}
   }
+  PPossumAge(age: number) {
+    if (age < 61) {
+      return 1;
+    } else if (age >= 61 && age <= 70) {
+      return 2;
+    } else {
+      return 4;
+    }
+  }
+
+  PPossumBP(bp: number) {
+    if (bp < 90) {
+      return 8;
+    } else if (bp < 100) {
+      return 4;
+    } else if (bp < 110) {
+      return 2;
+    } else if (bp <= 130) {
+      return 1;
+    } else if (bp <= 170) {
+      return 2;
+    } else {
+      return 4;
+    }
+  }
+
+  PPossumPulse(pulse: number) {
+    if (pulse < 40) {
+      return 8;
+    } else if (pulse < 50) {
+      return 2;
+    } else if (pulse <= 80) {
+      return 1;
+    } else if (pulse <= 100) {
+      return 2;
+    } else if (pulse <= 120) {
+      return 4;
+    } else {
+      return 8;
+    }
+  }
+
+  PPossumWCC(wcc: number) {
+    if (wcc <= 3) {
+      return 4;
+    } else if (wcc <= 4) {
+      return 2;
+    } else if (wcc <= 10) {
+      return 1;
+    } else if (wcc <= 20) {
+      return 2;
+    } else {
+      return 4;
+    }
+  }
+
+  PPossumUrea(urea: number) {
+    if (urea <= 7.5) {
+      return 1;
+    } else if (urea <= 10) {
+      return 2;
+    } else if (urea <= 15) {
+      return 4;
+    } else {
+      return 8;
+    }
+  }
+
+  PPossumSodium(sodium: number) {
+    if (sodium <= 125) {
+      return 8;
+    } else if (sodium <= 130) {
+      return 4;
+    } else if (sodium <= 135) {
+      return 2;
+    } else {
+      return 1;
+    }
+  }
+
+  PPossumPotassium(potassium: number) {
+    if (potassium <= 2.8) {
+      return 8;
+    } else if (potassium <= 3.1) {
+      return 4;
+    } else if (potassium <= 3.4) {
+      return 2;
+    } else if (potassium <= 5) {
+      return 1;
+    } else if (potassium <= 5.3) {
+      return 2;
+    } else if (potassium <= 5.9) {
+      return 4;
+    } else {
+      return 8;
+    }
+  }
+
+PPossumGCS(gcs: number) {
+    if (gcs <= 8) {
+      return 8;
+    } else if (gcs <= 11) {
+      return 4;
+    } else if (gcs <= 14) {
+      return 2;
+    } else {
+      return 1;
+    }
+  }
+
+PPossumUrgency(urgency: number) {
+	if (urgency == 8) {
+		return 8;
+	} else {
+		return 4;
+	}
+}
 }
