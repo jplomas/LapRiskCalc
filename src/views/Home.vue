@@ -114,8 +114,8 @@ var TestCasesRun = 0, PassedTests = 0;
    TestData = JSON.parse('{"age":1,"cardiac":2,"respiratory":4,"ecg":8,"bp":1,"pulse":1,"hb":1,"wcc":2,"urea":1,"sodium":1,"potassium":1,"gcs":1,"severity":1,"number":4,"blood":2,"soiling":2,"cancer":2,"cepod":8}');
    ExpectedMorbidity = 82.3;
    ExpectedMortality = 11.3;
-   morbidity = calcService.ppcalc(TestData).morbidity;
-   mortality = calcService.ppcalc(TestData).mortality;
+   morbidity = calcService.ppcalc(TestData, true).morbidity;
+   mortality = calcService.ppcalc(TestData, true).mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + '/' + morbidity + ' - Expected: ' + ExpectedMortality + '/' + ExpectedMorbidity);
    if ((FloatSafeTest(mortality,ExpectedMortality)) && (FloatSafeTest(morbidity,ExpectedMorbidity))) { PassedTests+=1; }
    TestCasesRun +=1;
@@ -123,8 +123,8 @@ var TestCasesRun = 0, PassedTests = 0;
    TestData = JSON.parse('{"age":4,"cardiac":8,"respiratory":8,"ecg":8,"bp":8,"pulse":8,"hb":8,"wcc":4,"urea":8,"sodium":8,"potassium":8,"gcs":8,"severity":8,"number":8,"blood":8,"soiling":8,"cancer":8,"cepod":8}');
    ExpectedMorbidity = 100;
    ExpectedMortality = 100;
-   morbidity = calcService.ppcalc(TestData).morbidity;
-   mortality = calcService.ppcalc(TestData).mortality;
+   morbidity = calcService.ppcalc(TestData, true).morbidity;
+   mortality = calcService.ppcalc(TestData, true).mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + '/' + morbidity + ' - Expected: ' + ExpectedMortality + '/' + ExpectedMorbidity);
    if ((FloatSafeTest(mortality,ExpectedMortality)) && (FloatSafeTest(morbidity,ExpectedMorbidity))) { PassedTests+=1; }
    TestCasesRun +=1;
@@ -132,8 +132,8 @@ var TestCasesRun = 0, PassedTests = 0;
    TestData = JSON.parse('{"age":2,"cardiac":8,"respiratory":1,"ecg":4,"bp":4,"pulse":4,"hb":2,"wcc":4,"urea":2,"sodium":1,"potassium":1,"gcs":4,"severity":4,"number":4,"blood":4,"soiling":4,"cancer":4,"cepod":4}');
    ExpectedMorbidity = 99;
    ExpectedMortality = 71.4;
-   morbidity = calcService.ppcalc(TestData).morbidity;
-   mortality = calcService.ppcalc(TestData).mortality;
+   morbidity = calcService.ppcalc(TestData, true).morbidity;
+   mortality = calcService.ppcalc(TestData, true).mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + '/' + morbidity + ' - Expected: ' + ExpectedMortality + '/' + ExpectedMorbidity);
    if ((FloatSafeTest(mortality,ExpectedMortality)) && (FloatSafeTest(morbidity,ExpectedMorbidity))) { PassedTests+=1; }
    TestCasesRun +=1;
@@ -141,8 +141,8 @@ var TestCasesRun = 0, PassedTests = 0;
    TestData = JSON.parse('{"age":2,"cardiac":4,"respiratory":2,"ecg":4,"bp":2,"pulse":2,"hb":4,"wcc":2,"urea":8,"sodium":4,"potassium":1,"gcs":4,"severity":1,"number":8,"blood":1,"soiling":1,"cancer":8,"cepod":8}');
    ExpectedMorbidity = 99.6;
    ExpectedMortality = 84.8;
-   morbidity = calcService.ppcalc(TestData).morbidity;
-   mortality = calcService.ppcalc(TestData).mortality;
+   morbidity = calcService.ppcalc(TestData, true).morbidity;
+   mortality = calcService.ppcalc(TestData, true).mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + '/' + morbidity + ' - Expected: ' + ExpectedMortality + '/' + ExpectedMorbidity);
    if ((FloatSafeTest(mortality,ExpectedMortality)) && (FloatSafeTest(morbidity,ExpectedMorbidity))) { PassedTests+=1; }
    TestCasesRun +=1;
