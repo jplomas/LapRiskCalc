@@ -2,12 +2,18 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+        </ion-buttons>
         <ion-title class="ion-text-center">NELA & P-POSSUM</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
+          <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+          </ion-buttons>
           <ion-title class="ion-text-center" size="large">NELA & P-POSSUM</ion-title>
         </ion-toolbar>
       </ion-header>
@@ -429,12 +435,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { close } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
 export default defineComponent({
   name: 'NelaPage',
-  components: { IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  components: { IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
   data: () => ({
     ready: false,
     open: false,

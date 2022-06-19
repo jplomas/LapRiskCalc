@@ -25,12 +25,14 @@
   </p>
   <ion-row align-items-center v-if="passedAll">
     <ion-col class="ion-text-center">
-      <img src="@/assets/imgs/nela.svg" @click="goNela()" style="min-width: 100%">
-      <ion-button size="default" @click="goNela()">NELA model</ion-button>
+      <img src="@/assets/imgs/combined.svg" @click="goNela()" style="max-width: 50%">
+      <br />
+      <ion-button size="default" @click="goNela()">NELA & P-POSSUM models</ion-button>
     </ion-col>
-    <ion-col class="ion-text-center">
+    <!-- <ion-col class="ion-text-center">
       <img src="@/assets/imgs/ppossum.svg" @click="goPPossum()" style="min-width: 100%">
-      <ion-button size="default" @click="goPPossum()">P-POSSUM</ion-button></ion-col></ion-row>
+      <ion-button size="default" @click="goPPossum()">P-POSSUM</ion-button></ion-col> -->
+    </ion-row>
 <p v-if="passedAll">&nbsp;</p>
 <div class="bar ion-text-wrap" v-if="passedAll"><h1>This is <strong><ion-icon :icon="logoGithub"></ion-icon> open source</strong> software and uses a CE marked algorithm for risk prediction.</h1></div>
 <div class="pass" v-if="passedAll"><h1><ion-icon :icon="checkmarkCircle"></ion-icon> PASSED app self-check [10/10]</h1></div>

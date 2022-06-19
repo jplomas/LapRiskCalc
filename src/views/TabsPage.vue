@@ -10,14 +10,10 @@
           
         <ion-tab-button tab="tab2" href="/tabs/nela">
           <ion-icon :icon="calculator" />
-          <ion-label>NELA</ion-label>
+          <ion-label>Calculate</ion-label>
         </ion-tab-button>
         
-        <ion-tab-button tab="tab3" href="/tabs/p-possum">
-          <ion-icon :icon="calculator" />
-          <ion-label>P-POSSUM</ion-label>
-        </ion-tab-button>
-        <ion-tab-button tab="tab4" href="/tabs/info">
+        <ion-tab-button tab="tab3" href="/tabs/info">
           <ion-icon :icon="informationCircle" />
           <ion-label>Info</ion-label>
         </ion-tab-button>

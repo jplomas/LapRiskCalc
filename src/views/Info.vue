@@ -2,13 +2,19 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Info</ion-title>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="ion-text-center">Info</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Info</ion-title>
+          <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+          </ion-buttons>
+          <ion-title size="large" class="ion-text-center">Info</ion-title>
         </ion-toolbar>
       </ion-header>
 
@@ -50,7 +56,7 @@ Consultant in Anaesthesia & Intensive Care Medicine and Open Source Developer
   <ion-card>
   <ion-card-header><strong>License</strong></ion-card-header>
   <ion-card-content><p>
-    Copyright &copy; JP Lomas 2018
+    Copyright &copy; JP Lomas 2022
 <br /><br />
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 <br /><br />
@@ -66,12 +72,12 @@ Consultant in Anaesthesia & Intensive Care Medicine and Open Source Developer
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { IonCardTitle, IonCardSubtitle, IonItem, IonCard, IonCardHeader, IonCardContent, IonList, IonIcon, IonAvatar, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonButtons, IonBackButton, IonCardTitle, IonCardSubtitle, IonItem, IonCard, IonCardHeader, IonCardContent, IonList, IonIcon, IonAvatar, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { logoTwitter, logoGithub, globe, heart } from 'ionicons/icons';
 
 export default defineComponent({
-  name: 'Tab4Page',
-  components: { IonCardTitle, IonCardSubtitle, IonItem, IonCard, IonCardHeader, IonCardContent, IonList, IonIcon, IonAvatar, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  name: 'Tab3Page',
+  components: { IonButtons, IonBackButton, IonCardTitle, IonCardSubtitle, IonItem, IonCard, IonCardHeader, IonCardContent, IonList, IonIcon, IonAvatar, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
   setup() {
     return {
       logoTwitter, logoGithub, globe, heart
