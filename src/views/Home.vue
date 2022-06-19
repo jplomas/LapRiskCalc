@@ -304,4 +304,7 @@ ion-content {
 .bar .icon-inner {
   vertical-align: middle;
 }
+p, h2 {
+  color: #000;
+}
 </style>

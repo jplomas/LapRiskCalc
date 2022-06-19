@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
+  appId: 'com.jplomas.porc',
   appName: 'porc',
   webDir: 'dist',
   bundledWebRuntime: false

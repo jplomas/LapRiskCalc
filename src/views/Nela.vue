@@ -11,9 +11,9 @@
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-buttons slot="start">
+          <!-- <ion-buttons slot="start" hideWhen="ios">
             <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-          </ion-buttons>
+          </ion-buttons> -->
           <ion-title class="ion-text-center" size="large">NELA & P-POSSUM</ion-title>
         </ion-toolbar>
       </ion-header>
@@ -405,11 +405,14 @@
               <h1>{{ showResult().percentage }}</h1>
               <br>
               <div class="ion-text-left" v-if="showResult().extra === 'higher'">
-              This patient is <strong>higher risk</strong> and should:
+              <p>This patient is <strong>higher risk</strong> and should:
               <ul><li>have active input by a consultant surgeon and consultant anaesthetist</li></ul>
+              </p>
               </div>
               <div class="ion-text-left" v-if="showResult().extra === 'high'">
+              <p>
               This patient is <strong>high risk</strong> and should: <ul><li>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li><li>be admitted to HDU or ITU post-operatively</li></ul>
+              </p>
               </div>
             </ion-col>
           </ion-row>
@@ -939,5 +942,8 @@ ion-content {
   --background: -webkit-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Chrome10-25,Safari5.1-6 */
   --background: linear-gradient(to bottom, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   --filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
+}
+h1, p {
+  color: #000;
 }
 </style>

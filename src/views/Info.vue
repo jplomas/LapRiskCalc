@@ -11,9 +11,9 @@
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-buttons slot="start">
+          <!-- <ion-buttons slot="start" hideWhen="ios">
             <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-          </ion-buttons>
+          </ion-buttons> -->
           <ion-title size="large" class="ion-text-center">Info</ion-title>
         </ion-toolbar>
       </ion-header>

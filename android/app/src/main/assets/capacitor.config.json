@@ -1,0 +1,6 @@
+{
+	"appId": "com.jplomas.porc",
+	"appName": "porc",
+	"webDir": "dist",
+	"bundledWebRuntime": false
+}
