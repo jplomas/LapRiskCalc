@@ -418,7 +418,7 @@
           </ion-row>
           <ion-row>
             <ion-col class="ion-text-center">
-              <p>P-POSSUM MorbidityRisk:</p>
+              <p>P-POSSUM Morbidity Risk:</p>
               <h1>{{ showResult().ppossum.morbidity}}%</h1>
             </ion-col>
           </ion-row>
