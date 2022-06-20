@@ -7,10 +7,11 @@ branches:
     - master
 
 before_script:
-  - npm install -g ionic cordova
+  - npm install -g ionic
+  - npm ci
 
 script:
-  - ionic cordova build browser --prod
+  - ionic build --prod -- --base-href ./
 
 deploy:
   provider: pages
