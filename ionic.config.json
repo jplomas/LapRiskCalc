@@ -1,8 +1,7 @@
 {
-  "name": "LapRiskCalc",
+  "name": "PeriOp Risk",
   "integrations": {
-    "cordova": {}
+    "capacitor": {}
   },
-  "type": "ionic-angular",
-  "pro_id": "8d2cc5bf"
+  "type": "vue"
 }
