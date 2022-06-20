@@ -11,7 +11,7 @@ before_script:
   - npm ci
 
 script:
-  - npm run deploy-gh
+  - npm run build
 
 deploy:
   provider: pages
