@@ -11,11 +11,11 @@ This is a fork of an app I wrote that was badged as ‘the NELA app’ which, us
 
 It was MIT licensed and developed pro bono.
 
-The NELA leadership within the RCoA has chosen to have their app development continued by a third party developer, however there is no release date yet available.
+In 2018, the NELA leadership within the RCoA chose to have their app development continued by a third party developer. However there is no release date available as of yet.
 
-Accordingly, this app has been released to ‘fill the gap’ and to provide clinicians with a portable and offline means to undertake clinical risk prediction.
+This app was first released to ‘fill the gap’ and to provide clinicians with a portable and offline means to undertake clinical risk prediction.
 
-It has all the NELA-owned assets that are not MIT licensed stripped out for IP purposes and has been rewritten (from ionic v1 to v3) to take advantage of performance increases and newer mobile devices.
+It has all the NELA-owned assets that are not MIT licensed stripped out for IP purposes and has been rewritten (from ionic v1 to v3 in 2018 then v6, also using vue and capacitor, in 2022) to take advantage of performance increases and newer mobile devices.
 
 ## Compiled versions
 
@@ -32,7 +32,6 @@ node.js and npm will be required.  If you're using a Mac:
 - Make sure Xcode is installed along with its command line tools (`xcode-select --install`)
 - [Homebrew](https://brew.sh/) is your friend
 - [This](https://tecadmin.net/install-nvm-macos-with-homebrew/) is a decent setup guide for using nvm (node version manager) which is pretty handy
-- 
 
 Clone the repo, change into the directory then do an:
 
