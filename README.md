@@ -31,19 +31,24 @@ A web version is available at [Github Pages](https://jplomas.github.io/LapRiskCa
 node.js and npm will be required.  If you're using a Mac:
 - Make sure Xcode is installed along with its command line tools (`xcode-select --install`)
 - [Homebrew](https://brew.sh/) is your friend
-- [This](https://blog.teamtreehouse.com/install-node-js-npm-mac) is a decent setup guide
-
-The calculator is built using the ionic framework, so you’ll need that installed (globally):
-
-`npm install -g ionic cordova`
+- [This](https://tecadmin.net/install-nvm-macos-with-homebrew/) is a decent setup guide for using nvm (node version manager) which is pretty handy
+- 
 
 Clone the repo, change into the directory then do an:
 
 `npm install`
 
-To run:
+To run in a dev environment:
 
-`ionic serve`
+`npm run serve`
+
+To build for the web:
+
+`npm run build` (then see the `dist/` folder which can be deployed on a web server)
+
+To build in Android Studio or XCode:
+
+`ionic capacitor build android` or `ionic capacitor build ios`
 
 ## Contributing
 
@@ -54,6 +59,10 @@ Suggestions/issues are welcomed, as are pull requests from those wishing to cont
 MIT and permissive, just as healthcare IT should be.
 
 ## History
+
+#### v1.5.0
+
+Rewrite of UI in vue / ionic 6 / capacitor.
 
 #### v1.0.1
 
