@@ -2,7 +2,7 @@
 
 
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub release](https://img.shields.io/github/tag/jplomas/lapriskcalc.svg) ![GitHub deployments](https://img.shields.io/github/deployments/jplomas/LapRiskCalc/github-pages)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub release](https://img.shields.io/github/tag/jplomas/lapriskcalc.svg) [![GitHub Pages deployment](https://img.shields.io/github/deployments/jplomas/LapRiskCalc/github-pages)](https://jplomas.github.io/LapRiskCalc)
 
 
 ## Background
