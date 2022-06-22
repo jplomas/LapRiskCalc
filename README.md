@@ -2,7 +2,7 @@
 
 
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub release](https://img.shields.io/github/tag/jplomas/lapriskcalc.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub release](https://img.shields.io/github/tag/jplomas/lapriskcalc.svg) ![GitHub deployments](https://img.shields.io/github/deployments/jplomas/LapRiskCalc/github-pages)
 
 
 ## Background
@@ -26,12 +26,13 @@ These are available for iOS and Android at the Apple and Google Play stores:
 
 A web version is available at [Github Pages](https://jplomas.github.io/LapRiskCalc).
 
-## Building from source
+## Building/testing/deploying from source
 
 node.js and npm will be required.  If you're using a Mac:
 - Make sure Xcode is installed along with its command line tools (`xcode-select --install`)
 - [Homebrew](https://brew.sh/) is your friend
 - [This](https://tecadmin.net/install-nvm-macos-with-homebrew/) is a decent setup guide for using nvm (node version manager) which is pretty handy
+- Install Android Studio if required
 
 Clone the repo, change into the directory then do an:
 
