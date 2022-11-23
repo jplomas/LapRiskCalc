@@ -2,13 +2,13 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title class="ion-text-center">PoRC v1.5</ion-title>
+        <ion-title class="ion-text-center">PoRC v1.6</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content fullscreen>
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large" class="ion-text-center">PoRC v1.5</ion-title>
+          <ion-title size="large" class="ion-text-center">PoRC v1.6</ion-title>
         </ion-toolbar>
       </ion-header>
     
