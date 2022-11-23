@@ -36,16 +36,16 @@ calcNELA(risk: any) {
       let bp = parseInt(risk.bp); // get this from form
       if (bp > 190) { bp = 190 }
       if (bp < 70) { bp = 70 }
-      const b1 = -0.0090343 * (bp - 128);
-      const b2 = 0.0001137 * Math.pow((bp - 128), 2);
+      const b1 = -0.0090343 * (bp - 127);
+      const b2 = 0.0001137 * Math.pow((bp - 127 2);
       bp = b1 + b2;
 
       // pulse
       let pulse = parseInt(risk.pulse); // get this from form
       if (pulse > 145) { pulse = 145 }
       if (pulse < 55) { pulse = 55 }
-      const p1 = 0.0132113 * (pulse - 92);
-      const p2 = -0.0001264 * Math.pow((pulse - 92), 2);
+      const p1 = 0.0132113 * (pulse - 91);
+      const p2 = -0.0001264 * Math.pow((pulse - 91), 2);
       pulse = p1 + p2;
 
       // wcc
