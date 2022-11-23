@@ -37,7 +37,7 @@ calcNELA(risk: any) {
       if (bp > 190) { bp = 190 }
       if (bp < 70) { bp = 70 }
       const b1 = -0.0090343 * (bp - 127);
-      const b2 = 0.0001137 * Math.pow((bp - 127 2);
+      const b2 = 0.0001137 * Math.pow((bp - 127), 2);
       bp = b1 + b2;
 
       // pulse
