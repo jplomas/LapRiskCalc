@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build; mkdir dist/tabs; mkdir dist/tabs/home; cp redirect.html dist/tabs/index.html; cp redirect.html dist/tabs/home/index.html; mkdir dist/tabs/nela; cp redirect.html dist/tabs/nela/index.html",
+    "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e",
     "lint": "vue-cli-service lint",
