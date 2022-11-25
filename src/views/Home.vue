@@ -78,7 +78,7 @@ var TestCasesRun = 0, PassedTests = 0;
    TestCasesRun +=1;
 
    TestData = JSON.parse('{"asa":8,"gender":1,"creatinine":"111","age":"67","cardiac":2,"respiratory":2,"ecg":4,"bp":"99","pulse":"117","hb":"","wcc":21.2,"urea":11.5,"sodium":"100","potassium":10,"gcs":4,"severity":8,"number":4,"blood":4,"soiling":1,"cancer":4,"cepod":8}');
-   ExpectedResult = 78.3;
+   ExpectedResult = 78.1;
    mortality = calcService.calcNELA(TestData)?.mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
    if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
@@ -92,21 +92,21 @@ var TestCasesRun = 0, PassedTests = 0;
    TestCasesRun +=1;
 
    TestData = JSON.parse('{"asa":8,"gender":1,"creatinine":"128","age":"77","cardiac":4,"respiratory":4,"ecg":4,"bp":"102","pulse":"102","hb":"","wcc":5.4,"urea":7.8,"sodium":"139","potassium":5.1,"gcs":1,"severity":4,"number":1,"blood":2,"soiling":8,"cancer":2,"cepod":2}');
-   ExpectedResult = 37.6;
+   ExpectedResult = 37.5;
    mortality = calcService.calcNELA(TestData)?.mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
    if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
    TestCasesRun +=1;
 
    TestData = JSON.parse('{"asa":4,"gender":2,"creatinine":"101","age":"58","cardiac":4,"respiratory":8,"ecg":1,"bp":"184","pulse":"88","hb":"","wcc":5.2,"urea":8.1,"sodium":"148","potassium":4,"gcs":1,"severity":4,"number":2,"blood":1,"soiling":1,"cancer":1,"cepod":2}');
-   ExpectedResult = 6.2;
+   ExpectedResult = 6.3;
    mortality = calcService.calcNELA(TestData)?.mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
    if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
    TestCasesRun +=1;
 
    TestData = JSON.parse('{"age":"83","asa":2,"gender":2,"cardiac":1,"respiratory":2,"ecg":1,"bp":"182","pulse":"98","wcc":10.2,"urea":5.6,"creatinine":"111","sodium":"142","potassium":5.1,"gcs":2,"severity":4,"number":1,"blood":2,"soiling":4,"cancer":4,"cepod":8}');
-   ExpectedResult = 15.6;
+   ExpectedResult = 15.8;
    mortality = calcService.calcNELA(TestData)?.mortality;
    console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
    if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
