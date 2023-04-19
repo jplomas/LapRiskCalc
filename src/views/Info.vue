@@ -51,12 +51,12 @@ Consultant in Anaesthesia & Intensive Care Medicine and Open Source Developer
 </ion-card>
   <ion-card>
   <ion-card-header><strong>Disclaimer</strong></ion-card-header>
-  <ion-card-content><p>These risk calculators provide an estimate of the risk of morbidity and mortality within 30 days of emergency abdominal surgery utilising published repository data. The NELA risk prediction tool has been shown to be more accurate than the P-POSSUM calculator for patients undergoing emergency laparotomy.<br><br>Theses tools should not be used in isolation but as part of the overall clinical decision making process to aid multidisciplinary planning and discussions with the patient and their family.<br><br><b>The author is not responsible for decisions made by health care professionals and patients which are made based on the estimations provided by herein.</b><br><br>The core algorithm of the NELA risk prediction calculator has CE marking from the Medicines & Healthcare Products Regulatory Agency (MHRA).</p></ion-card-content>
+  <ion-card-content><p>This risk calculator provides an estimate of the risk of mortality within 30 days of emergency abdominal surgery utilising published repository data. The NELA risk prediction model has been shown to be more accurate than the P-POSSUM model for patients undergoing emergency laparotomy.<br><br>This tool should not be used in isolation but as part of the overall clinical decision making process to aid multidisciplinary planning and discussions with the patient and their family.<br><br><b>The author is not responsible for decisions made by health care professionals and patients which are made based on the estimations provided by herein.</b></p></ion-card-content>
   </ion-card>
   <ion-card>
   <ion-card-header><strong>License</strong></ion-card-header>
   <ion-card-content><p>
-    Copyright &copy; JP Lomas 2022
+    Copyright &copy; JP Lomas 2023
 <br /><br />
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 <br /><br />

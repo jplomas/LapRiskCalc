@@ -2,13 +2,13 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title class="ion-text-center">PoRC v1.6</ion-title>
+        <ion-title class="ion-text-center">PoRC v1.7</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content fullscreen>
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large" class="ion-text-center">PoRC v1.6</ion-title>
+          <ion-title size="large" class="ion-text-center">PoRC v1.7</ion-title>
         </ion-toolbar>
       </ion-header>
     
@@ -21,24 +21,24 @@
   <h2 center class="ion-text-center">Perioperative Risk Calculator</h2>
   <!-- <img src="/assets/imgs/surgery-1822458_1920.jpg"> -->
   <p v-if="passedAll">
-    This app is for medical professionals.  It is used to generate morbidity and mortality risk estimates using the NELA and P-POSSUM risk prediction models.
+    This app is for medical professionals. It is used to generate laparotomy mortality risk estimates using the Parsimonius NELA risk prediction model.
   </p>
   <ion-row align-items-center v-if="passedAll">
     <ion-col class="ion-text-center">
-      <img src="@/assets/imgs/combined.svg" @click="goNela()" style="max-width: 50%">
+      <img src="@/assets/imgs/nela.svg" @click="goNela()" style="max-width: 50%">
       <br />
-      <ion-button size="default" @click="goNela()">NELA & P-POSSUM models</ion-button>
+      <ion-button size="default" @click="goNela()">Parsimonius NELA Model</ion-button>
     </ion-col>
     <!-- <ion-col class="ion-text-center">
       <img src="@/assets/imgs/ppossum.svg" @click="goPPossum()" style="min-width: 100%">
       <ion-button size="default" @click="goPPossum()">P-POSSUM</ion-button></ion-col> -->
     </ion-row>
 <p v-if="passedAll">&nbsp;</p>
-<div class="bar ion-text-wrap" v-if="passedAll"><h1>This is <strong><ion-icon :icon="logoGithub"></ion-icon> open source</strong> software and uses a CE marked algorithm for risk prediction.</h1></div>
-<div class="pass" v-if="passedAll"><h1><ion-icon :icon="checkmarkCircle"></ion-icon> PASSED app self-check [10/10]</h1></div>
+<div class="bar ion-text-wrap" v-if="passedAll"><h1>This is <strong><ion-icon :icon="logoGithub"></ion-icon> open source</strong> software<br><br>It uses the public NELA algorithm at data.nela.org.uk/riskcalculator</h1></div>
+<!-- <div class="pass" v-if="passedAll"><h1><ion-icon :icon="checkmarkCircle"></ion-icon> PASSED app self-check [10/10]</h1></div> -->
 <div class="fail" v-if="!passedAll"><h1><ion-icon :icon="closeCircle"></ion-icon> FAILED app self-check [{{ PassedTests }}/{{ TestCasesRun }} tests passed]</h1></div>
 <div v-if="!passedAll"><p>As the self check failed, calculators are disabled.  Please report this error to jp@lomas.doctor</p></div>
-<p style="text-align: center">&copy; 2022</p>
+<p style="text-align: center">&copy; 2023</p>
 </ion-content>
 
     </ion-content>
