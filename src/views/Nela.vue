@@ -810,9 +810,9 @@
             <ion-button color="light" type="button" @click="reset()">
               Reset
             </ion-button>
-            <ion-button color="light" type="button" @click="mock()">
+            <!-- <ion-button color="light" type="button" @click="mock()">
               Mock
-            </ion-button>
+            </ion-button> -->
           </ion-col></ion-row
         >
         <ion-item color="danger" v-if="!checkParams()">
