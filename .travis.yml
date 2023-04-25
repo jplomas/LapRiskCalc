@@ -13,6 +13,9 @@ before_script:
 script:
   - npm run build
 
+before_deploy:
+  - npm run test:unit
+
 deploy:
   provider: pages
   skip-cleanup: true
