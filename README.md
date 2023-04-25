@@ -1,9 +1,6 @@
 # PoRC: Perioperative Risk Calculator
 
-
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub release](https://img.shields.io/github/tag/jplomas/lapriskcalc.svg) [![GitHub Pages deployment](https://img.shields.io/github/deployments/jplomas/LapRiskCalc/github-pages)](https://jplomas.github.io/LapRiskCalc)
-
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) ![GitHub release](https://img.shields.io/github/tag/jplomas/lapriskcalc.svg) [![GitHub Pages deployment](https://img.shields.io/github/deployments/jplomas/LapRiskCalc/github-pages)](https://jplomas.github.io/LapRiskCalc) [![Build Status](https://app.travis-ci.com/jplomas/LapRiskCalc.svg?branch=master)](https://app.travis-ci.com/jplomas/LapRiskCalc)
 
 ## Background
 
@@ -16,6 +13,8 @@ In 2018, the NELA leadership within the RCoA chose to have their app development
 This app was first released to ‘fill the gap’ and to provide clinicians with a portable and offline means to undertake clinical risk prediction.
 
 It has all the NELA-owned assets that are not MIT licensed stripped out for IP purposes and has been rewritten (from ionic v1 to v3 in 2018 then v6, also using vue and capacitor, in 2022) to take advantage of performance increases and newer mobile devices.
+
+Development is entirely self-funded.  Feel free to [Buy Me A Coffee](https://www.buymeacoffee.com/jplomas) if you find this app useful!
 
 ## Compiled versions
 
@@ -59,6 +58,10 @@ Suggestions/issues are welcomed, as are pull requests from those wishing to cont
 MIT and permissive, just as healthcare IT should be.
 
 ## History
+
+#### v1.7.0
+
+Uses the Parsimonius NELA risk calculation. P-POSSUM is now deprecated.
 
 #### v1.5.0
 
