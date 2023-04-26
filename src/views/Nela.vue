@@ -36,7 +36,7 @@
             >
           </div>
           <div class="item item-text-wrap item-body">
-            <form class="list">
+            <form class="list" @submit="$event.preventDefault()">
               <div class="list list-inset">
                 <label class="item item-input">
                   <ion-input
@@ -44,6 +44,7 @@
                     v-model="risk.age"
                     type="number"
                     placeholder="Age in years"
+                    @keyup.enter="focusASA()"
                   ></ion-input>
                 </label>
               </div>
@@ -63,7 +64,7 @@
             <ion-radio-group v-model="risk.asa">
               <ion-item
                 ><ion-label text-wrap>1: No systemic disease</ion-label
-                ><ion-radio value="1" slot="start"></ion-radio
+                ><ion-radio ref="asa" value="1" slot="start"></ion-radio
               ></ion-item>
               <ion-item
                 ><ion-label text-wrap>2: Mild systemic disease</ion-label
@@ -106,6 +107,7 @@
                     v-model="risk.albumin"
                     type="number"
                     placeholder="Albumin"
+                    @keyup.enter="focusPulse()"
                   ></ion-input>
                 </label>
               </div>
@@ -128,10 +130,12 @@
               <div class="list list-inset">
                 <label class="item item-input">
                   <ion-input
+                    ref="pulse"
                     style="font-size: 16px"
                     v-model="risk.pulse"
                     type="number"
                     placeholder="Pulse"
+                    @keyup.enter="focusBP()"
                   ></ion-input>
                 </label>
               </div>
@@ -154,10 +158,12 @@
               <div class="list list-inset">
                 <label class="item item-input">
                   <ion-input
+                    ref="bp"
                     style="font-size: 16px"
                     v-model="risk.bp"
                     type="number"
                     placeholder="Systolic BP"
+                    @keyup.enter="focusUrea()"
                   ></ion-input>
                 </label>
               </div>
@@ -180,10 +186,12 @@
               <div class="list list-inset">
                 <label class="item item-input">
                   <ion-input
+                    ref="urea"
                     style="font-size: 16px"
                     v-model="risk.urea"
                     type="number"
                     placeholder="Urea"
+                    @keyup.enter="focusWCC()"
                   ></ion-input>
                 </label>
               </div>
@@ -206,10 +214,12 @@
               <div class="list list-inset">
                 <label class="item item-input">
                   <ion-input
+                    ref="wcc"
                     style="font-size: 16px"
                     v-model="risk.wcc"
                     type="number"
                     placeholder="WCC"
+                    @keyup.enter="focusGCS()"
                   ></ion-input>
                 </label>
               </div>
@@ -263,7 +273,7 @@
               <ion-radio-group v-model="risk.gcs">
                 <ion-item
                   ><ion-label>15</ion-label
-                  ><ion-radio value="15" slot="start"></ion-radio
+                  ><ion-radio ref="gcs" value="15" slot="start"></ion-radio
                 ></ion-item>
                 <ion-item
                   ><ion-label>14</ion-label
@@ -838,11 +848,15 @@
             <ion-grid>
               <ion-row>
                 <ion-col class="ion-text-center">
-                  <p>Estimated mortality using the Parsimonious NELA risk adjustment model:</p>
+                  <p>
+                    Estimated mortality using the Parsimonious NELA risk
+                    adjustment model:
+                  </p>
                   <h1>{{ showResult().percentage }}</h1>
                   <br />
                   <div
                     class="ion-text-left"
+                    style="color: #000;"
                     v-if="showResult().extra === 'higher'"
                   >
                     This patient is <strong>higher risk</strong> and should:
@@ -855,6 +869,7 @@
                   </div>
                   <div
                     class="ion-text-left"
+                    style="color: #000;"
                     v-if="showResult().extra === 'high'"
                   >
                     This patient is <strong>high risk</strong> and should:
@@ -1248,6 +1263,9 @@ export default defineComponent({
       if (this.risk.bp === '') {
         return false;
       }
+      if (this.risk.wcc === '') {
+        return false;
+      }
       if (this.risk.pulse === '') {
         return false;
       }
@@ -1617,6 +1635,24 @@ export default defineComponent({
       }
       return output;
     },
+    focusASA() {
+      (this.$refs.asa as any).$el.focus();
+    },
+    focusPulse() {
+      (this.$refs.pulse as any).$el.setFocus();
+    },
+    focusBP() {
+      (this.$refs.bp as any).$el.setFocus();
+    },
+    focusUrea() {
+      (this.$refs.urea as any).$el.setFocus();
+    },
+    focusWCC() {
+      (this.$refs.wcc as any).$el.setFocus();
+    },
+    focusGCS() {
+      (this.$refs.gcs as any).$el.focus();
+    },
     showResult() {
       console.log(this.result);
       if (this.result) {
@@ -1634,7 +1670,7 @@ export default defineComponent({
       // const pp = nelacalc.ppcalc(this.risk);
       // console.log({ pp });
       const calc = nelacalc.NelaV2(nelacalc.harmoniseParams(this.risk));
-      console.log({calc});
+      console.log({ calc });
       if (!calc) {
         this.open = false;
         return;

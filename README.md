@@ -47,7 +47,13 @@ To build for the web:
 
 To build in Android Studio or XCode:
 
-`ionic capacitor build android` or `ionic capacitor build ios`
+Make sure Ionic 6 CLI is available: `npm i -g @ionic/cli@6.0.0`
+
+After a build:
+
+`ionic cap copy` then `ionic cap sync` and finally `ionic cap open android` or `ionic cap open ios`
+
+See [https://ionicframework.com/docs/vue/your-first-app/deploying-mobile] for more details.
 
 ## Contributing
 
