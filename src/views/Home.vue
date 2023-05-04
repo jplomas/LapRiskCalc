@@ -22,7 +22,7 @@
         <!-- <img src="/assets/imgs/surgery-1822458_1920.jpg"> -->
         <p v-if="passedAll">
           This app is for medical professionals. It is used to generate
-          laparotomy mortality risk estimates using the Parsimonius NELA risk
+          laparotomy mortality risk estimates using the Parsimonious NELA risk
           prediction model.
         </p>
         <ion-row align-items-center v-if="passedAll">
@@ -34,7 +34,7 @@
             />
             <br />
             <ion-button size="default" @click="goNela()"
-              >Parsimonius NELA Model</ion-button
+              >Parsimonious NELA Model</ion-button
             >
           </ion-col>
           <!-- <ion-col class="ion-text-center">
