@@ -1,6 +1,7 @@
 language: node_js
+dist: bionic
 node_js:
-  - "18.12.0"
+  - "stable"
 
 branches:
   only:
