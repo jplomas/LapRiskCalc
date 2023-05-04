@@ -820,9 +820,9 @@
             <ion-button color="light" type="button" @click="reset()">
               Reset
             </ion-button>
-            <!-- <ion-button color="light" type="button" @click="mock()">
+            <ion-button color="light" type="button" @click="mock()">
               Mock
-            </ion-button> -->
+            </ion-button>
           </ion-col></ion-row
         >
         <ion-item color="danger" v-if="!checkParams()">
@@ -856,7 +856,7 @@
                   <br />
                   <div
                     class="ion-text-left"
-                    style="color: #000;"
+                    style="color: #000"
                     v-if="showResult().extra === 'higher'"
                   >
                     This patient is <strong>higher risk</strong> and should:
@@ -869,7 +869,7 @@
                   </div>
                   <div
                     class="ion-text-left"
-                    style="color: #000;"
+                    style="color: #000"
                     v-if="showResult().extra === 'high'"
                   >
                     This patient is <strong>high risk</strong> and should:
@@ -883,7 +883,7 @@
                   </div>
                 </ion-col>
               </ion-row>
-              <!-- <ion-row>
+              <ion-row>
                 <ion-col class="ion-text-center">
                   <p>P-POSSUM Morbidity Risk:</p>
                   <h1>{{ showResult().ppossum.morbidity }}%</h1>
@@ -894,7 +894,7 @@
                   <p>P-POSSUM Mortality Risk:</p>
                   <h1>{{ showResult().ppossum.mortality }}%</h1>
                 </ion-col>
-              </ion-row> -->
+              </ion-row>
             </ion-grid>
           </ion-content>
         </ion-content>
@@ -965,10 +965,10 @@ export default defineComponent({
     result: {
       percentage: '',
       extra: '',
-      // ppossum: {
-      //   morbidity: -1,
-      //   mortality: -1,
-      // },
+      ppossum: {
+        morbidity: -1,
+        mortality: -1,
+      },
     },
     risk: {
       age: '',
@@ -1154,10 +1154,10 @@ export default defineComponent({
       this.result = {
         percentage: '',
         extra: '',
-        // ppossum: {
-        //   morbidity: -1,
-        //   mortality: -1,
-        // },
+        ppossum: {
+          morbidity: -1,
+          mortality: -1,
+        },
       };
       this.risk = {
         age: '',
@@ -1661,14 +1661,18 @@ export default defineComponent({
       return {
         percentage: '',
         extra: '',
+        ppossum: {
+          morbidity: -1,
+          mortality: -1,
+        },
       };
     },
     go() {
       this.open = true;
       const nelacalc = new Calculators();
       // const calc = nelacalc.calcNELA(this.risk);
-      // const pp = nelacalc.ppcalc(this.risk);
-      // console.log({ pp });
+      const pp = nelacalc.ppcalc(this.risk);
+      console.log({ pp });
       const calc = nelacalc.NelaV2(nelacalc.harmoniseParams(this.risk));
       console.log({ calc });
       if (!calc) {
@@ -1691,6 +1695,7 @@ export default defineComponent({
       this.result = {
         percentage: `${mortality}%`,
         extra: exp,
+        ppossum: pp,
       };
     },
   },

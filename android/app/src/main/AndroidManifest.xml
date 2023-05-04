@@ -15,8 +15,8 @@
             android:name="com.jplomas.porc.MainActivity"
             android:label="PeriOp Risk"
             android:theme="@style/AppTheme.NoActionBarLaunch"
-            android:launchMode="singleTask">
-
+            android:launchMode="singleTask"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

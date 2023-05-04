@@ -65,9 +65,13 @@ MIT and permissive, just as healthcare IT should be.
 
 ## History
 
+#### v1.7.1
+
+Fix a few typos.
+
 #### v1.7.0
 
-Uses the Parsimonius NELA risk calculation. P-POSSUM is now deprecated.
+Uses the Parsimonious NELA risk calculation. P-POSSUM is now deprecated.
 
 #### v1.5.0
 
