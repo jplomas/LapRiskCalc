@@ -11,21 +11,16 @@
     "resources": "cordova-res ios && cordova-res android && node scripts/resources.js"
   },
   "dependencies": {
-    "@capacitor/android": "3.6.0",
-    "@capacitor/app": "1.1.1",
-    "@capacitor/core": "^3.5.1",
-    "@capacitor/haptics": "1.1.4",
-    "@capacitor/ios": "3.6.0",
-    "@capacitor/keyboard": "1.2.2",
-    "@capacitor/status-bar": "1.0.8",
-    "@ionic/vue": "^6.0.0",
-    "@ionic/vue-router": "^6.0.0",
+    "@capacitor/app": "5.0.0",
+    "@capacitor/core": "5.0.0",
+    "@ionic/cli": "^7.1.1",
+    "@ionic/vue": "^7.0.5",
+    "@ionic/vue-router": "^7.0.5",
     "core-js": "^3.6.5",
-    "vue": "^3.2.21",
-    "vue-router": "^4.0.12"
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@capacitor/cli": "3.5.1",
     "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "^5.6.0",
