@@ -1,7 +1,7 @@
 language: node_js
 dist: bionic
 node_js:
-  - "stable"
+  - 16
 
 branches:
   only:
