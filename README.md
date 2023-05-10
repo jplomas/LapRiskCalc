@@ -25,6 +25,8 @@ These are available for iOS and Android at the Apple and Google Play stores:
 
 A web version is available at [Github Pages](https://jplomas.github.io/LapRiskCalc).
 
+**NB: I have been made aware that the old, non-Parsimonious NELA risk calculator model has been validated in some patient populations around the globe... the previous version is available for these users [here](https://2022--splendorous-gumdrop-77d39d.netlify.app/)**
+
 ## Building/testing/deploying from source
 
 node.js and npm will be required.  If you're using a Mac:
