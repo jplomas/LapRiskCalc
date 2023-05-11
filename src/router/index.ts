@@ -28,6 +28,10 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/Nela.vue')
       },
       {
+        path: 'p-possum',
+        component: () => import('@/views/Ppossum.vue')
+      },
+      {
         path: 'info',
         component: () => import('@/views/Info.vue')
       }

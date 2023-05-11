@@ -2,13 +2,13 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title class="ion-text-center">PoRC v1.7</ion-title>
+        <ion-title class="ion-text-center">PoRC v1.8</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content fullscreen>
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large" class="ion-text-center">PoRC v1.7</ion-title>
+          <ion-title size="large" class="ion-text-center">PoRC v1.8</ion-title>
         </ion-toolbar>
       </ion-header>
 
@@ -25,22 +25,41 @@
           laparotomy mortality risk estimates using the Parsimonious NELA risk
           prediction model.
         </p>
+        <ion-grid>
         <ion-row align-items-center v-if="passedAll">
-          <ion-col class="ion-text-center">
-            <img
-              src="@/assets/imgs/nela.svg"
+          <ion-col size="4" class="ion-text-center">
+            <ion-img
+              :src="require('@/assets/imgs/nela.svg')"
               @click="goNela()"
-              style="max-width: 50%"
-            />
+              style="width: 100%"
+            ></ion-img>
             <br />
-            <ion-button size="default" @click="goNela()"
-              >Parsimonious NELA Model</ion-button
+            <ion-button expand="block" size="default" @click="goNela()"
+              >Parsimonious <br />NELA (2023)</ion-button
             >
           </ion-col>
-          <!-- <ion-col class="ion-text-center">
-      <img src="@/assets/imgs/ppossum.svg" @click="goPPossum()" style="min-width: 100%">
-      <ion-button size="default" @click="goPPossum()">P-POSSUM</ion-button></ion-col> -->
+          <ion-col size="4" class="ion-text-center">
+            <ion-img
+              :src="require('@/assets/imgs/nela-legacy.svg')"
+              @click="goNela()"
+            />
+            <br />
+            <ion-button expand="block" size="default" @click="goNela()"
+              >Legacy NELA <br /> (2020 update)</ion-button
+            >
+          </ion-col>
+          <ion-col size="4" class="ion-text-center">
+            <ion-img
+              :src="require('@/assets/imgs/ppossum.svg')"
+              @click="goPPossum()"
+            />
+            <br />
+            <ion-button expand="block" size="default" @click="goPPossum()"
+              >P-POSSUM <br /> (1998)</ion-button
+            >
+          </ion-col>
         </ion-row>
+        </ion-grid>
         <p v-if="passedAll">&nbsp;</p>
         <div class="bar ion-text-wrap" v-if="passedAll">
           <h1>
@@ -89,6 +108,8 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonGrid,
+  IonImg,
 } from '@ionic/vue';
 import { logoGithub, checkmarkCircle, closeCircle } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
@@ -105,6 +126,8 @@ export default defineComponent({
     IonTitle,
     IonContent,
     IonPage,
+    IonGrid,
+    IonImg,
   },
   setup() {
     console.log('Performing self test...');
