@@ -95,7 +95,7 @@
             <ion-text color="danger">{{ validateAlbumin().erm }}</ion-text>
             <small style="font-weight: 300"
               ><br />What was the most recent pre-operative albumin?
-              (micromol/L)</small
+              (g/L)</small
             >
           </div>
           <div class="item item-text-wrap item-body">
