@@ -916,6 +916,70 @@ export class Calculators {
     // should return success...
     return { erm: erm, err: err };
   }
+    ppcalcOld(risk: any, test?: boolean) {
+    console.log(JSON.stringify(risk));
+    let physiology = 0;
+    let operative = 0;
+    if (test) {
+      physiology =
+        risk.age +
+        risk.cardiac +
+        risk.respiratory +
+        risk.ecg +
+        risk.bp +
+        risk.pulse +
+        risk.gcs +
+        risk.hb +
+        risk.wcc +
+        risk.urea +
+        risk.sodium +
+        risk.potassium;
+      operative =
+        risk.severity +
+        risk.number +
+        risk.blood +
+        risk.soiling +
+        risk.cancer +
+        risk.cepod;
+    } else {
+      physiology =
+        parseInt(risk.age, 10) +
+        parseInt(risk.cardiac, 10) +
+        parseInt(risk.respiratory, 10) +
+        parseInt(risk.ecg, 10) +
+        parseInt(risk.bp, 10) +
+        parseInt(risk.pulse, 10) +
+        parseInt(risk.gcs, 10) +
+        parseInt(risk.hb, 10) +
+        parseInt(risk.wcc, 10) +
+        parseInt(risk.urea, 10) +
+        parseInt(risk.sodium, 10) +
+        parseInt(risk.potassium, 10);
+      operative =
+        parseInt(risk.severity, 10) +
+        parseInt(risk.number, 10) +
+        parseInt(risk.blood, 10) +
+        parseInt(risk.soiling, 10) +
+        parseInt(risk.cancer, 10) +
+        parseInt(risk.cepod, 10);
+    }
+
+    console.log('physiology score = ' + physiology);
+    console.log('operative score = ' + operative);
+
+    let morbidity =
+      1 / (1 + 1 / Math.exp(-5.91 + 0.16 * physiology + 0.19 * operative));
+    morbidity = Math.round(morbidity * 1000) / 10;
+    console.log('morbidity = ' + morbidity + '%');
+
+    let mortality =
+      1 / (1 + 1 / Math.exp(-9.065 + 0.1692 * physiology + 0.155 * operative));
+    mortality = Math.round(mortality * 1000) / 10;
+    console.log('mortality = ' + mortality + '%');
+    console.log('morbidity: ' + morbidity);
+    console.log('mortality: ' + mortality);
+    return { morbidity, mortality };
+  }
   ppcalc(risk: any, test?: boolean) {
     console.log(JSON.stringify(risk));
     let physiology = 0;

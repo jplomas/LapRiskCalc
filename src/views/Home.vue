@@ -2,45 +2,60 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title class="ion-text-center">PoRC v1.7</ion-title>
+        <ion-title class="ion-text-center">PoRC v1.8</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content fullscreen>
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large" class="ion-text-center">PoRC v1.7</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <!-- <ion-header>
-  <ion-navbar text-center>
-    <ion-title>PoRC v1.0</ion-title>
-  </ion-navbar>
-</ion-header> -->
-      <ion-content class="ion-padding">
-        <h2 center class="ion-text-center">Perioperative Risk Calculator</h2>
+    <ion-content :fullscreen="true">
+      <!-- <ion-content class="ion-padding"> -->
+        
         <!-- <img src="/assets/imgs/surgery-1822458_1920.jpg"> -->
+                <ion-item>
+          <ion-text>
+            <h2 center class="ion-text-center">Perioperative Risk Calculator</h2>
         <p v-if="passedAll">
           This app is for medical professionals. It is used to generate
-          laparotomy mortality risk estimates using the Parsimonious NELA risk
-          prediction model.
+          laparotomy mortality risk estimates using the NELA (Parsimonious and Legacy) and P-POSSUM risk
+          prediction models.
         </p>
-        <ion-row align-items-center v-if="passedAll">
-          <ion-col class="ion-text-center">
-            <img
-              src="@/assets/imgs/nela.svg"
-              @click="goNela()"
-              style="max-width: 50%"
-            />
-            <br />
-            <ion-button size="default" @click="goNela()"
-              >Parsimonious NELA Model</ion-button
-            >
-          </ion-col>
-          <!-- <ion-col class="ion-text-center">
-      <img src="@/assets/imgs/ppossum.svg" @click="goPPossum()" style="min-width: 100%">
-      <ion-button size="default" @click="goPPossum()">P-POSSUM</ion-button></ion-col> -->
-        </ion-row>
+        </ion-text>
+        </ion-item>
+        <ion-grid>
+          <ion-row align-items-center v-if="passedAll">
+            <ion-col size="4" class="ion-text-center">
+              <ion-img
+                :src="require('@/assets/imgs/nela.svg')"
+                @click="goNela()"
+                style="width: 100%"
+              ></ion-img>
+              <br />
+              <ion-button expand="block" size="default" @click="goNela()"
+                >Parsimonious <br />NELA (2023)</ion-button
+              >
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <ion-img
+                :src="require('@/assets/imgs/nela-legacy.svg')"
+                @click="goNelaLegacy()"
+              />
+              <br />
+              <ion-button expand="block" size="default" @click="goNelaLegacy()"
+                >Legacy NELA <br />
+                (2020 update)</ion-button
+              >
+            </ion-col>
+            <ion-col size="4" class="ion-text-center">
+              <ion-img
+                :src="require('@/assets/imgs/ppossum.svg')"
+                @click="goPPossum()"
+              />
+              <br />
+              <ion-button expand="block" size="default" @click="goPPossum()"
+                >P-POSSUM <br />
+                (1998)</ion-button
+              >
+            </ion-col>
+          </ion-row>
+        </ion-grid>
         <p v-if="passedAll">&nbsp;</p>
         <div class="bar ion-text-wrap" v-if="passedAll">
           <h1>
@@ -73,7 +88,7 @@
         </div>
         <p style="text-align: center">&copy; 2023</p>
       </ion-content>
-    </ion-content>
+    <!-- </ion-content> -->
   </ion-page>
 </template>
 
@@ -89,6 +104,8 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonGrid,
+  IonImg,
 } from '@ionic/vue';
 import { logoGithub, checkmarkCircle, closeCircle } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
@@ -105,6 +122,8 @@ export default defineComponent({
     IonTitle,
     IonContent,
     IonPage,
+    IonGrid,
+    IonImg,
   },
   setup() {
     console.log('Performing self test...');
@@ -591,87 +610,226 @@ export default defineComponent({
       TestCasesRun += 1;
     }
 
-    /* older tests
-   // NELA CALCULATOR TESTS
-  TestData = JSON.parse('{"asa":1,"gender":2,"creatinine":"132","age":"43","cardiac":4,"respiratory":4,"ecg":2,"bp":"125","pulse":"54","hb":"","wcc":8,"urea":2.4,"sodium":"143","potassium":4.1,"gcs":1,"severity":4,"number":1,"blood":1,"soiling":2,"cancer":2,"cepod":2}');
-  ExpectedResult = 0.7;
-  mortality = calcService.calcNELA(TestData)?.mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
-  if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
-  TestCasesRun +=1;
+    // LEGACY NELA CALCULATOR TESTS
+    let TestDataLegacy = null;
+    let ExpectedResultLegacy = null;
+    TestDataLegacy = JSON.parse(
+      '{"asa":1,"gender":2,"creatinine":"132","age":"43","cardiac":4,"respiratory":4,"ecg":2,"bp":"125","pulse":"54","hb":"","wcc":8,"urea":2.4,"sodium":"143","potassium":4.1,"gcs":1,"severity":4,"number":1,"blood":1,"soiling":2,"cancer":2,"cepod":2}'
+    );
+    ExpectedResultLegacy = 0.7;
+    mortality = calcService.calcNELA(TestDataLegacy)?.mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        ' - Expected: ' +
+        ExpectedResultLegacy
+    );
+    if (FloatSafeTest(mortality, ExpectedResultLegacy)) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
 
-  TestData = JSON.parse('{"asa":8,"gender":1,"creatinine":"111","age":"67","cardiac":2,"respiratory":2,"ecg":4,"bp":"99","pulse":"117","hb":"","wcc":21.2,"urea":11.5,"sodium":"100","potassium":10,"gcs":4,"severity":8,"number":4,"blood":4,"soiling":1,"cancer":4,"cepod":8}');
-  ExpectedResult = 78.1;
-  mortality = calcService.calcNELA(TestData)?.mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
-  if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
-  TestCasesRun +=1;
+    TestDataLegacy = JSON.parse(
+      '{"asa":8,"gender":1,"creatinine":"111","age":"67","cardiac":2,"respiratory":2,"ecg":4,"bp":"99","pulse":"117","hb":"","wcc":21.2,"urea":11.5,"sodium":"100","potassium":10,"gcs":4,"severity":8,"number":4,"blood":4,"soiling":1,"cancer":4,"cepod":8}'
+    );
+    ExpectedResultLegacy = 78.1;
+    mortality = calcService.calcNELA(TestDataLegacy)?.mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        ' - Expected: ' +
+        ExpectedResultLegacy
+    );
+    if (FloatSafeTest(mortality, ExpectedResultLegacy)) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
 
-  TestData = JSON.parse('{"asa":16,"gender":2,"creatinine":"1200","age":"105","cardiac":8,"respiratory":8,"ecg":4,"bp":"45","pulse":"200","hb":"","wcc":65,"urea":89,"sodium":"178","potassium":1.1,"gcs":4,"severity":8,"number":4,"blood":8,"soiling":8,"cancer":8,"cepod":8}');
-  ExpectedResult = 99.9;
-  mortality = calcService.calcNELA(TestData)?.mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
-  if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
-  TestCasesRun +=1;
+    TestDataLegacy = JSON.parse(
+      '{"asa":16,"gender":2,"creatinine":"1200","age":"105","cardiac":8,"respiratory":8,"ecg":4,"bp":"45","pulse":"200","hb":"","wcc":65,"urea":89,"sodium":"178","potassium":1.1,"gcs":4,"severity":8,"number":4,"blood":8,"soiling":8,"cancer":8,"cepod":8}'
+    );
+    ExpectedResultLegacy = 99.9;
+    mortality = calcService.calcNELA(TestDataLegacy)?.mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        ' - Expected: ' +
+        ExpectedResultLegacy
+    );
+    if (FloatSafeTest(mortality, ExpectedResultLegacy)) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
 
-  TestData = JSON.parse('{"asa":8,"gender":1,"creatinine":"128","age":"77","cardiac":4,"respiratory":4,"ecg":4,"bp":"102","pulse":"102","hb":"","wcc":5.4,"urea":7.8,"sodium":"139","potassium":5.1,"gcs":1,"severity":4,"number":1,"blood":2,"soiling":8,"cancer":2,"cepod":2}');
-  ExpectedResult = 37.5;
-  mortality = calcService.calcNELA(TestData)?.mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
-  if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
-  TestCasesRun +=1;
+    TestDataLegacy = JSON.parse(
+      '{"asa":8,"gender":1,"creatinine":"128","age":"77","cardiac":4,"respiratory":4,"ecg":4,"bp":"102","pulse":"102","hb":"","wcc":5.4,"urea":7.8,"sodium":"139","potassium":5.1,"gcs":1,"severity":4,"number":1,"blood":2,"soiling":8,"cancer":2,"cepod":2}'
+    );
+    ExpectedResultLegacy = 37.5;
+    mortality = calcService.calcNELA(TestDataLegacy)?.mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        ' - Expected: ' +
+        ExpectedResultLegacy
+    );
+    if (FloatSafeTest(mortality, ExpectedResultLegacy)) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
 
-  TestData = JSON.parse('{"asa":4,"gender":2,"creatinine":"101","age":"58","cardiac":4,"respiratory":8,"ecg":1,"bp":"184","pulse":"88","hb":"","wcc":5.2,"urea":8.1,"sodium":"148","potassium":4,"gcs":1,"severity":4,"number":2,"blood":1,"soiling":1,"cancer":1,"cepod":2}');
-  ExpectedResult = 6.3;
-  mortality = calcService.calcNELA(TestData)?.mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
-  if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
-  TestCasesRun +=1;
+    TestDataLegacy = JSON.parse(
+      '{"asa":4,"gender":2,"creatinine":"101","age":"58","cardiac":4,"respiratory":8,"ecg":1,"bp":"184","pulse":"88","hb":"","wcc":5.2,"urea":8.1,"sodium":"148","potassium":4,"gcs":1,"severity":4,"number":2,"blood":1,"soiling":1,"cancer":1,"cepod":2}'
+    );
+    ExpectedResultLegacy = 6.3;
+    mortality = calcService.calcNELA(TestDataLegacy)?.mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        ' - Expected: ' +
+        ExpectedResultLegacy
+    );
+    if (FloatSafeTest(mortality, ExpectedResultLegacy)) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
 
-  TestData = JSON.parse('{"age":"83","asa":2,"gender":2,"cardiac":1,"respiratory":2,"ecg":1,"bp":"182","pulse":"98","wcc":10.2,"urea":5.6,"creatinine":"111","sodium":"142","potassium":5.1,"gcs":2,"severity":4,"number":1,"blood":2,"soiling":4,"cancer":4,"cepod":8}');
-  ExpectedResult = 15.8;
-  mortality = calcService.calcNELA(TestData)?.mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + ' - Expected: ' + ExpectedResult);
-  if (FloatSafeTest(mortality,ExpectedResult)) { PassedTests+=1; }
-  TestCasesRun +=1;
+    TestDataLegacy = JSON.parse(
+      '{"age":"83","asa":2,"gender":2,"cardiac":1,"respiratory":2,"ecg":1,"bp":"182","pulse":"98","wcc":10.2,"urea":5.6,"creatinine":"111","sodium":"142","potassium":5.1,"gcs":2,"severity":4,"number":1,"blood":2,"soiling":4,"cancer":4,"cepod":8}'
+    );
+    ExpectedResultLegacy = 15.8;
+    mortality = calcService.calcNELA(TestDataLegacy)?.mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        ' - Expected: ' +
+        ExpectedResultLegacy
+    );
+    if (FloatSafeTest(mortality, ExpectedResultLegacy)) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
 
-   // P-POSSUM CALCULATOR TESTS
-  TestData = JSON.parse('{"age":1,"cardiac":2,"respiratory":4,"ecg":8,"bp":1,"pulse":1,"hb":1,"wcc":2,"urea":1,"sodium":1,"potassium":1,"gcs":1,"severity":1,"number":4,"blood":2,"soiling":2,"cancer":2,"cepod":8}');
-  ExpectedMorbidity = 82.3;
-  ExpectedMortality = 11.3;
-  morbidity = calcService.ppcalc(TestData, true).morbidity;
-  mortality = calcService.ppcalc(TestData, true).mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + '/' + morbidity + ' - Expected: ' + ExpectedMortality + '/' + ExpectedMorbidity);
-  if ((FloatSafeTest(mortality,ExpectedMortality)) && (FloatSafeTest(morbidity,ExpectedMorbidity))) { PassedTests+=1; }
-  TestCasesRun +=1;
+    // P-POSSUM CALCULATOR TESTS
+    TestDataLegacy = JSON.parse(
+      '{"age":1,"cardiac":2,"respiratory":4,"ecg":8,"bp":1,"pulse":1,"hb":1,"wcc":2,"urea":1,"sodium":1,"potassium":1,"gcs":1,"severity":1,"number":4,"blood":2,"soiling":2,"cancer":2,"cepod":8}'
+    );
+    let ExpectedMorbidity = 82.3;
+    let ExpectedMortality = 11.3;
+    let morbidity = calcService.ppcalc(TestDataLegacy, true).morbidity;
+    mortality = calcService.ppcalc(TestDataLegacy, true).mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        '/' +
+        morbidity +
+        ' - Expected: ' +
+        ExpectedMortality +
+        '/' +
+        ExpectedMorbidity
+    );
+    if (
+      FloatSafeTest(mortality, ExpectedMortality) &&
+      FloatSafeTest(morbidity, ExpectedMorbidity)
+    ) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
 
-  TestData = JSON.parse('{"age":4,"cardiac":8,"respiratory":8,"ecg":8,"bp":8,"pulse":8,"hb":8,"wcc":4,"urea":8,"sodium":8,"potassium":8,"gcs":8,"severity":8,"number":8,"blood":8,"soiling":8,"cancer":8,"cepod":8}');
-  ExpectedMorbidity = 100;
-  ExpectedMortality = 100;
-  morbidity = calcService.ppcalc(TestData, true).morbidity;
-  mortality = calcService.ppcalc(TestData, true).mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + '/' + morbidity + ' - Expected: ' + ExpectedMortality + '/' + ExpectedMorbidity);
-  if ((FloatSafeTest(mortality,ExpectedMortality)) && (FloatSafeTest(morbidity,ExpectedMorbidity))) { PassedTests+=1; }
-  TestCasesRun +=1;
+    TestDataLegacy = JSON.parse(
+      '{"age":4,"cardiac":8,"respiratory":8,"ecg":8,"bp":8,"pulse":8,"hb":8,"wcc":4,"urea":8,"sodium":8,"potassium":8,"gcs":8,"severity":8,"number":8,"blood":8,"soiling":8,"cancer":8,"cepod":8}'
+    );
+    ExpectedMorbidity = 100;
+    ExpectedMortality = 100;
+    morbidity = calcService.ppcalc(TestDataLegacy, true).morbidity;
+    mortality = calcService.ppcalc(TestDataLegacy, true).mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        '/' +
+        morbidity +
+        ' - Expected: ' +
+        ExpectedMortality +
+        '/' +
+        ExpectedMorbidity
+    );
+    if (
+      FloatSafeTest(mortality, ExpectedMortality) &&
+      FloatSafeTest(morbidity, ExpectedMorbidity)
+    ) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
 
-  TestData = JSON.parse('{"age":2,"cardiac":8,"respiratory":1,"ecg":4,"bp":4,"pulse":4,"hb":2,"wcc":4,"urea":2,"sodium":1,"potassium":1,"gcs":4,"severity":4,"number":4,"blood":4,"soiling":4,"cancer":4,"cepod":4}');
-  ExpectedMorbidity = 99;
-  ExpectedMortality = 71.4;
-  morbidity = calcService.ppcalc(TestData, true).morbidity;
-  mortality = calcService.ppcalc(TestData, true).mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + '/' + morbidity + ' - Expected: ' + ExpectedMortality + '/' + ExpectedMorbidity);
-  if ((FloatSafeTest(mortality,ExpectedMortality)) && (FloatSafeTest(morbidity,ExpectedMorbidity))) { PassedTests+=1; }
-  TestCasesRun +=1;
+    TestDataLegacy = JSON.parse(
+      '{"age":2,"cardiac":8,"respiratory":1,"ecg":4,"bp":4,"pulse":4,"hb":2,"wcc":4,"urea":2,"sodium":1,"potassium":1,"gcs":4,"severity":4,"number":4,"blood":4,"soiling":4,"cancer":4,"cepod":4}'
+    );
+    ExpectedMorbidity = 99;
+    ExpectedMortality = 71.4;
+    morbidity = calcService.ppcalc(TestDataLegacy, true).morbidity;
+    mortality = calcService.ppcalc(TestDataLegacy, true).mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        '/' +
+        morbidity +
+        ' - Expected: ' +
+        ExpectedMortality +
+        '/' +
+        ExpectedMorbidity
+    );
+    if (
+      FloatSafeTest(mortality, ExpectedMortality) &&
+      FloatSafeTest(morbidity, ExpectedMorbidity)
+    ) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
 
-  TestData = JSON.parse('{"age":2,"cardiac":4,"respiratory":2,"ecg":4,"bp":2,"pulse":2,"hb":4,"wcc":2,"urea":8,"sodium":4,"potassium":1,"gcs":4,"severity":1,"number":8,"blood":1,"soiling":1,"cancer":8,"cepod":8}');
-  ExpectedMorbidity = 99.6;
-  ExpectedMortality = 84.8;
-  morbidity = calcService.ppcalc(TestData, true).morbidity;
-  mortality = calcService.ppcalc(TestData, true).mortality;
-  console.log('Test case ' + (TestCasesRun+1) + ' result: ' + mortality + '/' + morbidity + ' - Expected: ' + ExpectedMortality + '/' + ExpectedMorbidity);
-  if ((FloatSafeTest(mortality,ExpectedMortality)) && (FloatSafeTest(morbidity,ExpectedMorbidity))) { PassedTests+=1; }
-  TestCasesRun +=1;
-*/
+    TestDataLegacy = JSON.parse(
+      '{"age":2,"cardiac":4,"respiratory":2,"ecg":4,"bp":2,"pulse":2,"hb":4,"wcc":2,"urea":8,"sodium":4,"potassium":1,"gcs":4,"severity":1,"number":8,"blood":1,"soiling":1,"cancer":8,"cepod":8}'
+    );
+    ExpectedMorbidity = 99.6;
+    ExpectedMortality = 84.8;
+    morbidity = calcService.ppcalc(TestDataLegacy, true).morbidity;
+    mortality = calcService.ppcalc(TestDataLegacy, true).mortality;
+    console.log(
+      'Test case ' +
+        (TestCasesRun + 1) +
+        ' result: ' +
+        mortality +
+        '/' +
+        morbidity +
+        ' - Expected: ' +
+        ExpectedMortality +
+        '/' +
+        ExpectedMorbidity
+    );
+    if (
+      FloatSafeTest(mortality, ExpectedMortality) &&
+      FloatSafeTest(morbidity, ExpectedMorbidity)
+    ) {
+      PassedTests += 1;
+    }
+    TestCasesRun += 1;
+
     let passedAll = false;
 
     if (PassedTests === TestCasesRun) {
@@ -706,6 +864,9 @@ export default defineComponent({
     goNela() {
       this.$router.push('/tabs/nela');
     },
+    goNelaLegacy() {
+      this.$router.push('/tabs/legacy');
+    },
     goPPossum() {
       this.$router.push('/tabs/p-possum');
     },
@@ -713,6 +874,13 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+ion-button {
+  /* reduce button text size on small screens */
+  font-size: 10px;
+  @media only screen and (min-width: 501px) {
+    font-size: 14px;
+  }
+}
 ion-content {
   --background: #f0f9ff; /* Old browsers */
   --background: -moz-linear-gradient(
