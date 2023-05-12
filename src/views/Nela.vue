@@ -9,23 +9,20 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
+      <!-- <ion-header collapse="condense">
         <ion-toolbar>
-          <!-- <ion-buttons slot="start" hideWhen="ios">
+          <ion-buttons slot="start" hideWhen="ios">
             <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-          </ion-buttons> -->
-          <ion-title class="ion-text-center" size="large"
-            >Parsimonious NELA</ion-title
-          >
+          </ion-buttons>
+          <ion-title class="ion-text-center" size="large">Legacy NELA (2020) & P-POSSUM</ion-title>
         </ion-toolbar>
-      </ion-header>
-      <ion-item>
-        <ion-text>
-          <br />Select the appropriate option from each category then click the
-          calculate button.<br /><br />
-        </ion-text>
-      </ion-item>
-      <ion-card>
+      </ion-header> -->
+        <ion-item>
+          <ion-text>
+                  <br />Select the appropriate option from each category then click the calculate button.<br><br>
+          </ion-text>
+        </ion-item>
+  <ion-card>
         <ion-card-content>
           <div class="item item-divider item-text-wrap">
             <strong>Age</strong>
@@ -852,12 +849,12 @@
                     Estimated mortality using the Parsimonious NELA risk
                     adjustment model:
                   </p>
-                  <h1>{{ showResult().percentage }}</h1>
+                  <h1>{{ result.percentage }}</h1>
                   <br />
                   <div
                     class="ion-text-left"
                     style="color: #000"
-                    v-if="showResult().extra === 'higher'"
+                    v-if="result.extra === 'higher'"
                   >
                     This patient is <strong>higher risk</strong> and should:
                     <ul>
@@ -870,7 +867,7 @@
                   <div
                     class="ion-text-left"
                     style="color: #000"
-                    v-if="showResult().extra === 'high'"
+                    v-if="result.extra === 'high'"
                   >
                     This patient is <strong>high risk</strong> and should:
                     <ul>
@@ -881,18 +878,6 @@
                       <li>be admitted to HDU or ITU post-operatively</li>
                     </ul>
                   </div>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col class="ion-text-center">
-                  <p>P-POSSUM Morbidity Risk:</p>
-                  <h1>{{ showResult().ppossum.morbidity }}%</h1>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col class="ion-text-center">
-                  <p>P-POSSUM Mortality Risk:</p>
-                  <h1>{{ showResult().ppossum.mortality }}%</h1>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -933,7 +918,7 @@ import {
 import { close } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
 export default defineComponent({
-  name: 'NelaPage',
+  name: 'Tab2Page',
   components: {
     IonBackButton,
     IonButtons,
@@ -965,10 +950,6 @@ export default defineComponent({
     result: {
       percentage: '',
       extra: '',
-      ppossum: {
-        morbidity: -1,
-        mortality: -1,
-      },
     },
     risk: {
       age: '',
@@ -1193,10 +1174,6 @@ export default defineComponent({
       this.result = {
         percentage: '',
         extra: '',
-        ppossum: {
-          morbidity: -1,
-          mortality: -1,
-        },
       };
       this.risk = {
         age: '',
@@ -1709,9 +1686,6 @@ export default defineComponent({
     go() {
       this.open = true;
       const nelacalc = new Calculators();
-      // const calc = nelacalc.calcNELA(this.risk);
-      const pp = nelacalc.ppcalc(this.risk);
-      console.log({ pp });
       const calc = nelacalc.NelaV2(nelacalc.harmoniseParams(this.risk));
       console.log({ calc });
       if (!calc) {
@@ -1734,7 +1708,6 @@ export default defineComponent({
       this.result = {
         percentage: `${mortality}%`,
         extra: exp,
-        ppossum: pp,
       };
     },
   },

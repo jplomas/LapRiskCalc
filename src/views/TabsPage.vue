@@ -10,9 +10,19 @@
           
         <ion-tab-button tab="tab2" href="/tabs/nela">
           <ion-icon :icon="calculator" />
-          <ion-label>Calculate</ion-label>
+          <ion-label>NELA 2023</ion-label>
         </ion-tab-button>
-        
+       
+        <ion-tab-button tab="tab4" href="/tabs/legacy">
+          <ion-icon :icon="calculator" />
+          <ion-label>NELA 2020</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="tab5" href="/tabs/p-possum">
+          <ion-icon :icon="calculator" />
+          <ion-label>P-POSSUM</ion-label>
+        </ion-tab-button>
+
         <ion-tab-button tab="tab3" href="/tabs/info">
           <ion-icon :icon="informationCircle" />
           <ion-label>Info</ion-label>

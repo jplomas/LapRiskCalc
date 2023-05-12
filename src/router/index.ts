@@ -8,10 +8,6 @@ const routes: Array<RouteRecordRaw> = [
     redirect: '/tabs/home'
   },
   {
-    path: '/nela',
-    redirect: '/tabs/nela'
-  },
-  {
     path: '/tabs/',
     component: TabsPage,
     children: [
@@ -26,6 +22,10 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'nela',
         component: () => import('@/views/Nela.vue')
+      },
+      {
+        path: 'legacy',
+        component: () => import('@/views/NelaLegacy.vue')
       },
       {
         path: 'p-possum',

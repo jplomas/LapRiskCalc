@@ -9,16 +9,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <!-- <ion-buttons slot="start" hideWhen="ios">
-            <ion-back-button defaultHref="/tabs/home"></ion-back-button>
-          </ion-buttons> -->
-          <ion-title size="large" class="ion-text-center">Info</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-   <ion-card>   
+  <ion-card>
      <ion-card-header>
        <ion-avatar item-start>
          <img src="@/assets/imgs/jp.png">

@@ -2,21 +2,27 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+        </ion-buttons>
         <ion-title class="ion-text-center">P-POSSUM</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
+      <!-- <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title class="ion-text-center" size="large">P-POSSUM</ion-title>
+          <ion-buttons slot="start" hideWhen="ios">
+            <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+          </ion-buttons>
+          <ion-title class="ion-text-center" size="large">Legacy NELA (2020) & P-POSSUM</ion-title>
         </ion-toolbar>
-      </ion-header>
+      </ion-header> -->
         <ion-item>
           <ion-text>
                   <br />Select the appropriate option from each category then click the calculate button.<br><br>
           </ion-text>
         </ion-item>
-<ion-card><ion-card-content>
+  <ion-card><ion-card-content>
             <div class="item item-divider item-text-wrap"><strong>Age</strong></div>
                 <ion-list radio-group>
                 <ion-radio-group v-model="risk.age">
@@ -216,9 +222,9 @@
           <ion-button color="light" type="button" @click="reset()">
               Reset
           </ion-button>
-          <ion-button color="light" type="button" @click="mock()">
+          <!-- <ion-button color="light" type="button" @click="mock()">
               Mock
-          </ion-button>
+          </ion-button> -->
           </ion-col></ion-row>
           <ion-item color="danger" v-if="!(checkParams())">
             Some data fields are missing or invalid
@@ -266,7 +272,7 @@ import { close } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
 
 export default defineComponent({
-  name: 'Tab3Page',
+  name: 'Tab4Page',
   components: { IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
     data: () => ({
       ready: false,
