@@ -1038,57 +1038,96 @@ export default defineComponent({
   },
   methods: {
     indicationChange() {
-      console.log('indication changed');
-      console.log(this.risk);
-      let maxInd = 0;
-      const risk = this.risk;
-      if (
-        risk.indNecrosis === true ||
-        risk.indIschaemia === true ||
-        risk.indAcidosis === true ||
-        risk.indColitis === true
-      ) {
-        maxInd = 3; //Ischaemia
-      } else if (
-        risk.indPhlegmon === true ||
-        risk.indPneumoperitoneum === true ||
-        risk.indSepsisOther === true ||
-        risk.indIatrogenicInjury === true ||
-        risk.indAnastomoticLeak === true ||
-        risk.indPerforation === true ||
-        risk.indPeritonitis === true ||
-        risk.indAbdominalAbscess === true ||
-        risk.indIntestinalFistula === true
-      ) {
-        maxInd = 2; //Sepsis
-      } else if (
-        risk.indTenderSmallBowelObstruction === true ||
-        risk.indNonTenderSmallBowelObstruction === true ||
-        risk.indTenderLargeBowelObstruction === true ||
-        risk.indNonTenderLargeBowelObstruction === true ||
-        risk.indGastricOutletObstruction === true ||
-        risk.indIncarceratedHernia === true ||
-        risk.indHiatusHernia === true ||
-        risk.indVolvulus === true ||
-        risk.indInternalHernia === true ||
-        risk.indObstructingIncisionalHernia === true ||
-        risk.indIntussusception === true ||
-        risk.indPseudoObstruction === true ||
-        risk.indForeignBody === true
-      ) {
-        maxInd = 1; //Obstruction
-      } else if (
-        risk.indAbdominalWoundDehiscence === true ||
-        risk.indAbdominalCompartmentSyndrome === true ||
-        risk.indPlannedRelook === true ||
-        risk.indOther === true
-      ) {
-        maxInd = 5; //Other
-      } else if (risk.indHaemorrhage === true) {
-        maxInd = 4; //Bleeding
-      }
-      console.log('maxInd is now: ' + maxInd);
-      this.risk.maxInd = maxInd;
+      setTimeout(() => {
+        console.log('indication changed');
+        console.log(this.risk);
+        let maxInd = 0;
+        const risk = this.risk;
+        if (
+          risk.indNecrosis === true ||
+          risk.indIschaemia === true ||
+          risk.indAcidosis === true ||
+          risk.indColitis === true
+        ) {
+          maxInd = 3; //Ischaemia
+        } else if (
+          risk.indPhlegmon === true ||
+          risk.indPneumoperitoneum === true ||
+          risk.indSepsisOther === true ||
+          risk.indIatrogenicInjury === true ||
+          risk.indAnastomoticLeak === true ||
+          risk.indPerforation === true ||
+          risk.indPeritonitis === true ||
+          risk.indAbdominalAbscess === true ||
+          risk.indIntestinalFistula === true
+        ) {
+          maxInd = 2; //Sepsis
+        } else if (
+          risk.indTenderSmallBowelObstruction === true ||
+          risk.indNonTenderSmallBowelObstruction === true ||
+          risk.indTenderLargeBowelObstruction === true ||
+          risk.indNonTenderLargeBowelObstruction === true ||
+          risk.indGastricOutletObstruction === true ||
+          risk.indIncarceratedHernia === true ||
+          risk.indHiatusHernia === true ||
+          risk.indVolvulus === true ||
+          risk.indInternalHernia === true ||
+          risk.indObstructingIncisionalHernia === true ||
+          risk.indIntussusception === true ||
+          risk.indPseudoObstruction === true ||
+          risk.indForeignBody === true
+        ) {
+          maxInd = 1; //Obstruction
+        } else if (
+          risk.indAbdominalWoundDehiscence === true ||
+          risk.indAbdominalCompartmentSyndrome === true ||
+          risk.indPlannedRelook === true ||
+          risk.indOther === true
+        ) {
+          maxInd = 5; //Other
+        } else if (risk.indHaemorrhage === true) {
+          maxInd = 4; //Bleeding
+        }
+        console.log(risk);
+        if (
+          risk.indHaemorrhage === false &&
+          risk.indAbdominalWoundDehiscence === false &&
+          risk.indAbdominalCompartmentSyndrome === false &&
+          risk.indPlannedRelook === false &&
+          risk.indOther === false &&
+          risk.indTenderSmallBowelObstruction === false &&
+          risk.indNonTenderSmallBowelObstruction === false &&
+          risk.indTenderLargeBowelObstruction === false &&
+          risk.indNonTenderLargeBowelObstruction === false &&
+          risk.indGastricOutletObstruction === false &&
+          risk.indIncarceratedHernia === false &&
+          risk.indHiatusHernia === false &&
+          risk.indVolvulus === false &&
+          risk.indInternalHernia === false &&
+          risk.indObstructingIncisionalHernia === false &&
+          risk.indIntussusception === false &&
+          risk.indPseudoObstruction === false &&
+          risk.indForeignBody === false &&
+          risk.indPhlegmon === false &&
+          risk.indPneumoperitoneum === false &&
+          risk.indSepsisOther === false &&
+          risk.indIatrogenicInjury === false &&
+          risk.indAnastomoticLeak === false &&
+          risk.indPeritonitis === false &&
+          risk.indPerforation === false &&
+          risk.indAbdominalAbscess === false &&
+          risk.indIntestinalFistula === false &&
+          risk.indNecrosis === false &&
+          risk.indIschaemia === false &&
+          risk.indColitis === false &&
+          risk.indAcidosis === false
+        ) {
+          console.log('all are false!');
+          maxInd = 0;
+        }
+        console.log('maxInd is now: ' + maxInd);
+        this.risk.maxInd = maxInd;
+      }, 100);
     },
     mock() {
       this.risk = {
