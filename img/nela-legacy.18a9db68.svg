@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   sodipodi:docname="nela-legacy.svg"
+   id="svg40"
+   version="1.1"
+   viewBox="0 0 492 492"
+   height="492px"
+   width="492px">
+  <metadata
+     id="metadata44">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>NELA Copy 2</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     inkscape:current-layer="svg40"
+     inkscape:window-maximized="0"
+     inkscape:window-y="25"
+     inkscape:window-x="0"
+     inkscape:cy="246"
+     inkscape:cx="246"
+     inkscape:zoom="1.4308943"
+     showgrid="false"
+     id="namedview42"
+     inkscape:window-height="480"
+     inkscape:window-width="784"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff" />
+  <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title10">NELA Copy 2</title>
+  <desc
+     id="desc12">Created with Sketch.</desc>
+  <defs
+     id="defs19">
+    <linearGradient
+       id="linearGradient-1"
+       y2="100%"
+       x2="50%"
+       y1="0%"
+       x1="50%">
+      <stop
+         id="stop14"
+         offset="0%"
+         stop-color="#B0032B" />
+      <stop
+         id="stop16"
+         offset="100%"
+         stop-color="#780113" />
+    </linearGradient>
+    <linearGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(1.1375929,0.87904907)"
+       x1="115.59495"
+       y1="-0.56879646"
+       x2="115.59495"
+       y2="231.50016"
+       id="linearGradient-1-3">
+      <stop
+         stop-color="#B0032B"
+         offset="0%"
+         id="stop179" />
+      <stop
+         stop-color="#780113"
+         offset="100%"
+         id="stop181" />
+    </linearGradient>
+  </defs>
+  <g
+     transform="translate(91.000001,24.000001)"
+     id="Artboard"
+     stroke="none"
+     stroke-width="1"
+     fill="none"
+     fill-rule="evenodd">
+    <g
+       id="Group-2"
+       transform="translate(2.108464,2.485639)">
+      <g
+         id="nela">
+        <g
+           id="Group"
+           transform="translate(25.391536,42.014361)"
+           fill-rule="nonzero">
+          <rect
+             style="fill:url(#linearGradient-1-3)"
+             id="Rectangle"
+             stroke="#979797"
+             fill="url(#linearGradient-1)"
+             x="0"
+             y="0"
+             width="263"
+             height="203" />
+          <path
+             d="M 81.962,98.316 H 71.218 C 70.062,96.004 68.838,94.032 66.866,91.04 L 49.322,64.588 c -1.292,-2.04 -2.992,-4.964 -4.624,-8.16 0.068,0.952 0.068,0.952 0.272,3.468 0.068,1.292 0.204,4.352 0.204,5.916 v 22.304 c 0,4.556 0.204,7.752 0.544,10.2 H 35.79 c 0.34,-2.244 0.544,-5.644 0.544,-10.268 V 52.96 c 0,-3.536 -0.136,-5.984 -0.544,-8.772 h 10.608 c 0.612,1.7 1.836,3.74 4.148,7.208 L 67.75,77.304 c 1.632,2.448 3.808,5.984 5.304,8.704 -0.272,-2.652 -0.476,-6.732 -0.476,-9.588 V 53.572 c 0,-4.012 -0.136,-6.8 -0.544,-9.384 h 9.928 c -0.408,2.72 -0.544,5.236 -0.544,9.384 v 35.972 c 0,3.808 0.136,6.392 0.544,8.772 z m 48.28,-8.568 v 9.044 c -2.448,-0.34 -4.624,-0.476 -8.772,-0.476 h -21.216 c -4.08,0 -5.916,0.068 -8.636,0.204 0.408,-2.72 0.544,-4.964 0.544,-8.976 V 52.756 c 0,-3.536 -0.136,-5.576 -0.544,-8.772 2.72,0.136 4.488,0.204 8.636,0.204 h 20.536 c 3.4,0 5.644,-0.136 8.772,-0.476 v 8.976 c -2.584,-0.34 -4.76,-0.476 -8.772,-0.476 H 101.206 V 66.22 h 16.524 c 3.536,0 5.848,-0.136 8.84,-0.476 v 8.908 c -2.788,-0.408 -4.624,-0.476 -8.84,-0.476 h -16.592 v 16.048 h 20.4 c 3.808,0 5.78,-0.136 8.704,-0.476 z m 46.376,-0.136 v 9.18 c -2.448,-0.34 -4.828,-0.476 -9.656,-0.476 h -20.128 c -3.808,0 -6.188,0.068 -8.636,0.204 0.408,-2.516 0.544,-5.032 0.544,-8.976 V 54.252 c 0,-4.692 -0.136,-7.14 -0.544,-10.064 h 10.268 c -0.408,2.788 -0.544,5.032 -0.544,9.996 v 35.904 h 19.04 c 4.624,0 6.8,-0.136 9.656,-0.476 z m 54.672,8.704 h -11.152 c -0.408,-2.244 -1.156,-5.168 -1.904,-7.14 l -2.72,-7.412 h -21.76 l -2.72,7.412 c -1.224,3.264 -1.496,4.284 -2.04,7.14 h -11.152 c 1.02,-1.836 2.38,-4.896 3.604,-8.024 l 14.96,-39.236 c 1.292,-3.4 1.836,-5.1 2.176,-6.868 h 11.832 c 0.34,1.632 0.748,2.72 2.312,6.868 l 15.096,39.236 c 1.7,4.352 2.516,6.256 3.468,8.024 z M 213.066,75.944 205.79,55.816 c -0.272,-0.748 -0.476,-1.564 -1.224,-3.808 -1.088,3.196 -1.088,3.196 -1.292,3.808 l -7.072,20.128 z"
+             id="NELA"
+             fill="#ffffff" />
+        </g>
+        <path
+           d="M 268.51423,439.02872 H 37.268841 C 16.243197,439.02872 0,422.79939 0,401.80571 V 37.22301 C 0,16.22933 16.243197,0 37.268841,0 H 268.51423 c 21.02565,0 37.26884,16.22933 37.26884,37.22301 v 364.5827 c 0,20.99368 -16.24319,37.22301 -37.26884,37.22301 z M 46.821504,52.493361 V 219.51436 H 266.60615 V 52.493361 Z"
+           id="Combined-Shape"
+           stroke="#000000"
+           stroke-width="3.125"
+           fill="#ffffff"
+           fill-rule="nonzero" />
+        <line
+           x1="47.775547"
+           y1="263.32492"
+           x2="93.643005"
+           y2="263.32492"
+           id="Stroke-3"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="129.95781"
+           y1="263.32492"
+           x2="175.82527"
+           y2="263.32492"
+           id="Stroke-4"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="212.14006"
+           y1="263.32492"
+           x2="258.00754"
+           y2="263.32492"
+           id="Stroke-5"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="47.775547"
+           y1="304.21481"
+           x2="93.643005"
+           y2="304.21481"
+           id="Stroke-6"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="129.95781"
+           y1="304.21481"
+           x2="175.82527"
+           y2="304.21481"
+           id="Stroke-7"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="212.14006"
+           y1="304.21481"
+           x2="258.00754"
+           y2="304.21481"
+           id="Stroke-8"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="47.775547"
+           y1="345.10468"
+           x2="93.643005"
+           y2="345.10468"
+           id="Stroke-9"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="129.95781"
+           y1="345.10468"
+           x2="175.82527"
+           y2="345.10468"
+           id="Stroke-10"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="212.14006"
+           y1="345.10468"
+           x2="258.00754"
+           y2="345.10468"
+           id="Stroke-11"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="47.775547"
+           y1="385.99454"
+           x2="93.643005"
+           y2="385.99454"
+           id="Stroke-12"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="129.95781"
+           y1="385.99454"
+           x2="175.82527"
+           y2="385.99454"
+           id="Stroke-13"
+           stroke="#000000"
+           stroke-width="3.125" />
+        <line
+           x1="212.14006"
+           y1="385.99454"
+           x2="258.00754"
+           y2="385.99454"
+           id="Stroke-14"
+           stroke="#000000"
+           stroke-width="3.125" />
+      </g>
+      <text
+         id="2020"
+         font-family="ABCMarfa-Regular, 'ABC Marfa'"
+         font-size="28px"
+         font-weight="normal"
+         fill="#ffffff"><tspan
+           x="185.89154"
+           y="192.51436"
+           id="tspan203">2020</tspan></text>
+      <g
+         id="Group-4"
+         transform="translate(126.89154,166.23008)">
+        <path
+           d="M 22,29.945446 H 0 V 0.27335415 c 0,-0.3644722 15.333333,-0.3644722 46,0 V 20.284284 l 13.703663,-3.5 L 46,10.271573 v 19.673873 z"
+           id="Fill-1"
+           fill="#ffe122" />
+        <path
+           d="m 21.28773,19.284284 h 3.501524 c 0.554781,0 1.013089,-0.264424 1.029164,-0.59856 L 26.53803,3.9164936 C 26.546068,3.750629 26.441546,3.5895706 26.248578,3.4693798 26.055609,3.351589 25.786257,3.2842844 25.508866,3.2842844 h -4.940809 c -0.277391,0 -0.542719,0.067311 -0.739712,0.1875016 -0.192968,0.1201907 -0.29749,0.2812492 -0.289452,0.4471138 l 0.719612,14.7692312 c 0.01608,0.331729 0.474383,0.596153 1.029164,0.596153 z"
+           id="Fill-2"
+           fill="#000000" />
+        <path
+           d="m 23,21.284284 c -1.71217,0 -3,1.288546 -3,3 0,1.711455 1.290793,3 3,3 1.738909,0 3,-1.262873 3,-3 0,-1.765725 -1.234427,-3 -3,-3 z"
+           id="Fill-3"
+           fill="#000000" />
+      </g>
+    </g>
+  </g>
+</svg>
