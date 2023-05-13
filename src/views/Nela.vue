@@ -559,7 +559,7 @@
           </div> </ion-card-content
       ></ion-card>
 
-      <ion-card @click="indicationChange()">
+      <ion-card>
         <ion-card-content>
           <div class="item item-divider item-text-wrap">
             Indications for surgery
@@ -576,6 +576,7 @@
                 <ion-checkbox
                   v-model="risk.indHaemorrhage"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
             </ion-list>
@@ -587,6 +588,7 @@
                 <ion-checkbox
                   v-model="risk.indAbdominalWoundDehiscence"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -594,6 +596,7 @@
                 <ion-checkbox
                   v-model="risk.indAbdominalCompartmentSyndrome"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -601,6 +604,7 @@
                 <ion-checkbox
                   v-model="risk.indPlannedRelook"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -608,6 +612,7 @@
                 <ion-checkbox
                   v-model="risk.indOther"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
             </ion-list>
@@ -619,6 +624,7 @@
                 <ion-checkbox
                   v-model="risk.indTenderSmallBowelObstruction"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -626,6 +632,7 @@
                 <ion-checkbox
                   v-model="risk.indNonTenderSmallBowelObstruction"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -633,6 +640,7 @@
                 <ion-checkbox
                   v-model="risk.indTenderLargeBowelObstruction"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -640,6 +648,7 @@
                 <ion-checkbox
                   v-model="risk.indNonTenderLargeBowelObstruction"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -647,6 +656,7 @@
                 <ion-checkbox
                   v-model="risk.indGastricOutletObstruction"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -654,6 +664,7 @@
                 <ion-checkbox
                   v-model="risk.indIncarceratedHernia"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -661,6 +672,7 @@
                 <ion-checkbox
                   v-model="risk.indHiatusHernia"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -668,6 +680,7 @@
                 <ion-checkbox
                   v-model="risk.indVolvulus"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -675,6 +688,7 @@
                 <ion-checkbox
                   v-model="risk.indInternalHernia"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -682,6 +696,7 @@
                 <ion-checkbox
                   v-model="risk.indObstructingIncisionalHernia"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -689,6 +704,7 @@
                 <ion-checkbox
                   v-model="risk.indIntussusception"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -696,6 +712,7 @@
                 <ion-checkbox
                   v-model="risk.indPseudoObstruction"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -703,6 +720,7 @@
                 <ion-checkbox
                   v-model="risk.indForeignBody"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
             </ion-list>
@@ -714,6 +732,7 @@
                 <ion-checkbox
                   v-model="risk.indPhlegmon"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -721,6 +740,7 @@
                 <ion-checkbox
                   v-model="risk.indPneumoperitoneum"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -728,6 +748,7 @@
                 <ion-checkbox
                   v-model="risk.indSepsisOther"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -735,6 +756,7 @@
                 <ion-checkbox
                   v-model="risk.indIatrogenicInjury"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -742,6 +764,7 @@
                 <ion-checkbox
                   v-model="risk.indAnastomoticLeak"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -749,6 +772,7 @@
                 <ion-checkbox
                   v-model="risk.indPeritonitis"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -756,6 +780,7 @@
                 <ion-checkbox
                   v-model="risk.indPerforation"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -763,6 +788,7 @@
                 <ion-checkbox
                   v-model="risk.indAbdominalAbscess"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -770,6 +796,7 @@
                 <ion-checkbox
                   v-model="risk.indIntestinalFistula"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
             </ion-list>
@@ -781,6 +808,7 @@
                 <ion-checkbox
                   v-model="risk.indNecrosis"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -788,6 +816,7 @@
                 <ion-checkbox
                   v-model="risk.indIschaemia"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -795,6 +824,7 @@
                 <ion-checkbox
                   v-model="risk.indColitis"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
               <ion-item>
@@ -802,6 +832,7 @@
                 <ion-checkbox
                   v-model="risk.indAcidosis"
                   slot="start"
+                  @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
             </ion-list>
@@ -1019,7 +1050,7 @@ export default defineComponent({
   },
   methods: {
     indicationChange() {
-      setTimeout(() => {
+      // setTimeout(() => {
         console.log('indication changed');
         console.log(this.risk);
         let maxInd = 0;
@@ -1108,7 +1139,7 @@ export default defineComponent({
         }
         console.log('maxInd is now: ' + maxInd);
         this.risk.maxInd = maxInd;
-      }, 100);
+      // }, 100);
     },
     mock() {
       this.risk = {
