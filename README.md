@@ -67,6 +67,10 @@ MIT and permissive, just as healthcare IT should be.
 
 ## History
 
+#### v1.8.1
+
+Minor UI tweak for app store releases.
+
 #### v1.8.0
 
 After communication from users in Europe who are using the legacy NELA model, validated on their own dataset, I have restored the old model as an option.
