@@ -85,6 +85,18 @@ http://ionicframework.com/docs/theming/ */
   --ion-scrollbar-background: transparent;
   --ion-radio-background: var(--ion-background-color);
   --ion-radio-color: var(--ion-text-color);
+  --ion-radio-border-color: var(--ion-color-medium);
+  --ion-radio-border-color-checked: var(--ion-color-primary);
+  --ion-radio-inner-color: var(--ion-color-primary);
+
+  /** checkbox colors **/
+  --ion-checkbox-background: var(--ion-background-color);
+  --ion-checkbox-border-color: var(--ion-color-medium);
+  --ion-checkbox-border-color-checked: var(--ion-color-primary);
+  --ion-checkbox-border-color-disabled: var(--ion-color-medium);
+  --ion-checkbox-checkmark-color: var(--ion-color-primary-contrast);
+  --ion-checkbox-background-checked: var(--ion-color-primary);
+  --ion-checkbox-background-disabled: var(--ion-color-medium);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -178,8 +190,20 @@ http://ionicframework.com/docs/theming/ */
     /** scrollbar and form controls - dark mode **/
     --ion-scrollbar-color: var(--ion-color-medium);
     --ion-scrollbar-background: transparent;
-    --ion-radio-background: var(--ion-background-color);
+    --ion-radio-background: #2a2a2a;
     --ion-radio-color: var(--ion-text-color);
+    --ion-radio-border-color: #666666;
+    --ion-radio-border-color-checked: var(--ion-color-primary);
+    --ion-radio-inner-color: var(--ion-color-primary);
+
+    /** checkbox colors - dark mode **/
+    --ion-checkbox-background: #2a2a2a;
+    --ion-checkbox-border-color: #666666;
+    --ion-checkbox-border-color-checked: var(--ion-color-primary);
+    --ion-checkbox-border-color-disabled: #444444;
+    --ion-checkbox-checkmark-color: #ffffff;
+    --ion-checkbox-background-checked: var(--ion-color-primary);
+    --ion-checkbox-background-disabled: #444444;
   }
 
   /*
@@ -295,10 +319,18 @@ http://ionicframework.com/docs/theming/ */
 ion-radio {
   --color: var(--ion-radio-color);
   --color-checked: var(--ion-color-primary);
+  --border-color: var(--ion-radio-border-color);
+  --border-color-checked: var(--ion-radio-border-color-checked);
+  --inner-color: var(--ion-radio-inner-color);
 }
 
 ion-radio::part(container) {
   background: var(--ion-radio-background);
+  border-color: var(--ion-radio-border-color);
+}
+
+ion-radio::part(inner) {
+  background: var(--ion-radio-inner-color);
 }
 
 /* Card header styles */
@@ -348,9 +380,67 @@ ion-radio::part(container) {
 .dark ion-radio {
   --color: var(--ion-radio-color);
   --color-checked: var(--ion-color-primary);
+  --border-color: var(--ion-radio-border-color);
+  --border-color-checked: var(--ion-radio-border-color-checked);
+  --inner-color: var(--ion-radio-inner-color);
+}
+
+.dark ion-radio::part(container) {
+  background: var(--ion-radio-background);
+  border-color: var(--ion-radio-border-color);
+}
+
+.dark ion-radio::part(inner) {
+  background: var(--ion-radio-inner-color);
 }
 
 .dark ion-item {
   --background: var(--ion-item-background);
   --color: var(--ion-text-color);
+}
+
+/* Global checkbox styles */
+ion-checkbox {
+  --background: var(--ion-checkbox-background);
+  --border-color: var(--ion-checkbox-border-color);
+  --border-color-checked: var(--ion-checkbox-border-color-checked);
+  --border-color-disabled: var(--ion-checkbox-border-color-disabled);
+  --checkmark-color: var(--ion-checkbox-checkmark-color);
+  --background-checked: var(--ion-checkbox-background-checked);
+  --background-disabled: var(--ion-checkbox-background-disabled);
+}
+
+.dark ion-checkbox {
+  --background: var(--ion-checkbox-background);
+  --border-color: var(--ion-checkbox-border-color);
+  --border-color-checked: var(--ion-checkbox-border-color-checked);
+  --border-color-disabled: var(--ion-checkbox-border-color-disabled);
+  --checkmark-color: var(--ion-checkbox-checkmark-color);
+  --background-checked: var(--ion-checkbox-background-checked);
+  --background-disabled: var(--ion-checkbox-background-disabled);
+}
+
+/* Global input styles */
+.list.list-inset {
+  margin: 0;
+  padding: 0 12px;
+}
+
+.item.item-input {
+  padding: 0;
+  margin: 0;
+}
+
+ion-input {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  --color: rgba(0, 0, 0, 0.95);
+  --placeholder-color: rgba(0, 0, 0, 0.75);
+}
+
+.dark ion-input {
+  --color: rgba(255, 255, 255, 0.95);
+  --placeholder-color: rgba(255, 255, 255, 0.75);
 }
