@@ -355,6 +355,32 @@ ion-radio::part(inner) {
   color-scheme: dark;
 }
 
+.dark ion-tab-button {
+  --color: rgba(255, 255, 255, 0.6);
+  --color-selected: var(--ion-color-primary);
+  --color-hover: rgba(255, 255, 255, 0.8);
+}
+
+.dark ion-tab-button ion-icon,
+.dark ion-tab-button ion-label {
+  color: var(--color);
+  transition: color 0.2s ease;
+}
+
+.dark ion-tab-button:hover ion-icon,
+.dark ion-tab-button:hover ion-label {
+  color: var(--color-hover);
+}
+
+.dark ion-tab-button.tab-selected {
+  --color: var(--ion-color-primary);
+}
+
+.dark ion-tab-button.tab-selected ion-icon,
+.dark ion-tab-button.tab-selected ion-label {
+  color: var(--ion-color-primary);
+}
+
 .light {
   color-scheme: light;
 }
