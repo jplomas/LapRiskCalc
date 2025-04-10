@@ -2,15 +2,22 @@ import { defineConfig } from 'cypress'
 
 export default defineConfig({
   e2e: {
-    integrationFolder: 'tests/e2e/specs',
+    specPattern: 'tests/e2e/specs/**/*.(spec|cy)?.js',
     supportFile: 'tests/e2e/support/index.js',
-    testFiles: '**/*.{js,jsx,ts,tsx}',
+    baseUrl: 'http://localhost:8080',
     video: false,
     screenshotOnRunFailure: false,
-    baseUrl: 'http://localhost:8080',
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+      return config
+    },
   },
   component: {
-    testFiles: 'tests/unit/**/*.{cy,spec}.{js,jsx,ts,tsx}',
+    devServer: {
+      framework: 'vue',
+      bundler: 'webpack',
+    },
+    specPattern: 'tests/unit/**/*.(spec|cy)?.js',
     supportFile: false,
   },
 }) 
