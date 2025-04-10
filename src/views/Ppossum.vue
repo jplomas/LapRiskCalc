@@ -3,9 +3,12 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+          <ion-back-button defaultHref="/"></ion-back-button>
         </ion-buttons>
         <ion-title class="ion-text-center">P-POSSUM</ion-title>
+        <ion-buttons slot="end">
+          <dark-mode-toggle></dark-mode-toggle>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -270,10 +273,11 @@ import { defineComponent, ref } from 'vue';
 import { IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { close } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
+import DarkModeToggle from '@/components/DarkModeToggle.vue';
 
 export default defineComponent({
   name: 'Tab4Page',
-  components: { IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  components: { IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, DarkModeToggle },
     data: () => ({
       ready: false,
       open: false,
@@ -428,10 +432,27 @@ export default defineComponent({
 </script>
 <style scoped>
 ion-content {
-  --background: #f0f9ff; /* Old browsers */
-  --background: -moz-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%); /* FF3.6-15 */
-  --background: -webkit-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Chrome10-25,Safari5.1-6 */
-  --background: linear-gradient(to bottom, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  --filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
+  --background: var(--ion-background-gradient-start);
+  --background: -moz-linear-gradient(
+    top,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+  --background: -webkit-linear-gradient(
+    top,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+  --background: linear-gradient(
+    to bottom,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+}
+h1, p {
+  color: var(--ion-text-color);
 }
 </style>

@@ -3,9 +3,12 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+          <ion-back-button default-href="/"></ion-back-button>
         </ion-buttons>
-        <ion-title class="ion-text-center">Parsimonious NELA</ion-title>
+        <ion-title class="ion-text-center" size="large">NELA Score</ion-title>
+        <ion-buttons slot="end">
+          <dark-mode-toggle></dark-mode-toggle>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -920,6 +923,7 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable prefer-const */
 import { defineComponent, ref } from 'vue';
 import {
   IonBackButton,
@@ -948,6 +952,8 @@ import {
 } from '@ionic/vue';
 import { close } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
+import DarkModeToggle from '@/components/DarkModeToggle.vue';
+
 export default defineComponent({
   name: 'Tab2Page',
   components: {
@@ -974,6 +980,7 @@ export default defineComponent({
     IonContent,
     IonPage,
     IonCheckbox,
+    DarkModeToggle,
   },
   data: () => ({
     ready: false,
@@ -1331,6 +1338,7 @@ export default defineComponent({
       return true;
     },
     validateUrea() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
         err: false,
@@ -1355,6 +1363,7 @@ export default defineComponent({
       return output;
     },
     validateAlbumin() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
         err: false,
@@ -1379,6 +1388,7 @@ export default defineComponent({
       return output;
     },
     validateCreatinine() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
         err: false,
@@ -1403,6 +1413,7 @@ export default defineComponent({
       return output;
     },
     validateSodium() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
         err: false,
@@ -1427,6 +1438,7 @@ export default defineComponent({
       return output;
     },
     validatePotassium() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
         err: false,
@@ -1451,6 +1463,7 @@ export default defineComponent({
       return output;
     },
     validateWCC() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
         err: false,
@@ -1475,6 +1488,7 @@ export default defineComponent({
       return output;
     },
     validatePulse() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
         err: false,
@@ -1499,6 +1513,7 @@ export default defineComponent({
       return output;
     },
     validateBP() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
         err: false,
@@ -1523,6 +1538,7 @@ export default defineComponent({
       return output;
     },
     validateAge() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
         err: false,
@@ -1746,35 +1762,29 @@ export default defineComponent({
 </script>
 <style scoped>
 ion-content {
-  --background: #f0f9ff;
-  /* Old browsers */
+  --background: var(--ion-background-gradient-start);
   --background: -moz-linear-gradient(
     top,
-    #f0f9ff 0%,
-    #cbebff 47%,
-    #a1dbff 100%
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
   );
-  /* FF3.6-15 */
   --background: -webkit-linear-gradient(
     top,
-    #f0f9ff 0%,
-    #cbebff 47%,
-    #a1dbff 100%
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
   );
-  /* Chrome10-25,Safari5.1-6 */
   --background: linear-gradient(
     to bottom,
-    #f0f9ff 0%,
-    #cbebff 47%,
-    #a1dbff 100%
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
   );
-  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  --filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f0f9ff', endColorstr='#a1dbff', GradientType=0);
-  /* IE6-9 */
 }
 
 h1,
 p {
-  color: #000;
+  color: var(--ion-text-color);
 }
 </style>

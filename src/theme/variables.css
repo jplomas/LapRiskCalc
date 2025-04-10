@@ -74,6 +74,17 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** gradient colors - light mode **/
+  --ion-background-gradient-start: #f8fafc;
+  --ion-background-gradient-middle: #e2e8f0;
+  --ion-background-gradient-end: #cbd5e1;
+
+  /** scrollbar and form controls **/
+  --ion-scrollbar-color: var(--ion-color-medium);
+  --ion-scrollbar-background: transparent;
+  --ion-radio-background: var(--ion-background-color);
+  --ion-radio-color: var(--ion-text-color);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -145,6 +156,30 @@ http://ionicframework.com/docs/theming/ */
     --ion-color-light-contrast-rgb: 255,255,255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+
+    --ion-background-color: #121212;
+    --ion-background-color-rgb: 18,18,18;
+
+    --ion-text-color: #ffffff;
+    --ion-text-color-rgb: 255,255,255;
+
+    --ion-border-color: #222222;
+
+    --ion-item-background: #1e1e1e;
+    --ion-toolbar-background: #1f1f1f;
+    --ion-tab-bar-background: #1f1f1f;
+    --ion-card-background: #1e1e1e;
+
+    /** gradient colors - dark mode **/
+    --ion-background-gradient-start: #1e1e1e;
+    --ion-background-gradient-middle: #2a2a2a;
+    --ion-background-gradient-end: #333333;
+
+    /** scrollbar and form controls - dark mode **/
+    --ion-scrollbar-color: var(--ion-color-medium);
+    --ion-scrollbar-background: transparent;
+    --ion-radio-background: var(--ion-background-color);
+    --ion-radio-color: var(--ion-text-color);
   }
 
   /*
@@ -233,4 +268,89 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-card-background: #1e1e1e;
   }
+}
+
+/* Global scrollbar styles */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ion-scrollbar-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ion-scrollbar-color);
+  border-radius: 5px;
+}
+
+/* Edge/Firefox scrollbar styles */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ion-scrollbar-color) var(--ion-scrollbar-background);
+}
+
+/* Global radio button styles */
+ion-radio {
+  --color: var(--ion-radio-color);
+  --color-checked: var(--ion-color-primary);
+}
+
+ion-radio::part(container) {
+  background: var(--ion-radio-background);
+}
+
+/* Card header styles */
+.item.item-divider.item-text-wrap {
+  padding: 10px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.item.item-divider.item-text-wrap strong {
+  color: rgba(0, 0, 0, 0.95);
+  font-weight: 600;
+}
+
+.item.item-divider.item-text-wrap small {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+/* Dark mode specific overrides */
+.dark {
+  color-scheme: dark;
+}
+
+.light {
+  color-scheme: light;
+}
+
+.dark .item.item-divider.item-text-wrap {
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.dark .item.item-divider.item-text-wrap strong {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.dark .item.item-divider.item-text-wrap small {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.dark ion-content::part(scroll) {
+  --webkit-scrollbar-track: var(--ion-scrollbar-background);
+  --webkit-scrollbar-thumb: var(--ion-scrollbar-color);
+  scrollbar-color: var(--ion-scrollbar-color) var(--ion-scrollbar-background);
+}
+
+.dark ion-radio {
+  --color: var(--ion-radio-color);
+  --color-checked: var(--ion-color-primary);
+}
+
+.dark ion-item {
+  --background: var(--ion-item-background);
+  --color: var(--ion-text-color);
 }

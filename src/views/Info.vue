@@ -6,6 +6,9 @@
           <ion-back-button defaultHref="/tabs/home"></ion-back-button>
         </ion-buttons>
         <ion-title class="ion-text-center">Info</ion-title>
+        <ion-buttons slot="end">
+          <dark-mode-toggle></dark-mode-toggle>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -47,7 +50,7 @@ Consultant in Anaesthesia & Intensive Care Medicine and Open Source Developer
   <ion-card>
   <ion-card-header><strong>License</strong></ion-card-header>
   <ion-card-content><p>
-    Copyright &copy; JP Lomas 2023
+    Copyright &copy; JP Lomas 2025
 <br /><br />
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 <br /><br />
@@ -65,10 +68,11 @@ Consultant in Anaesthesia & Intensive Care Medicine and Open Source Developer
 import { defineComponent } from 'vue';
 import { IonButtons, IonBackButton, IonCardTitle, IonCardSubtitle, IonItem, IonCard, IonCardHeader, IonCardContent, IonList, IonIcon, IonAvatar, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { logoTwitter, logoGithub, globe, heart } from 'ionicons/icons';
+import DarkModeToggle from '@/components/DarkModeToggle.vue';
 
 export default defineComponent({
   name: 'Tab3Page',
-  components: { IonButtons, IonBackButton, IonCardTitle, IonCardSubtitle, IonItem, IonCard, IonCardHeader, IonCardContent, IonList, IonIcon, IonAvatar, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  components: { IonButtons, IonBackButton, IonCardTitle, IonCardSubtitle, IonItem, IonCard, IonCardHeader, IonCardContent, IonList, IonIcon, IonAvatar, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, DarkModeToggle },
   setup() {
     return {
       logoTwitter, logoGithub, globe, heart
@@ -79,10 +83,24 @@ export default defineComponent({
 
 <style scoped>
 ion-content {
-  --background: #f0f9ff; /* Old browsers */
-  --background: -moz-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%); /* FF3.6-15 */
-  --background: -webkit-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Chrome10-25,Safari5.1-6 */
-  --background: linear-gradient(to bottom, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  --filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
+  --background: var(--ion-background-gradient-start);
+  --background: -moz-linear-gradient(
+    top,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+  --background: -webkit-linear-gradient(
+    top,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+  --background: linear-gradient(
+    to bottom,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
 }
 </style>

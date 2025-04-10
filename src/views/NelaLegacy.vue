@@ -6,6 +6,9 @@
           <ion-back-button defaultHref="/tabs/home"></ion-back-button>
         </ion-buttons>
         <ion-title class="ion-text-center">Legacy NELA (2020) & P-POSSUM</ion-title>
+        <ion-buttons slot="end">
+          <dark-mode-toggle></dark-mode-toggle>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -437,13 +440,16 @@
 </template>
 
 <script lang="ts">
+/* eslint-disable prefer-const */
 import { defineComponent, ref } from 'vue';
 import { IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
 import { close } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
+import DarkModeToggle from '@/components/DarkModeToggle.vue';
+
 export default defineComponent({
   name: 'Tab5Page',
-  components: { IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonPage },
+  components: { IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, DarkModeToggle },
   data: () => ({
     ready: false,
     open: false,
@@ -601,10 +607,11 @@ export default defineComponent({
       return true;
     },
     validateUrea() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
-        err: false
-      }
+        err: false,
+      };
       if (!parseFloat(this.risk.urea) && this.risk.urea !== '' && parseFloat(this.risk.urea) !== 0) {
         output.erm = "Urea result is not a number";
         output.err = true;
@@ -621,10 +628,11 @@ export default defineComponent({
       return output
     },
     validateCreatinine() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
-        err: false
-      }
+        err: false,
+      };
       if (!parseFloat(this.risk.creatinine) && this.risk.creatinine !== '' && parseFloat(this.risk.creatinine) !== 0) {
         output.erm = "Creatinine result is not a number";
         output.err = true;
@@ -641,10 +649,11 @@ export default defineComponent({
       return output
     },
     validateSodium() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
-        err: false
-      }
+        err: false,
+      };
       if (!parseFloat(this.risk.sodium) && this.risk.sodium !== '' && parseFloat(this.risk.sodium) !== 0) {
         output.erm = "Sodium result is not a number";
         output.err = true;
@@ -661,10 +670,11 @@ export default defineComponent({
       return output
     },
     validatePotassium() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
-        err: false
-      }
+        err: false,
+      };
       if (!parseFloat(this.risk.potassium) && this.risk.potassium !== '' && parseFloat(this.risk.potassium) !== 0) {
         output.erm = "Potassium result is not a number";
         output.err = true;
@@ -681,10 +691,11 @@ export default defineComponent({
       return output
     },
     validateWCC() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
-        err: false
-      }
+        err: false,
+      };
       if (!parseFloat(this.risk.wcc) && this.risk.wcc !== '' && parseFloat(this.risk.wcc) !== 0) {
         output.erm = "White cell count is not a number";
         output.err = true;
@@ -701,10 +712,11 @@ export default defineComponent({
       return output
     },
     validatePulse() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
-        err: false
-      }
+        err: false,
+      };
       if (!parseInt(this.risk.pulse) && this.risk.pulse !== '' && parseInt(this.risk.pulse) !== 0) {
         output.erm = "Pulse is not a number";
         output.err = true;
@@ -721,10 +733,11 @@ export default defineComponent({
       return output
     },
     validateBP() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
-        err: false
-      }
+        err: false,
+      };
       if (!parseInt(this.risk.bp) && this.risk.bp !== '' && parseInt(this.risk.bp) !== 0) {
         output.erm = "Blood pressure is not a number";
         output.err = true;
@@ -741,10 +754,11 @@ export default defineComponent({
       return output
     },
     validateAge() {
+      // eslint-disable-next-line prefer-const
       let output = {
         erm: '',
-        err: false
-      }
+        err: false,
+      };
       if (!parseInt(this.risk.age) && this.risk.age !== '' && parseInt(this.risk.age) !== 0) {
         output.erm = "Age is not a number";
         output.err = true;
@@ -937,11 +951,25 @@ export default defineComponent({
 </script>
 <style scoped>
 ion-content {
-  --background: #f0f9ff; /* Old browsers */
-  --background: -moz-linear-gradient(top, #f0f9ff 0%, #cbebff 47%, #a1dbff 100%); /* FF3.6-15 */
-  --background: -webkit-linear-gradient(top, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* Chrome10-25,Safari5.1-6 */
-  --background: linear-gradient(to bottom, #f0f9ff 0%,#cbebff 47%,#a1dbff 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  --filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
+  --background: var(--ion-background-gradient-start);
+  --background: -moz-linear-gradient(
+    top,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+  --background: -webkit-linear-gradient(
+    top,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+  --background: linear-gradient(
+    to bottom,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
 }
 h1, p {
   color: #000;

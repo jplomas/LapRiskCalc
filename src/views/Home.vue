@@ -2,7 +2,10 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title class="ion-text-center">PoRC v1.8</ion-title>
+        <ion-title class="ion-text-center" size="large">PoRC v1.9</ion-title>
+        <ion-buttons slot="end">
+          <dark-mode-toggle></dark-mode-toggle>
+        </ion-buttons>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -86,16 +89,17 @@
             this error to jp@lomas.doctor
           </p>
         </div>
-        <p style="text-align: center">&copy; 2023</p>
+        <p style="text-align: center">&copy; 2025</p>
       </ion-content>
     <!-- </ion-content> -->
   </ion-page>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 import {
   IonButton,
+  IonButtons,
   IonCol,
   IonIcon,
   IonRow,
@@ -107,13 +111,16 @@ import {
   IonGrid,
   IonImg,
 } from '@ionic/vue';
-import { logoGithub, checkmarkCircle, closeCircle } from 'ionicons/icons';
+import { logoGithub, checkmarkCircle, closeCircle, moon, sunny } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
 import { store } from '../store';
+import DarkModeToggle from '@/components/DarkModeToggle.vue';
+
 export default defineComponent({
   name: 'HomePage',
   components: {
     IonButton,
+    IonButtons,
     IonCol,
     IonIcon,
     IonRow,
@@ -124,14 +131,85 @@ export default defineComponent({
     IonPage,
     IonGrid,
     IonImg,
+    DarkModeToggle,
   },
   setup() {
     console.log('Performing self test...');
+    const darkMode = ref(localStorage.getItem('darkMode') === 'true' || window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+    const toggleDarkMode = () => {
+      darkMode.value = !darkMode.value;
+      
+      // Update the dark mode class on all required elements
+      document.documentElement.classList.toggle('dark', darkMode.value);
+      document.body.classList.toggle('dark', darkMode.value);
+      
+      // Store the preference
+      localStorage.setItem('darkMode', darkMode.value.toString());
+      
+      // Force Ionic components to update their theme
+      if (darkMode.value) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        document.body.style.setProperty('--ion-background-gradient-start', '#1e1e1e');
+        document.body.style.setProperty('--ion-background-gradient-middle', '#2a2a2a');
+        document.body.style.setProperty('--ion-background-gradient-end', '#333333');
+        document.body.style.setProperty('--ion-background-color', '#121212');
+        document.body.style.setProperty('--ion-text-color', '#ffffff');
+        document.body.style.setProperty('--ion-tab-bar-background', '#1f1f1f');
+        document.body.style.setProperty('--ion-toolbar-background', '#1f1f1f');
+        document.body.style.setProperty('--ion-item-background', '#1e1e1e');
+        document.body.style.setProperty('--ion-card-background', '#1e1e1e');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.body.style.setProperty('--ion-background-gradient-start', '#f8fafc');
+        document.body.style.setProperty('--ion-background-gradient-middle', '#e2e8f0');
+        document.body.style.setProperty('--ion-background-gradient-end', '#cbd5e1');
+        document.body.style.setProperty('--ion-background-color', '#ffffff');
+        document.body.style.setProperty('--ion-text-color', '#000000');
+        document.body.style.setProperty('--ion-tab-bar-background', '#ffffff');
+        document.body.style.setProperty('--ion-toolbar-background', '#ffffff');
+        document.body.style.setProperty('--ion-item-background', '#ffffff');
+        document.body.style.setProperty('--ion-card-background', '#ffffff');
+      }
+    };
+
+    onMounted(() => {
+      // Initialize dark mode based on stored preference or system preference
+      const prefersDark = darkMode.value;
+      
+      // Set initial theme
+      document.documentElement.classList.toggle('dark', prefersDark);
+      document.body.classList.toggle('dark', prefersDark);
+      document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+      
+      // Set initial CSS variables
+      if (prefersDark) {
+        document.body.style.setProperty('--ion-background-gradient-start', '#1e1e1e');
+        document.body.style.setProperty('--ion-background-gradient-middle', '#2a2a2a');
+        document.body.style.setProperty('--ion-background-gradient-end', '#333333');
+        document.body.style.setProperty('--ion-background-color', '#121212');
+        document.body.style.setProperty('--ion-text-color', '#ffffff');
+        document.body.style.setProperty('--ion-tab-bar-background', '#1f1f1f');
+        document.body.style.setProperty('--ion-toolbar-background', '#1f1f1f');
+        document.body.style.setProperty('--ion-item-background', '#1e1e1e');
+        document.body.style.setProperty('--ion-card-background', '#1e1e1e');
+      } else {
+        document.body.style.setProperty('--ion-background-gradient-start', '#f8fafc');
+        document.body.style.setProperty('--ion-background-gradient-middle', '#e2e8f0');
+        document.body.style.setProperty('--ion-background-gradient-end', '#cbd5e1');
+        document.body.style.setProperty('--ion-background-color', '#ffffff');
+        document.body.style.setProperty('--ion-text-color', '#000000');
+        document.body.style.setProperty('--ion-tab-bar-background', '#ffffff');
+        document.body.style.setProperty('--ion-toolbar-background', '#ffffff');
+        document.body.style.setProperty('--ion-item-background', '#ffffff');
+        document.body.style.setProperty('--ion-card-background', '#ffffff');
+      }
+    });
 
     const calcService = new Calculators();
-    var TestCasesRun = 0,
+    let TestCasesRun = 0,
       PassedTests = 0;
-    var FloatSafeTest = function (a: any, b: any) {
+    const FloatSafeTest = function (a: any, b: any) {
       return a * 100 === b * 100;
     };
     // let ExpectedMorbidity = 0;
@@ -854,6 +932,10 @@ export default defineComponent({
       logoGithub,
       checkmarkCircle,
       closeCircle,
+      moon,
+      sunny,
+      darkMode,
+      toggleDarkMode,
       passedAll,
       PassedTests,
       TestCasesRun,
@@ -882,41 +964,40 @@ ion-button {
   }
 }
 ion-content {
-  --background: #f0f9ff; /* Old browsers */
+  --background: var(--ion-background-gradient-start);
   --background: -moz-linear-gradient(
     top,
-    #f0f9ff 0%,
-    #cbebff 47%,
-    #a1dbff 100%
-  ); /* FF3.6-15 */
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 50%,
+    var(--ion-background-gradient-end) 100%
+  );
   --background: -webkit-linear-gradient(
     top,
-    #f0f9ff 0%,
-    #cbebff 47%,
-    #a1dbff 100%
-  ); /* Chrome10-25,Safari5.1-6 */
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 50%,
+    var(--ion-background-gradient-end) 100%
+  );
   --background: linear-gradient(
     to bottom,
-    #f0f9ff 0%,
-    #cbebff 47%,
-    #a1dbff 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  --filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f9ff', endColorstr='#a1dbff',GradientType=0 ); /* IE6-9 */
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 50%,
+    var(--ion-background-gradient-end) 100%
+  );
 }
 .transparent {
   border-color: rgba(0, 0, 0, 0);
   background-color: rgba(0, 0, 0, 0);
 }
 .pass {
-  border-color: #28a54c;
-  background-color: #33cd5f;
+  border-color: var(--ion-color-success);
+  background-color: var(--ion-color-success);
   background-image: linear-gradient(
     0deg,
-    #28a54c,
-    #28a54c 50%,
+    var(--ion-color-success-shade),
+    var(--ion-color-success-shade) 50%,
     transparent 50%
   );
-  color: #fff;
+  color: var(--ion-color-success-contrast);
   top: 0;
   border-top-width: 0;
   border-bottom-width: 1px;
@@ -951,15 +1032,15 @@ ion-content {
   margin-top: 2px !important;
 }
 .fail {
-  border-color: #e42112;
-  background-color: #ef473a;
+  border-color: var(--ion-color-danger);
+  background-color: var(--ion-color-danger);
   background-image: linear-gradient(
     0deg,
-    #e42112,
-    #e42112 50%,
+    var(--ion-color-danger-shade),
+    var(--ion-color-danger-shade) 50%,
     transparent 50%
   );
-  color: #fff;
+  color: var(--ion-color-danger-contrast);
   top: 0;
   border-top-width: 0;
   border-bottom-width: 1px;
@@ -994,15 +1075,15 @@ ion-content {
   margin-top: 2px !important;
 }
 .bar {
-  border-color: #919191;
-  background-color: #8a8a8a;
+  border-color: var(--ion-color-medium);
+  background-color: var(--ion-color-medium);
   background-image: linear-gradient(
     0deg,
-    #bcbcbc,
-    #8a8a8a 50%,
+    var(--ion-color-medium-tint),
+    var(--ion-color-medium) 50%,
     transparent 50%
   );
-  color: #fff;
+  color: var(--ion-color-medium-contrast);
   top: 0;
   border-top-width: 0;
   border-bottom-width: 1px;
@@ -1034,6 +1115,6 @@ ion-content {
 }
 p,
 h2 {
-  color: #000;
+  color: var(--ion-text-color);
 }
 </style>
