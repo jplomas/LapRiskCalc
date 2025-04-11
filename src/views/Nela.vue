@@ -15,7 +15,7 @@
       <!-- <ion-header collapse="condense">
         <ion-toolbar>
           <ion-buttons slot="start" hideWhen="ios">
-            <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+            <ion-back-button default-href="/tabs/home"></ion-back-button>
           </ion-buttons>
           <ion-title class="ion-text-center" size="large">Legacy NELA (2020) & P-POSSUM</ion-title>
         </ion-toolbar>
@@ -857,7 +857,11 @@
           </ion-col></ion-row
         >
         <ion-item color="danger" v-if="!checkParams()">
-          Some data fields are missing or invalid
+          <br />
+          Some data fields are missing or invalid.<br /><br />
+          If data is out of range for the model, the patient should be considered high risk. 
+          <br />
+          <br />
         </ion-item>
       </ion-grid>
       <ion-modal :is-open="open">
@@ -1360,6 +1364,11 @@ export default defineComponent({
         output.err = true;
         return output;
       }
+      if (parseFloat(this.risk.urea) >= 90.05) {
+        output.erm = 'This model is only validated with urea < 90.1 mmol/L';
+        output.err = true;
+        return output;
+      }
       return output;
     },
     validateAlbumin() {
@@ -1382,6 +1391,11 @@ export default defineComponent({
       }
       if (parseFloat(this.risk.albumin) < 0) {
         output.erm = 'Albumin result cannot be negative';
+        output.err = true;
+        return output;
+      }
+      if (parseInt(this.risk.albumin) >= 70.1) {
+        output.erm = 'This model is only validated with albumin < 70.1 g/L';
         output.err = true;
         return output;
       }
@@ -1485,6 +1499,11 @@ export default defineComponent({
         output.err = true;
         return output;
       }
+      if (parseFloat(this.risk.wcc) < 1 || parseFloat(this.risk.wcc) >= 80.05) {
+        output.erm = 'This model is only validated with a WCC between 1 and 80 x10⁹ litre⁻¹';
+        output.err = true;
+        return output;
+      }
       return output;
     },
     validatePulse() {
@@ -1507,6 +1526,16 @@ export default defineComponent({
       }
       if (parseInt(this.risk.pulse) <= 0) {
         output.erm = 'Pulse cannot be zero or negative';
+        output.err = true;
+        return output;
+      }
+      if ((this.risk.pulse !== parseInt(this.risk.pulse).toString()) && this.risk.pulse.length > 0) {
+        output.erm = 'Pulse must be an integer';
+        output.err = true;
+        return output;
+      }
+      if (parseInt(this.risk.pulse) < 40 || parseInt(this.risk.pulse) > 175) {
+        output.erm = 'This model is only validated on pulse rates between 40 and 175 bpm';
         output.err = true;
         return output;
       }
