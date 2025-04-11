@@ -3,7 +3,7 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+          <ion-back-button default-href="/"></ion-back-button>
         </ion-buttons>
         <ion-title class="ion-text-center">Legacy NELA (2020) & P-POSSUM</ion-title>
         <ion-buttons slot="end">
@@ -15,7 +15,7 @@
       <!-- <ion-header collapse="condense">
         <ion-toolbar>
           <ion-buttons slot="start" hideWhen="ios">
-            <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+            <ion-back-button default-href="/tabs/home"></ion-back-button>
           </ion-buttons>
           <ion-title class="ion-text-center" size="large">Legacy NELA (2020) & P-POSSUM</ion-title>
         </ion-toolbar>
