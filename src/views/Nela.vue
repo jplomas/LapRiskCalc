@@ -12,14 +12,6 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
-      <!-- <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-buttons slot="start" hideWhen="ios">
-            <ion-back-button default-href="/tabs/home"></ion-back-button>
-          </ion-buttons>
-          <ion-title class="ion-text-center" size="large">Legacy NELA (2020) & P-POSSUM</ion-title>
-        </ion-toolbar>
-      </ion-header> -->
         <ion-item>
           <ion-text>
                   <br />Select the appropriate option from each category then click the calculate button.<br><br>
@@ -1561,6 +1553,16 @@ export default defineComponent({
       }
       if (parseInt(this.risk.bp) <= 0) {
         output.erm = 'Blood pressure cannot be zero or negative';
+        output.err = true;
+        return output;
+      }
+      if (parseInt(this.risk.bp) > 200) {
+        output.erm = 'This model is only validated on BP 50-200 mmHg';
+        output.err = true;
+        return output;
+      }
+      if (parseInt(this.risk.bp) < 50) {
+        output.erm = 'This model is only validated on BP 50-200 mmHg';
         output.err = true;
         return output;
       }
