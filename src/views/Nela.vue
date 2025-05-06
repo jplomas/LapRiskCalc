@@ -1386,7 +1386,7 @@ export default defineComponent({
         output.err = true;
         return output;
       }
-      if (parseInt(this.risk.albumin) >= 70.1) {
+      if (parseFloat(this.risk.albumin) >= 70.1) {
         output.erm = 'This model is only validated with albumin < 70.1 g/L';
         output.err = true;
         return output;
