@@ -17,7 +17,7 @@ export const useThemeStore = defineStore('theme', () => {
   watch(isDark, (newValue) => {
     localStorage.setItem('darkMode', newValue.toString());
     applyTheme();
-  });
+  }, { immediate: true });
 
   function toggleTheme() {
     isDark.value = !isDark.value;
@@ -66,14 +66,12 @@ export const useThemeStore = defineStore('theme', () => {
     }
   }
 
-  function initTheme() {
-    applyTheme();
-  }
+  // Apply theme immediately on store creation
+  applyTheme();
 
   return {
     isDark,
     toggleTheme,
-    applyTheme,
-    initTheme
+    applyTheme
   };
 }); 

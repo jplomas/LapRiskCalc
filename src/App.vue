@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onBeforeMount, watch } from 'vue';
+import { defineComponent, watch } from 'vue';
 import { IonApp, IonRouterOutlet } from '@ionic/vue';
 import { useThemeStore } from '@/store/theme';
 import { useRoute } from 'vue-router';
@@ -19,10 +19,6 @@ export default defineComponent({
   setup() {
     const themeStore = useThemeStore();
     const route = useRoute();
-
-    onBeforeMount(() => {
-      themeStore.initTheme();
-    });
 
     // Watch for route changes and reapply theme
     watch(() => route.path, () => {
