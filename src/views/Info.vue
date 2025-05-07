@@ -104,6 +104,7 @@
         </ion-card-content>
       </ion-card>
     </ion-content>
+    <div class="version-number">v1.9.1</div>
   </ion-page>
 </template>
 
@@ -211,5 +212,18 @@ ion-content {
 
 :global(.dark) ion-card {
   --background: var(--ion-card-background);
+}
+
+.version-number {
+  position: fixed;
+  bottom: 8px;
+  right: 8px;
+  font-size: 0.7rem;
+  color: var(--ion-color-medium);
+  opacity: 0.7;
+  background: var(--ion-background-color);
+  padding: 2px 6px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 </style>

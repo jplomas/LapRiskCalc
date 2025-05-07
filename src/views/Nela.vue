@@ -1491,7 +1491,7 @@ export default defineComponent({
         output.err = true;
         return output;
       }
-      if (parseFloat(this.risk.wcc) < 1 || parseFloat(this.risk.wcc) >= 80.05) {
+      if (parseFloat(this.risk.wcc) < 1 || parseFloat(this.risk.wcc) > 80) {
         output.erm = 'This model is only validated with a WCC between 1 and 80 x10⁹ litre⁻¹';
         output.err = true;
         return output;
