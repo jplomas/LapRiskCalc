@@ -54,31 +54,30 @@
           </div>
           <ion-list radio-group>
             <ion-radio-group v-model="risk.asa">
-              <ion-item
-                ><ion-label text-wrap>1: No systemic disease</ion-label
-                ><ion-radio ref="asa" value="1" slot="start"></ion-radio
-              ></ion-item>
-              <ion-item
-                ><ion-label text-wrap>2: Mild systemic disease</ion-label
-                ><ion-radio value="2" slot="start"></ion-radio
-              ></ion-item>
-              <ion-item
-                ><ion-label text-wrap
-                  >3: Severe systemic disease, not life-threatening</ion-label
-                ><ion-radio value="3" slot="start"></ion-radio
-              ></ion-item>
-              <ion-item
-                ><ion-label text-wrap
-                  >4: Severe, life-threatening systemic disease</ion-label
-                ><ion-radio value="4" slot="start"></ion-radio
-              ></ion-item>
-              <ion-item
-                ><ion-label text-wrap>5: Moribund</ion-label
-                ><ion-radio value="5" slot="start"></ion-radio
-              ></ion-item>
+              <ion-item @click="risk.asa = '1'">
+                <ion-label text-wrap>1: No systemic disease</ion-label>
+                <ion-radio ref="asa" value="1" slot="start"></ion-radio>
+              </ion-item>
+              <ion-item @click="risk.asa = '2'">
+                <ion-label text-wrap>2: Mild systemic disease</ion-label>
+                <ion-radio value="2" slot="start"></ion-radio>
+              </ion-item>
+              <ion-item @click="risk.asa = '3'">
+                <ion-label text-wrap>3: Severe systemic disease, not life-threatening</ion-label>
+                <ion-radio value="3" slot="start"></ion-radio>
+              </ion-item>
+              <ion-item @click="risk.asa = '4'">
+                <ion-label text-wrap>4: Severe, life-threatening systemic disease</ion-label>
+                <ion-radio value="4" slot="start"></ion-radio>
+              </ion-item>
+              <ion-item @click="risk.asa = '5'">
+                <ion-label text-wrap>5: Moribund</ion-label>
+                <ion-radio value="5" slot="start"></ion-radio>
+              </ion-item>
             </ion-radio-group>
-          </ion-list> </ion-card-content
-      ></ion-card>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
       <ion-card>
         <ion-card-content>
           <div class="item item-divider item-text-wrap">
@@ -263,18 +262,18 @@
           <div class="item item-text-wrap item-body">
             <ion-list radio-group>
               <ion-radio-group v-model="risk.gcs">
-                <ion-item
-                  ><ion-label>15</ion-label
-                  ><ion-radio ref="gcs" value="15" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>14</ion-label
-                  ><ion-radio value="14" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>3 - 13</ion-label
-                  ><ion-radio value="13" slot="start"></ion-radio
-                ></ion-item>
+                <ion-item @click="risk.gcs = '15'">
+                  <ion-label>15</ion-label>
+                  <ion-radio ref="gcs" value="15" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.gcs = '14'">
+                  <ion-label>14</ion-label>
+                  <ion-radio value="14" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.gcs = '13'">
+                  <ion-label>3 - 13</ion-label>
+                  <ion-radio value="13" slot="start"></ion-radio>
+                </ion-item>
               </ion-radio-group>
             </ion-list>
           </div> </ion-card-content
@@ -292,22 +291,22 @@
           <div class="item item-text-wrap item-body">
             <ion-list radio-group>
               <ion-radio-group v-model="risk.cancer">
-                <ion-item
-                  ><ion-label>Not malignant</ion-label
-                  ><ion-radio value="1" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>Primary malignancy only</ion-label
-                  ><ion-radio value="2" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>Malignancy and nodal metastases</ion-label
-                  ><ion-radio value="4" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>Malignancy and distant metastases</ion-label
-                  ><ion-radio value="8" slot="start"></ion-radio
-                ></ion-item>
+                <ion-item @click="risk.cancer = '1'">
+                  <ion-label>Not malignant</ion-label>
+                  <ion-radio value="1" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.cancer = '2'">
+                  <ion-label>Primary malignancy only</ion-label>
+                  <ion-radio value="2" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.cancer = '4'">
+                  <ion-label>Malignancy and nodal metastases</ion-label>
+                  <ion-radio value="4" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.cancer = '8'">
+                  <ion-label>Malignancy and distant metastases</ion-label>
+                  <ion-radio value="8" slot="start"></ion-radio>
+                </ion-item>
               </ion-radio-group>
             </ion-list>
           </div> </ion-card-content
@@ -327,27 +326,22 @@
           <div class="item item-text-wrap item-body">
             <ion-list radio-group>
               <ion-radio-group v-model="risk.respiratory">
-                <ion-item
-                  ><ion-label text-wrap>No dyspnoea</ion-label
-                  ><ion-radio value="1" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label text-wrap
-                    >Dyspnoea on exertion or CXR: mild COPD</ion-label
-                  ><ion-radio value="2" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label text-wrap
-                    >Dyspnoea limiting exertion to &lt;1 flight or CXR: moderate
-                    COPD</ion-label
-                  ><ion-radio value="4" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label text-wrap
-                    >Dyspnoea at rest/rate &gt;30 at rest or CXR: fibrosis or
-                    consolidation</ion-label
-                  ><ion-radio value="8" slot="start"></ion-radio
-                ></ion-item>
+                <ion-item @click="risk.respiratory = '1'">
+                  <ion-label text-wrap>No dyspnoea</ion-label>
+                  <ion-radio value="1" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.respiratory = '2'">
+                  <ion-label text-wrap>Dyspnoea on exertion or CXR: mild COPD</ion-label>
+                  <ion-radio value="2" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.respiratory = '4'">
+                  <ion-label text-wrap>Dyspnoea limiting exertion to &lt;1 flight or CXR: moderate COPD</ion-label>
+                  <ion-radio value="4" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.respiratory = '8'">
+                  <ion-label text-wrap>Dyspnoea at rest/rate &gt;30 at rest or CXR: fibrosis or consolidation</ion-label>
+                  <ion-radio value="8" slot="start"></ion-radio>
+                </ion-item>
               </ion-radio-group>
             </ion-list>
           </div> </ion-card-content
@@ -365,22 +359,22 @@
           <div class="item item-text-wrap item-body">
             <ion-list radio-group>
               <ion-radio-group v-model="risk.cepod">
-                <ion-item
-                  ><ion-label>3: Expedited (&gt;18 hours)</ion-label
-                  ><ion-radio value="1" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>2B. Urgent (6-18 hours)</ion-label
-                  ><ion-radio value="2" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>2A. Urgent (2-6 hours)</ion-label
-                  ><ion-radio value="4" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>1. Immediate (&lt;2 hours)</ion-label
-                  ><ion-radio value="8" slot="start"></ion-radio
-                ></ion-item>
+                <ion-item @click="risk.cepod = '1'">
+                  <ion-label>3: Expedited (&gt;18 hours)</ion-label>
+                  <ion-radio value="1" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.cepod = '2'">
+                  <ion-label>2B. Urgent (6-18 hours)</ion-label>
+                  <ion-radio value="2" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.cepod = '4'">
+                  <ion-label>2A. Urgent (2-6 hours)</ion-label>
+                  <ion-radio value="4" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.cepod = '8'">
+                  <ion-label>1. Immediate (&lt;2 hours)</ion-label>
+                  <ion-radio value="8" slot="start"></ion-radio>
+                </ion-item>
               </ion-radio-group>
             </ion-list>
           </div> </ion-card-content
@@ -533,22 +527,22 @@
           <div class="item item-text-wrap item-body">
             <ion-list radio-group>
               <ion-radio-group v-model="risk.soiling">
-                <ion-item
-                  ><ion-label>No soiling</ion-label
-                  ><ion-radio value="1" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>Serous fluid</ion-label
-                  ><ion-radio value="2" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>Local pus</ion-label
-                  ><ion-radio value="4" slot="start"></ion-radio
-                ></ion-item>
-                <ion-item
-                  ><ion-label>Free bowel content, pus or blood</ion-label
-                  ><ion-radio value="8" slot="start"></ion-radio
-                ></ion-item>
+                <ion-item @click="risk.soiling = '1'">
+                  <ion-label>No soiling</ion-label>
+                  <ion-radio value="1" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.soiling = '2'">
+                  <ion-label>Serous fluid</ion-label>
+                  <ion-radio value="2" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.soiling = '4'">
+                  <ion-label>Local pus</ion-label>
+                  <ion-radio value="4" slot="start"></ion-radio>
+                </ion-item>
+                <ion-item @click="risk.soiling = '8'">
+                  <ion-label>Free bowel content, pus or blood</ion-label>
+                  <ion-radio value="8" slot="start"></ion-radio>
+                </ion-item>
               </ion-radio-group>
             </ion-list>
           </div> </ion-card-content
@@ -566,7 +560,7 @@
           <div class="item item-text-wrap item-body">
             <ion-item><strong>Bleeding</strong></ion-item>
             <ion-list option-group>
-              <ion-item>
+              <ion-item @click="risk.indHaemorrhage = !risk.indHaemorrhage">
                 <ion-label>Haemorrhage</ion-label>
                 <ion-checkbox
                   v-model="risk.indHaemorrhage"
@@ -578,7 +572,7 @@
 
             <ion-item><strong>Other</strong></ion-item>
             <ion-list option-group>
-              <ion-item>
+              <ion-item @click="risk.indAbdominalWoundDehiscence = !risk.indAbdominalWoundDehiscence">
                 <ion-label>Abdominal wound dehiscence</ion-label>
                 <ion-checkbox
                   v-model="risk.indAbdominalWoundDehiscence"
@@ -586,7 +580,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indAbdominalCompartmentSyndrome = !risk.indAbdominalCompartmentSyndrome">
                 <ion-label>Abdominal compartment syndrome</ion-label>
                 <ion-checkbox
                   v-model="risk.indAbdominalCompartmentSyndrome"
@@ -594,7 +588,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indPlannedRelook = !risk.indPlannedRelook">
                 <ion-label>Planned relook</ion-label>
                 <ion-checkbox
                   v-model="risk.indPlannedRelook"
@@ -602,7 +596,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indOther = !risk.indOther">
                 <ion-label>Other</ion-label>
                 <ion-checkbox
                   v-model="risk.indOther"
@@ -614,7 +608,7 @@
 
             <ion-item><strong>Obstruction</strong></ion-item>
             <ion-list option-group>
-              <ion-item>
+              <ion-item @click="risk.indTenderSmallBowelObstruction = !risk.indTenderSmallBowelObstruction">
                 <ion-label>Tender Small bowel obstruction</ion-label>
                 <ion-checkbox
                   v-model="risk.indTenderSmallBowelObstruction"
@@ -622,7 +616,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indNonTenderSmallBowelObstruction = !risk.indNonTenderSmallBowelObstruction">
                 <ion-label>Non-Tender Small bowel obstruction</ion-label>
                 <ion-checkbox
                   v-model="risk.indNonTenderSmallBowelObstruction"
@@ -630,7 +624,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indTenderLargeBowelObstruction = !risk.indTenderLargeBowelObstruction">
                 <ion-label>Tender Large bowel obstruction</ion-label>
                 <ion-checkbox
                   v-model="risk.indTenderLargeBowelObstruction"
@@ -638,7 +632,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indNonTenderLargeBowelObstruction = !risk.indNonTenderLargeBowelObstruction">
                 <ion-label>Non-Tender Large bowel obstruction</ion-label>
                 <ion-checkbox
                   v-model="risk.indNonTenderLargeBowelObstruction"
@@ -646,7 +640,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indGastricOutletObstruction = !risk.indGastricOutletObstruction">
                 <ion-label>Gastric outlet obstruction</ion-label>
                 <ion-checkbox
                   v-model="risk.indGastricOutletObstruction"
@@ -654,7 +648,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indIncarceratedHernia = !risk.indIncarceratedHernia">
                 <ion-label>Incarcerated/strangulated hernia</ion-label>
                 <ion-checkbox
                   v-model="risk.indIncarceratedHernia"
@@ -662,7 +656,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indHiatusHernia = !risk.indHiatusHernia">
                 <ion-label>Hiatus Hernia/para-oesophageal hernia</ion-label>
                 <ion-checkbox
                   v-model="risk.indHiatusHernia"
@@ -670,7 +664,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indVolvulus = !risk.indVolvulus">
                 <ion-label>Volvulus</ion-label>
                 <ion-checkbox
                   v-model="risk.indVolvulus"
@@ -678,7 +672,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indInternalHernia = !risk.indInternalHernia">
                 <ion-label>Internal hernia</ion-label>
                 <ion-checkbox
                   v-model="risk.indInternalHernia"
@@ -686,7 +680,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indObstructingIncisionalHernia = !risk.indObstructingIncisionalHernia">
                 <ion-label>Obstructing incisional hernia</ion-label>
                 <ion-checkbox
                   v-model="risk.indObstructingIncisionalHernia"
@@ -694,7 +688,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indIntussusception = !risk.indIntussusception">
                 <ion-label>Intussusception</ion-label>
                 <ion-checkbox
                   v-model="risk.indIntussusception"
@@ -702,7 +696,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indPseudoObstruction = !risk.indPseudoObstruction">
                 <ion-label>Pseudo-obstruction</ion-label>
                 <ion-checkbox
                   v-model="risk.indPseudoObstruction"
@@ -710,7 +704,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indForeignBody = !risk.indForeignBody">
                 <ion-label>Foreign body</ion-label>
                 <ion-checkbox
                   v-model="risk.indForeignBody"
@@ -722,7 +716,7 @@
 
             <ion-item><strong>Sepsis</strong></ion-item>
             <ion-list option-group>
-              <ion-item>
+              <ion-item @click="risk.indPhlegmon = !risk.indPhlegmon">
                 <ion-label>Phlegmon</ion-label>
                 <ion-checkbox
                   v-model="risk.indPhlegmon"
@@ -730,7 +724,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indPneumoperitoneum = !risk.indPneumoperitoneum">
                 <ion-label>Pneumoperitoneum</ion-label>
                 <ion-checkbox
                   v-model="risk.indPneumoperitoneum"
@@ -738,7 +732,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indSepsisOther = !risk.indSepsisOther">
                 <ion-label>Sepsis</ion-label>
                 <ion-checkbox
                   v-model="risk.indSepsisOther"
@@ -746,7 +740,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indIatrogenicInjury = !risk.indIatrogenicInjury">
                 <ion-label>Iatrogenic injury</ion-label>
                 <ion-checkbox
                   v-model="risk.indIatrogenicInjury"
@@ -754,7 +748,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indAnastomoticLeak = !risk.indAnastomoticLeak">
                 <ion-label>Anastomotic leak</ion-label>
                 <ion-checkbox
                   v-model="risk.indAnastomoticLeak"
@@ -762,7 +756,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indPeritonitis = !risk.indPeritonitis">
                 <ion-label>Peritonitis</ion-label>
                 <ion-checkbox
                   v-model="risk.indPeritonitis"
@@ -770,7 +764,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indPerforation = !risk.indPerforation">
                 <ion-label>GI Perforation</ion-label>
                 <ion-checkbox
                   v-model="risk.indPerforation"
@@ -778,7 +772,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indAbdominalAbscess = !risk.indAbdominalAbscess">
                 <ion-label>Abdominal abscess</ion-label>
                 <ion-checkbox
                   v-model="risk.indAbdominalAbscess"
@@ -786,7 +780,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indIntestinalFistula = !risk.indIntestinalFistula">
                 <ion-label>Intestinal fistula</ion-label>
                 <ion-checkbox
                   v-model="risk.indIntestinalFistula"
@@ -798,7 +792,7 @@
 
             <ion-item><strong>Ischaemia</strong></ion-item>
             <ion-list option-group>
-              <ion-item>
+              <ion-item @click="risk.indNecrosis = !risk.indNecrosis">
                 <ion-label>Necrosis</ion-label>
                 <ion-checkbox
                   v-model="risk.indNecrosis"
@@ -806,7 +800,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indIschaemia = !risk.indIschaemia">
                 <ion-label>Ischaemia/infarction</ion-label>
                 <ion-checkbox
                   v-model="risk.indIschaemia"
@@ -814,7 +808,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indColitis = !risk.indColitis">
                 <ion-label>Colitis</ion-label>
                 <ion-checkbox
                   v-model="risk.indColitis"
@@ -822,7 +816,7 @@
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
               </ion-item>
-              <ion-item>
+              <ion-item @click="risk.indAcidosis = !risk.indAcidosis">
                 <ion-label>Acidosis</ion-label>
                 <ion-checkbox
                   v-model="risk.indAcidosis"
@@ -1159,8 +1153,8 @@ export default defineComponent({
         cardiac: '1',
         respiratory: '1',
         ecg: '1',
-        hb: '8',
         bp: '139',
+        hb: '8',
         pulse: '102',
         urea: '4.3',
         creatinine: '55',

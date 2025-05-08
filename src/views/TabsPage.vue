@@ -2,7 +2,7 @@
   <ion-page>
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
-      <ion-tab-bar slot="bottom" v-if="store.pass">
+      <ion-tab-bar slot="bottom">
         <ion-tab-button tab="tab1" href="/tabs/home" :selected="true">
           <ion-icon :icon="home" />
           <ion-label>Home</ion-label>

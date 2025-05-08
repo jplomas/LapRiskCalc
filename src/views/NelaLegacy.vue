@@ -49,11 +49,11 @@
         <small style="font-weight: 300;"><br>What is the patient's ASA grade?</small></div>
           <ion-list radio-group>
             <ion-radio-group v-model="risk.asa">
-              <ion-item><ion-label text-wrap>1: No systemic disease</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>2: Mild systemic disease</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>3: Severe systemic disease, not life-threatening</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>4: Severe, life-threatening systemic disease</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>5: Moribund</ion-label><ion-radio value="16" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.asa = '1'"><ion-label text-wrap>1: No systemic disease</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.asa = '2'"><ion-label text-wrap>2: Mild systemic disease</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.asa = '4'"><ion-label text-wrap>3: Severe systemic disease, not life-threatening</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.asa = '8'"><ion-label text-wrap>4: Severe, life-threatening systemic disease</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.asa = '16'"><ion-label text-wrap>5: Moribund</ion-label><ion-radio value="16" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
     </ion-card-content></ion-card>
@@ -66,8 +66,8 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.gender">
-              <ion-item><ion-label text-wrap>Female</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>Male</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.gender = '1'"><ion-label text-wrap>Female</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.gender = '2'"><ion-label text-wrap>Male</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -81,10 +81,10 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.cardiac">
-              <ion-item><ion-label text-wrap>No cardiac failure</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>Diuretic, digoxin, Rx for angina or hypertension</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>Peripheral oedema, warfarin therapy or CXR: borderline cardiomegaly</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>Raised JVP, cardiomegaly</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cardiac = '1'"><ion-label text-wrap>No cardiac failure</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cardiac = '2'"><ion-label text-wrap>Diuretic, digoxin, Rx for angina or hypertension</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cardiac = '4'"><ion-label text-wrap>Peripheral oedema, warfarin therapy or CXR: borderline cardiomegaly</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cardiac = '8'"><ion-label text-wrap>Raised JVP, cardiomegaly</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -98,10 +98,10 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.respiratory">
-              <ion-item><ion-label text-wrap>No dyspnoea</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>Dyspnoea on exertion or CXR: mild COPD</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>Dyspnoea limiting exertion to &lt;1 flight or CXR: moderate COPD</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>Dyspnoea at rest/rate &gt;30 at rest or CXR: fibrosis or consolidation</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.respiratory = '1'"><ion-label text-wrap>No dyspnoea</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.respiratory = '2'"><ion-label text-wrap>Dyspnoea on exertion or CXR: mild COPD</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.respiratory = '4'"><ion-label text-wrap>Dyspnoea limiting exertion to &lt;1 flight or CXR: moderate COPD</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.respiratory = '8'"><ion-label text-wrap>Dyspnoea at rest/rate &gt;30 at rest or CXR: fibrosis or consolidation</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -115,9 +115,9 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.ecg">
-              <ion-item><ion-label text-wrap>Normal</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>AF, rate 60-90</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>AF rate >90 or any other abnormal rhythm/paced rhythm or &gt;5VE/min or Q, ST or T wave abnormalities</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.ecg = '1'"><ion-label text-wrap>Normal</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.ecg = '2'"><ion-label text-wrap>AF, rate 60-90</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.ecg = '4'"><ion-label text-wrap>AF rate >90 or any other abnormal rhythm/paced rhythm or &gt;5VE/min or Q, ST or T wave abnormalities</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -166,10 +166,10 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.hb">
-              <ion-item><ion-label text-wrap>13 - 16</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>11.5 - 12.9 or 16.1 - 17</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>10 - 11.4 or 17.1 - 18</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label text-wrap>&le;9.9 or &ge;18.1</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.hb = '1'"><ion-label text-wrap>13 - 16</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.hb = '2'"><ion-label text-wrap>11.5 - 12.9 or 16.1 - 17</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.hb = '4'"><ion-label text-wrap>10 - 11.4 or 17.1 - 18</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.hb = '8'"><ion-label text-wrap>&le;9.9 or &ge;18.1</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -268,9 +268,9 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.gcs">
-              <ion-item><ion-label>13 - 15</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>9 - 12</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>3 - 8</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.gcs = '1'"><ion-label>13 - 15</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.gcs = '2'"><ion-label>9 - 12</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.gcs = '4'"><ion-label>3 - 8</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -284,8 +284,8 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.severity">
-              <ion-item><ion-label>Major Operation</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>Complex Major Operation</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.severity = '4'"><ion-label>Major Operation</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.severity = '8'"><ion-label>Complex Major Operation</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -299,9 +299,9 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.number">
-              <ion-item><ion-label>One</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>Two</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>Three or more</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.number = '1'"><ion-label>One</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.number = '2'"><ion-label>Two</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.number = '4'"><ion-label>Three or more</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -315,10 +315,10 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.blood">
-              <ion-item><ion-label>&le; 100 mls</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>101 - 500 mls</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>501-999 mls</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>&ge; 1000 mls</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.blood = '1'"><ion-label>&le; 100 mls</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.blood = '2'"><ion-label>101 - 500 mls</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.blood = '4'"><ion-label>501-999 mls</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.blood = '8'"><ion-label>&ge; 1000 mls</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -332,10 +332,10 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.soiling">
-              <ion-item><ion-label>No soiling</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>Serous fluid</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>Local pus</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>Free bowel content, pus or blood</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.soiling = '1'"><ion-label>No soiling</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.soiling = '2'"><ion-label>Serous fluid</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.soiling = '4'"><ion-label>Local pus</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.soiling = '8'"><ion-label>Free bowel content, pus or blood</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -349,10 +349,10 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.cancer">
-              <ion-item><ion-label>Not malignant</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>Primary malignancy only</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>Malignancy and nodal metastases</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>Malignancy and distant metastases</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cancer = '1'"><ion-label>Not malignant</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cancer = '2'"><ion-label>Primary malignancy only</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cancer = '4'"><ion-label>Malignancy and nodal metastases</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cancer = '8'"><ion-label>Malignancy and distant metastases</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -366,10 +366,10 @@
       <div class="item item-text-wrap item-body">
           <ion-list radio-group>
             <ion-radio-group v-model="risk.cepod">
-              <ion-item><ion-label>3: Expedited (&gt;18 hours)</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>2B. Urgent (6-18 hours)</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>2A. Urgent (2-6 hours)</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
-              <ion-item><ion-label>1. Immediate (&lt;2 hours)</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cepod = '1'"><ion-label>3: Expedited (&gt;18 hours)</ion-label><ion-radio value="1" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cepod = '2'"><ion-label>2B. Urgent (6-18 hours)</ion-label><ion-radio value="2" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cepod = '4'"><ion-label>2A. Urgent (2-6 hours)</ion-label><ion-radio value="4" slot="start"></ion-radio></ion-item>
+              <ion-item @click="risk.cepod = '8'"><ion-label>1. Immediate (&lt;2 hours)</ion-label><ion-radio value="8" slot="start"></ion-radio></ion-item>
             </ion-radio-group>
           </ion-list>
       </div>
@@ -972,6 +972,6 @@ ion-content {
   );
 }
 h1, p {
-  color: #000;
+  color: var(--ion-text-color);
 }
 </style>
