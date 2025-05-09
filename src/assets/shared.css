@@ -35,6 +35,23 @@ ion-content {
   --border-radius: 4px;
   --border-style: solid;
   --transition: background-color 0.2s, border-color 0.2s;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.ios ion-checkbox::part(container) {
+  background: var(--ion-checkbox-background);
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--border-radius);
+  width: var(--size);
+  height: var(--size);
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.ios ion-checkbox::part(mark) {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .ios ion-radio {
@@ -48,15 +65,24 @@ ion-content {
   --border-radius: 50%;
   --border-style: solid;
   --transition: background-color 0.2s, border-color 0.2s;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .ios ion-radio::part(container) {
   background: var(--ion-radio-background);
-  border-color: var(--ion-radio-border-color);
+  border: var(--border-width) var(--border-style) var(--border-color);
+  border-radius: var(--border-radius);
+  width: var(--size);
+  height: var(--size);
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .ios ion-radio::part(inner) {
   background: var(--ion-radio-inner-color);
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* Card Styles */
