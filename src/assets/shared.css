@@ -21,6 +21,44 @@ ion-content {
   );
 }
 
+/* iOS-specific styles for form controls */
+.ios ion-checkbox {
+  --background: var(--ion-checkbox-background);
+  --border-color: var(--ion-checkbox-border-color);
+  --border-color-checked: var(--ion-checkbox-border-color-checked);
+  --border-color-disabled: var(--ion-checkbox-border-color-disabled);
+  --checkmark-color: var(--ion-checkbox-checkmark-color);
+  --background-checked: var(--ion-checkbox-background-checked);
+  --background-disabled: var(--ion-checkbox-background-disabled);
+  --size: 20px;
+  --border-width: 2px;
+  --border-radius: 4px;
+  --border-style: solid;
+  --transition: background-color 0.2s, border-color 0.2s;
+}
+
+.ios ion-radio {
+  --color: var(--ion-radio-color);
+  --color-checked: var(--ion-color-primary);
+  --border-color: var(--ion-radio-border-color);
+  --border-color-checked: var(--ion-radio-border-color-checked);
+  --inner-color: var(--ion-radio-inner-color);
+  --size: 20px;
+  --border-width: 2px;
+  --border-radius: 50%;
+  --border-style: solid;
+  --transition: background-color 0.2s, border-color 0.2s;
+}
+
+.ios ion-radio::part(container) {
+  background: var(--ion-radio-background);
+  border-color: var(--ion-radio-border-color);
+}
+
+.ios ion-radio::part(inner) {
+  background: var(--ion-radio-inner-color);
+}
+
 /* Card Styles */
 ion-card {
   margin: 1rem 0;
