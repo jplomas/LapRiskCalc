@@ -1,26 +1,36 @@
 import { mount } from '@vue/test-utils'
 import { createPinia, setActivePinia } from 'pinia'
 import { IonicVue } from '@ionic/vue'
-import Nela from '@/views/Nela.vue'
-import { nextTick } from 'vue'
 
-// Import our setup file to ensure mocks are in place
-import './setup'
+// Mock CSS imports
+jest.mock('@/assets/shared.css', () => ({}));
+
+import Nela from '@/views/Nela.vue'
 
 describe('Nela.vue', () => {
+  let wrapper: ReturnType<typeof mount>
+
   beforeEach(() => {
     // Create a fresh Pinia instance for each test
     setActivePinia(createPinia())
   })
 
+  afterEach(() => {
+    // Clean up the component after each test
+    if (wrapper) {
+      wrapper.unmount()
+    }
+  })
+
   it('calculates NELA risk', async () => {
     // Mount the component with Ionic
-    const wrapper = mount(Nela, {
+    wrapper = mount(Nela, {
       global: {
         plugins: [IonicVue],
         stubs: {
           'ion-button': {
-            template: '<button type="button" :disabled="$attrs.disabled" @click="$emit(\'click\')"><slot/></button>'
+            template: '<button type="button" :disabled="$attrs.disabled" @click="$emit(\'click\')"><slot/></button>',
+            props: ['disabled']
           },
           'ion-modal': {
             template: '<div class="modal" v-if="isOpen"><slot/></div>',
@@ -55,13 +65,27 @@ describe('Nela.vue', () => {
           },
           'ion-icon': {
             template: '<div><slot/></div>'
+          },
+          'ion-radio': {
+            template: '<input type="radio" :value="$attrs.value" :checked="$attrs.checked" @change="$emit(\'ionChange\', $event)"><slot/></input>',
+            props: ['value', 'checked']
+          },
+          'ion-radio-group': {
+            template: '<div @change="$emit(\'ionChange\', $event)"><slot/></div>'
+          },
+          'ion-item': {
+            template: '<div><slot/></div>'
+          },
+          'ion-label': {
+            template: '<div><slot/></div>'
+          },
+          'ion-input': {
+            template: '<input type="text" :value="$attrs.value" @input="$emit(\'ionChange\', $event)"><slot/></input>',
+            props: ['value']
           }
         }
       }
     })
-    
-    // Wait for component to mount
-    await nextTick()
     
     // Set required fields
     await wrapper.setData({
@@ -124,37 +148,22 @@ describe('Nela.vue', () => {
     })
 
     // Call indicationChange to update maxInd
-    await wrapper.vm.indicationChange()
-
-    // Wait for component to update
-    await nextTick()
+    await (wrapper.vm as any).indicationChange()
 
     // Find and click calculate button
     const button = wrapper.find('button')
     await button.trigger('click')
 
     // Call go() method directly to ensure calculation happens
-    await wrapper.vm.go()
-
-    // Wait for calculation and modal to open
-    await nextTick()
-    await nextTick()
-
-    // Debug output
-    console.log('Component state:', {
-      open: wrapper.vm.open,
-      result: wrapper.vm.result,
-      risk: wrapper.vm.risk,
-      maxInd: wrapper.vm.risk.maxInd
-    })
+    await (wrapper.vm as any).go()
 
     // Check if modal is open
     const modal = wrapper.find('.modal')
     expect(modal.exists()).toBe(true)
     
     // Check that results are displayed
-    const resultText = wrapper.find('h1')
-    expect(resultText.exists()).toBe(true)
-    expect(resultText.text()).toBeTruthy()
+    const resultValue = wrapper.find('.result-value')
+    expect(resultValue.exists()).toBe(true)
+    expect(resultValue.text()).toBeTruthy()
   })
 })

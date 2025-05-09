@@ -18,16 +18,16 @@
             <img src="@/assets/imgs/jp.png" />
           </ion-avatar>
           <ion-card-subtitle>Author</ion-card-subtitle>
-          <ion-card-title :color="isDarkMode ? '#fff' : '#000'">Dr JP Lomas</ion-card-title>
+          <ion-card-title class="author-title">Dr JP Lomas</ion-card-title>
+          <ion-text color="medium">
+            Consultant in Anaesthesia & Intensive Care Medicine and Open Source Developer
+          </ion-text>
         </ion-card-header>
         <ion-card-content>
-          Consultant in Anaesthesia & Intensive Care Medicine and Open Source
-          Developer
-          <p style="text-align: center"><br /></p>
-          <p>
+          <ion-text color="medium">
             This is open source software and is made with
             <ion-icon :icon="heart"></ion-icon> in Greater Manchester, UK.<br />
-          </p>
+          </ion-text>
           <ion-list>
             <ion-item>
               <ion-icon
@@ -104,7 +104,7 @@
         </ion-card-content>
       </ion-card>
     </ion-content>
-    <div class="version-number">v1.9.1</div>
+    <div class="version-number">v1.9.2</div>
   </ion-page>
 </template>
 
@@ -127,9 +127,11 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
+  IonText,
 } from '@ionic/vue';
 import { logoTwitter, logoGithub, globe, heart } from 'ionicons/icons';
 import DarkModeToggle from '@/components/DarkModeToggle.vue';
+import '@/assets/shared.css';
 
 export default defineComponent({
   name: 'Tab3Page',
@@ -151,6 +153,7 @@ export default defineComponent({
     IonContent,
     IonPage,
     DarkModeToggle,
+    IonText,
   },
   setup() {
     const isDarkMode = document.documentElement.classList.contains('dark');

@@ -1,3 +1,11 @@
+import { createApp } from 'vue'
+import { IonicVue } from '@ionic/vue'
+import { createPinia } from 'pinia'
+
+const app = createApp({})
+app.use(IonicVue)
+app.use(createPinia())
+
 // Mock window.matchMedia
 Object.defineProperty(window, 'matchMedia', {
   writable: true,
@@ -5,13 +13,13 @@ Object.defineProperty(window, 'matchMedia', {
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
+    addListener: jest.fn(), // Deprecated
+    removeListener: jest.fn(), // Deprecated
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),
   })),
-});
+})
 
 // Mock localStorage
 const localStorageMock = {
@@ -73,12 +81,37 @@ Object.defineProperty(document, 'body', {
   writable: true,
 });
 
+// Mock window.IntersectionObserver
+const MockIntersectionObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  disconnect: jest.fn(),
+  unobserve: jest.fn()
+}))
+
+Object.defineProperty(window, 'IntersectionObserver', {
+  writable: true,
+  configurable: true,
+  value: MockIntersectionObserver,
+})
+
+// Mock ResizeObserver
+const MockResizeObserver = jest.fn().mockImplementation(() => ({
+  observe: jest.fn(),
+  disconnect: jest.fn(),
+  unobserve: jest.fn()
+}))
+
+Object.defineProperty(window, 'ResizeObserver', {
+  writable: true,
+  configurable: true,
+  value: MockResizeObserver,
+})
+
 // Mock Ionic components
 jest.mock('@ionic/vue', () => {
   const actual = jest.requireActual('@ionic/vue');
   return {
     ...actual,
-    // Add any specific Ionic component mocks here if needed
     IonPage: { template: '<div><slot></slot></div>' },
     IonContent: { template: '<div><slot></slot></div>' },
     IonButton: { template: '<button type="button"><slot></slot></button>' },

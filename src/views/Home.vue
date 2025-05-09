@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title class="ion-text-center" size="large">PoRC v1.9</ion-title>
+        <ion-title class="ion-text-center">PoRC v1.9</ion-title>
         <ion-buttons slot="end">
           <dark-mode-toggle></dark-mode-toggle>
         </ion-buttons>
@@ -101,6 +101,8 @@ import {
   IonButton,
   IonButtons,
   IonCol,
+  IonText,
+  IonItem,
   IonIcon,
   IonRow,
   IonPage,
@@ -115,11 +117,14 @@ import { logoGithub, checkmarkCircle, closeCircle, moon, sunny } from 'ionicons/
 import { Calculators } from '../components/calc';
 import { store } from '../store';
 import DarkModeToggle from '@/components/DarkModeToggle.vue';
+import '@/assets/shared.css';
 
 export default defineComponent({
   name: 'HomePage',
   components: {
     IonButton,
+    IonText,
+    IonItem,
     IonButtons,
     IonCol,
     IonIcon,

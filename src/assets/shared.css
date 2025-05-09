@@ -1,0 +1,84 @@
+/* Global Content Styles */
+ion-content {
+  --background: var(--ion-background-gradient-start);
+  --background: -moz-linear-gradient(
+    top,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+  --background: -webkit-linear-gradient(
+    top,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+  --background: linear-gradient(
+    to bottom,
+    var(--ion-background-gradient-start) 0%,
+    var(--ion-background-gradient-middle) 47%,
+    var(--ion-background-gradient-end) 100%
+  );
+}
+
+/* Card Styles */
+ion-card {
+  margin: 1rem 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+ion-card-header {
+  padding: 1rem;
+}
+
+li {
+  text-align: left;
+}
+
+ion-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--ion-text-color);
+}
+
+ion-card-content {
+  padding: 1rem;
+}
+
+/* Result Value Styles */
+.result-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  color: var(--ion-text-color);
+}
+
+h2.result-value {
+  color: var(--ion-text-color);
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+
+
+  ion-modal {
+    --background: var(--ion-background-color);
+  }
+
+
+
+  ion-modal p {
+
+    font-weight: 500;
+  }
+} 
+
+.risk-warning {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: rgba(var(--ion-color-danger-rgb), 0.1);
+  color: var(--ion-text-color);
+}

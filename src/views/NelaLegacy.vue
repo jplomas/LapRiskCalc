@@ -375,66 +375,96 @@
       </div>
   </ion-card-content></ion-card>
           <ion-grid><ion-row text-center align-items-center>
-          <ion-col text-center><ion-button :disabled="!(checkParams())" type="button" @click="go()">
+          <ion-col text-center>
+            <ion-button :disabled="!checkParams()" type="button" @click="go()">
               Calculate
-          </ion-button>
-          <ion-button color="light" type="button" @click="reset()">
+            </ion-button>
+            <ion-button color="light" type="button" @click="reset()">
               Reset
-          </ion-button>
-          <!-- <ion-button color="light" type="button" @click="mock()">
+            </ion-button>
+            <ion-button color="light" type="button" @click="mock()">
               Mock
-          </ion-button> -->
-          </ion-col></ion-row>
-          <ion-item color="danger" v-if="!(checkParams())">
-            Some data fields are missing or invalid
-          </ion-item>
-        </ion-grid>
-        <ion-modal :is-open="open">
-              <ion-content>
-                <ion-header>
-          <ion-toolbar>
-            <ion-title>NELA</ion-title>
-            <ion-buttons slot="end">
-              <ion-icon size="large" :icon="close" @click="open = false"></ion-icon>
-              &nbsp;
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding">
-          <ion-grid>
-          <ion-row>
-            <ion-col class="ion-text-center">
-              <p>NELA Mortality Risk:</p>
-              <h1>{{ showResult().percentage }}</h1>
-              <br>
-              <div class="ion-text-left" v-if="showResult().extra === 'higher'">
-              <p>This patient is <strong>higher risk</strong> and should:
-              <ul><li>have active input by a consultant surgeon and consultant anaesthetist</li></ul>
-              </p>
-              </div>
-              <div class="ion-text-left" v-if="showResult().extra === 'high'">
-              <p>
-              This patient is <strong>high risk</strong> and should: <ul><li>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li><li>be admitted to HDU or ITU post-operatively</li></ul>
-              </p>
-              </div>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col class="ion-text-center">
-              <p>P-POSSUM MorbidityRisk:</p>
-              <h1>{{ showResult().ppossum.morbidity}}%</h1>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col class="ion-text-center">
-              <p>P-POSSUM Mortality Risk:</p>
-              <h1>{{ showResult().ppossum.mortality }}%</h1>
-            </ion-col>
-          </ion-row>
-          </ion-grid>
-        </ion-content>
-        </ion-content>
-            </ion-modal>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-item color="danger" v-if="!checkParams()">
+          Some data fields are missing or invalid
+        </ion-item>
+      </ion-grid>
+        <ion-modal :is-open="open" @didDismiss="open = false">
+          <ion-content>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Risk Assessment Results</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button @click="open = false">
+                    <ion-icon :icon="close" slot="icon-only"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-grid class="ion-padding">
+              <ion-row>
+                <ion-col class="ion-text-center">
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>NELA Mortality Risk</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <h2 class="result-value">{{ showResult().percentage }}</h2>
+                      <div v-if="showResult().extra === 'higher'" class="risk-warning">
+                        <ion-icon :icon="warning" color="warning"></ion-icon>
+                        <ion-text>
+                          <p>This patient is <strong>higher risk</strong> and should:</p>
+                          <ul>
+                            <li>have active input by a consultant surgeon and consultant anaesthetist</li>
+                          </ul>
+                        </ion-text>
+                      </div>
+                      <div v-if="showResult().extra === 'high'" class="risk-warning">
+                        <ion-icon :icon="warning" color="danger"></ion-icon>
+                        <ion-text>
+                          <p>This patient is <strong>high risk</strong> and should:</p>
+                          <ul>
+                            <li>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li>
+                            <li>be admitted to HDU or ITU post-operatively</li>
+                          </ul>
+                        </ion-text>
+                      </div>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col class="ion-text-center">
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>P-POSSUM Risk</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <ion-grid>
+                        <ion-row>
+                          <ion-col>
+                            <ion-text>
+                              <p>Morbidity Risk:</p>
+                              <h2 class="result-value">{{ showResult().ppossum.morbidity }}%</h2>
+                            </ion-text>
+                          </ion-col>
+                          <ion-col>
+                            <ion-text>
+                              <p>Mortality Risk:</p>
+                              <h2 class="result-value">{{ showResult().ppossum.mortality }}%</h2>
+                            </ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </ion-card-content>
+                  </ion-card>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-content>
+        </ion-modal>
     </ion-content>
   </ion-page>
 </template>
@@ -442,17 +472,43 @@
 <script lang="ts">
 /* eslint-disable prefer-const */
 import { defineComponent, ref } from 'vue';
-import { IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import { close } from 'ionicons/icons';
+import { IonPage, IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonCardHeader, IonCardTitle } from '@ionic/vue';
+import { close, warning } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
 import DarkModeToggle from '@/components/DarkModeToggle.vue';
+import '@/assets/shared.css';
 
 export default defineComponent({
   name: 'Tab5Page',
-  components: { IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonInput, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, DarkModeToggle },
+  components: { 
+    IonBackButton, 
+    IonButtons, 
+    IonIcon, 
+    IonModal, 
+    IonText, 
+    IonRadioGroup, 
+    IonButton, 
+    IonInput, 
+    IonCardContent, 
+    IonCard,
+    IonPage, 
+    IonRadio, 
+    IonLabel, 
+    IonItem, 
+    IonRow, 
+    IonCol, 
+    IonList, 
+    IonGrid, 
+    IonHeader, 
+    IonToolbar, 
+    IonTitle, 
+    IonContent, 
+    IonCardHeader, 
+    IonCardTitle,
+    DarkModeToggle 
+  },
   data: () => ({
     ready: false,
-    open: false,
     result: {
       percentage: '',
       extra: '',
@@ -486,11 +542,11 @@ export default defineComponent({
     }
   }),
   setup() {
-    const isOpenRef = ref(false);
-    const setOpen = (state: boolean) => isOpenRef.value = state;
+    const open = ref(false);
     return {
+      open,
       close,
-      setOpen
+      warning
     }
   },
   methods: {
@@ -949,29 +1005,6 @@ export default defineComponent({
   }
 });
 </script>
-<style scoped>
-ion-content {
-  --background: var(--ion-background-gradient-start);
-  --background: -moz-linear-gradient(
-    top,
-    var(--ion-background-gradient-start) 0%,
-    var(--ion-background-gradient-middle) 47%,
-    var(--ion-background-gradient-end) 100%
-  );
-  --background: -webkit-linear-gradient(
-    top,
-    var(--ion-background-gradient-start) 0%,
-    var(--ion-background-gradient-middle) 47%,
-    var(--ion-background-gradient-end) 100%
-  );
-  --background: linear-gradient(
-    to bottom,
-    var(--ion-background-gradient-start) 0%,
-    var(--ion-background-gradient-middle) 47%,
-    var(--ion-background-gradient-end) 100%
-  );
-}
-h1, p {
-  color: var(--ion-text-color);
-}
+<style>
+/* Component-specific styles only */
 </style>

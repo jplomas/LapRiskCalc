@@ -218,69 +218,112 @@
                 </ion-radio-group>
                 </ion-list>
 </ion-card-content></ion-card>
+<ion-content>
           <ion-grid><ion-row text-center align-items-center>
-          <ion-col text-center><ion-button :disabled="!(checkParams())" type="button" @click="go()">
+          <ion-col text-center>
+            <ion-button :disabled="!checkParams()" type="button" @click="go()">
               Calculate
-          </ion-button>
-          <ion-button color="light" type="button" @click="reset()">
-              Reset
-          </ion-button>
-          <!-- <ion-button color="light" type="button" @click="mock()">
+            </ion-button>
+            <ion-button color="light" type="button" @click="mock()">
               Mock
-          </ion-button> -->
-          </ion-col></ion-row>
-          <ion-item color="danger" v-if="!(checkParams())">
+            </ion-button>
+            <ion-button color="light" type="button" @click="reset()">
+              Reset
+            </ion-button>
+          </ion-col>
+          </ion-row>
+          <ion-item color="danger" v-if="!checkParams()">
             Some data fields are missing or invalid
           </ion-item>
         </ion-grid>
-        <ion-modal :is-open="open">
-              <ion-content>
-                <ion-header>
-          <ion-toolbar>
-            <ion-title>P-POSSUM</ion-title>
-            <ion-buttons slot="end">
-              <ion-icon size="large" :icon="close" @click="open = false"></ion-icon>
-              &nbsp;
-            </ion-buttons>
-          </ion-toolbar>
-        </ion-header>
-        <ion-content class="ion-padding">
-          <ion-grid>
-          <ion-row>
-            <ion-col class="ion-text-center">
-              <p>P-POSSUM Mortality Risk:</p>
-              <!-- <h1>{{ showResult().percentage }}</h1> -->
-              <br>
-              <!-- <div class="ion-text-left" v-if="showResult().extra === 'higher'"> -->
-              This patient is <strong>higher risk</strong> and should:
-              <ul><li>have active input by a consultant surgeon and consultant anaesthetist</li></ul>
-              <!-- </div> -->
-              <!-- <div class="ion-text-left" v-if="showResult().extra === 'high'"> -->
-              This patient is <strong>high risk</strong> and should: <ul><li>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li><li>be admitted to HDU or ITU post-operatively</li></ul>
-              <!-- </div> -->
-            </ion-col>
-          </ion-row>
-          </ion-grid>
         </ion-content>
-        </ion-content>
-            </ion-modal>
+        <ion-modal :is-open="open" @didDismiss="open = false">
+          <ion-content>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title>Risk Assessment Results</ion-title>
+                <ion-buttons slot="end">
+                  <ion-button @click="open = false">
+                    <ion-icon :icon="close" slot="icon-only"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+              <ion-grid>
+                <ion-row>
+                  <ion-col class="ion-text-center">
+                    <ion-card>
+                      <ion-card-header>
+                        <ion-card-title>P-POSSUM Risk</ion-card-title>
+                      </ion-card-header>
+                      <ion-card-content>
+                        <ion-grid>
+                          <ion-row>
+                            <ion-col>
+                              <p>Morbidity Risk:</p>
+                              <h2 class="result-value">{{ result.morbidity }}%</h2>
+                            </ion-col>
+                            <ion-col>
+                              <p>Mortality Risk:</p>
+                              <h2 class="result-value">{{ result.mortality }}%</h2>
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
+                      </ion-card-content>
+                    </ion-card>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-content>
+          </ion-content>
+        </ion-modal>
     </ion-content>
   </ion-page>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
-import { IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
+import { IonPage, IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonCardHeader, IonCardTitle } from '@ionic/vue';
 import { close } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
 import DarkModeToggle from '@/components/DarkModeToggle.vue';
+import '@/assets/shared.css';
 
 export default defineComponent({
   name: 'Tab4Page',
-  components: { IonBackButton, IonButtons, IonIcon, IonModal, IonText, IonRadioGroup, IonButton, IonCardContent, IonCard, IonRadio, IonLabel, IonItem, IonRow, IonCol, IonList, IonGrid, IonHeader, IonToolbar, IonTitle, IonContent, IonPage, DarkModeToggle },
+  components: { 
+    IonBackButton, 
+    IonButtons, 
+    IonIcon, 
+    IonModal, 
+    IonText, 
+    IonRadioGroup, 
+    IonButton, 
+    IonCardContent, 
+    IonCard,
+    IonPage, 
+    IonRadio, 
+    IonLabel, 
+    IonItem, 
+    IonRow, 
+    IonCol, 
+    IonList, 
+    IonGrid, 
+    IonHeader, 
+    IonToolbar, 
+    IonTitle, 
+    IonContent, 
+    IonCardHeader, 
+    IonCardTitle,
+    DarkModeToggle 
+  },
     data: () => ({
       ready: false,
-      open: false,
+      result: {
+        morbidity: 0,
+        mortality: 0
+      },
       risk:{
         age: '',
         cepod: '',
@@ -306,11 +349,10 @@ export default defineComponent({
       }
     }),
     setup() {
-      const isOpenRef = ref(false);
-      const setOpen = (state: boolean) => isOpenRef.value = state;
+      const open = ref(false);
       return {
-        close,
-        setOpen
+        open,
+        close
       }
     },
     methods: {
@@ -426,33 +468,12 @@ export default defineComponent({
         // const calc = nelacalc.calcNELA(this.risk);
         const pp = nelacalc.ppcalcOld(this.risk);
         console.log({ pp });
+        this.result = pp;
+        this.open = true;
       }
     },
 });
 </script>
-<style scoped>
-ion-content {
-  --background: var(--ion-background-gradient-start);
-  --background: -moz-linear-gradient(
-    top,
-    var(--ion-background-gradient-start) 0%,
-    var(--ion-background-gradient-middle) 47%,
-    var(--ion-background-gradient-end) 100%
-  );
-  --background: -webkit-linear-gradient(
-    top,
-    var(--ion-background-gradient-start) 0%,
-    var(--ion-background-gradient-middle) 47%,
-    var(--ion-background-gradient-end) 100%
-  );
-  --background: linear-gradient(
-    to bottom,
-    var(--ion-background-gradient-start) 0%,
-    var(--ion-background-gradient-middle) 47%,
-    var(--ion-background-gradient-end) 100%
-  );
-}
-h1, p {
-  color: var(--ion-text-color);
-}
+<style>
+/* Component-specific styles only */
 </style>

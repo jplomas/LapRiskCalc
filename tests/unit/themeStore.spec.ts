@@ -3,7 +3,7 @@ import { useThemeStore } from '@/store/theme';
 import { nextTick } from 'vue';
 
 // Import our setup file to ensure mocks are in place
-import './setup';
+import '../setup';
 
 describe('Theme Store', () => {
   let store: ReturnType<typeof useThemeStore>;

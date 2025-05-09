@@ -5,7 +5,7 @@
         <ion-buttons slot="start">
           <ion-back-button default-href="/"></ion-back-button>
         </ion-buttons>
-        <ion-title class="ion-text-center" size="large">NELA Score</ion-title>
+        <ion-title class="ion-text-center">NELA Score</ion-title>
         <ion-buttons slot="end">
           <dark-mode-toggle></dark-mode-toggle>
         </ion-buttons>
@@ -830,38 +830,35 @@
 
       <ion-grid
         ><ion-row text-center align-items-center>
-          <ion-col text-center
-            ><ion-button :disabled="!checkParams()" type="button" @click="go()">
+          <ion-col text-center>
+            <ion-button :disabled="!checkParams()" type="button" @click="go()">
               Calculate
             </ion-button>
             <ion-button color="light" type="button" @click="reset()">
               Reset
             </ion-button>
-            <!-- <ion-button color="light" type="button" @click="mock()">
+            <ion-button color="light" type="button" @click="mock()">
               Mock
-            </ion-button> -->
-          </ion-col></ion-row
-        >
-        <ion-item color="danger" v-if="!checkParams()">
-          <br />
-          Some data fields are missing or invalid.<br /><br />
-          If data is out of range for the model, the patient should be considered high risk. 
-          <br />
-          <br />
-        </ion-item>
+            </ion-button>
+          </ion-col>
+        </ion-row>
       </ion-grid>
-      <ion-modal :is-open="open">
+      <ion-item color="danger" v-if="!checkParams()">
+        <br />
+        Some data fields are missing or invalid.<br /><br />
+        If data is out of range for the model, the patient should be considered high risk. 
+        <br />
+        <br />
+      </ion-item>
+      <ion-modal :is-open="open" @didDismiss="open = false">
         <ion-content>
           <ion-header>
             <ion-toolbar>
-              <ion-title>NELA</ion-title>
+              <ion-title>Risk Assessment Results</ion-title>
               <ion-buttons slot="end">
-                <ion-icon
-                  size="large"
-                  :icon="close"
-                  @click="open = false"
-                ></ion-icon>
-                &nbsp;
+                <ion-button @click="open = false">
+                  <ion-icon :icon="close" slot="icon-only"></ion-icon>
+                </ion-button>
               </ion-buttons>
             </ion-toolbar>
           </ion-header>
@@ -869,39 +866,29 @@
             <ion-grid>
               <ion-row>
                 <ion-col class="ion-text-center">
-                  <p>
-                    Estimated mortality using the Parsimonious NELA risk
-                    adjustment model:
-                  </p>
-                  <h1>{{ result.percentage }}</h1>
-                  <br />
-                  <div
-                    class="ion-text-left"
-                    style="color: #000"
-                    v-if="result.extra === 'higher'"
-                  >
-                    This patient is <strong>higher risk</strong> and should:
-                    <ul>
-                      <li>
-                        have active input by a consultant surgeon and consultant
-                        anaesthetist
-                      </li>
-                    </ul>
-                  </div>
-                  <div
-                    class="ion-text-left"
-                    style="color: #000"
-                    v-if="result.extra === 'high'"
-                  >
-                    This patient is <strong>high risk</strong> and should:
-                    <ul>
-                      <li>
-                        receive care under direct supervision of consultant
-                        surgeon and consultant anaesthetist
-                      </li>
-                      <li>be admitted to HDU or ITU post-operatively</li>
-                    </ul>
-                  </div>
+                  <ion-card>
+                    <ion-card-header>
+                      <ion-card-title>NELA Mortality Risk</ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                      <h2 class="result-value">{{ result.percentage }}</h2>
+                      <div v-if="result.extra === 'higher'" class="risk-warning">
+                        <ion-icon :icon="warning" color="warning"></ion-icon>
+                        <ion-text>This patient is <strong>higher risk</strong> and should:</ion-text>
+                        <ul>
+                          <li>have active input by a consultant surgeon and consultant anaesthetist</li>
+                        </ul>
+                      </div>
+                      <div v-if="result.extra === 'high'" class="risk-warning">
+                        <ion-icon :icon="warning" color="danger"></ion-icon>
+                        <ion-text>This patient is <strong>high risk</strong> and should:</ion-text>
+                        <ul>
+                          <li>receive care under direct supervision of consultant surgeon and consultant anaesthetist</li>
+                          <li>be admitted to HDU or ITU post-operatively</li>
+                        </ul>
+                      </div>
+                    </ion-card-content>
+                  </ion-card>
                 </ion-col>
               </ion-row>
             </ion-grid>
@@ -933,16 +920,19 @@ import {
   IonCol,
   IonList,
   IonGrid,
-  IonPage,
   IonHeader,
   IonToolbar,
+  IonPage,
   IonTitle,
   IonContent,
   IonCheckbox,
+  IonCardHeader,
+  IonCardTitle,
 } from '@ionic/vue';
-import { close } from 'ionicons/icons';
+import { close, warning } from 'ionicons/icons';
 import { Calculators } from '../components/calc';
 import DarkModeToggle from '@/components/DarkModeToggle.vue';
+import '@/assets/shared.css';
 
 export default defineComponent({
   name: 'Tab2Page',
@@ -951,6 +941,7 @@ export default defineComponent({
     IonButtons,
     IonIcon,
     IonModal,
+    IonPage,
     IonText,
     IonRadioGroup,
     IonButton,
@@ -968,13 +959,13 @@ export default defineComponent({
     IonToolbar,
     IonTitle,
     IonContent,
-    IonPage,
     IonCheckbox,
+    IonCardHeader,
+    IonCardTitle,
     DarkModeToggle,
   },
   data: () => ({
     ready: false,
-    open: false,
     result: {
       percentage: '',
       extra: '',
@@ -1038,11 +1029,11 @@ export default defineComponent({
     },
   }),
   setup() {
-    const isOpenRef = ref(false);
-    const setOpen = (state: boolean) => (isOpenRef.value = state);
+    const open = ref(false);
     return {
+      open,
       close,
-      setOpen,
+      warning,
     };
   },
   methods: {
@@ -1756,7 +1747,6 @@ export default defineComponent({
       };
     },
     go() {
-      this.open = true;
       const nelacalc = new Calculators();
       const calc = nelacalc.NelaV2(nelacalc.harmoniseParams(this.risk));
       console.log({ calc });
@@ -1765,7 +1755,6 @@ export default defineComponent({
         return;
       }
       const mortality = calc.mortality;
-      // const mortality = 99 //  testing
       let exp = '';
       if (mortality < 5) {
         exp = '';
@@ -1781,35 +1770,12 @@ export default defineComponent({
         percentage: `${mortality}%`,
         extra: exp,
       };
+      this.open = true;
     },
   },
 });
 </script>
-<style scoped>
-ion-content {
-  --background: var(--ion-background-gradient-start);
-  --background: -moz-linear-gradient(
-    top,
-    var(--ion-background-gradient-start) 0%,
-    var(--ion-background-gradient-middle) 47%,
-    var(--ion-background-gradient-end) 100%
-  );
-  --background: -webkit-linear-gradient(
-    top,
-    var(--ion-background-gradient-start) 0%,
-    var(--ion-background-gradient-middle) 47%,
-    var(--ion-background-gradient-end) 100%
-  );
-  --background: linear-gradient(
-    to bottom,
-    var(--ion-background-gradient-start) 0%,
-    var(--ion-background-gradient-middle) 47%,
-    var(--ion-background-gradient-end) 100%
-  );
-}
 
-h1,
-p {
-  color: var(--ion-text-color);
-}
+<style>
+/* Component-specific styles only */
 </style>
