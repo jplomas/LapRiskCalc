@@ -224,9 +224,11 @@
             <ion-button :disabled="!checkParams()" type="button" @click="go()">
               Calculate
             </ion-button>
+            <!--
             <ion-button color="light" type="button" @click="mock()">
               Mock
             </ion-button>
+            -->
             <ion-button color="light" type="button" @click="reset()">
               Reset
             </ion-button>
