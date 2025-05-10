@@ -35,8 +35,6 @@ ion-content {
   --border-radius: 4px;
   --border-style: solid;
   --transition: background-color 0.2s, border-color 0.2s;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 .ios ion-checkbox::part(container) {
@@ -45,15 +43,59 @@ ion-content {
   border-radius: var(--border-radius);
   width: var(--size);
   height: var(--size);
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 .ios ion-checkbox::part(mark) {
-  opacity: 1 !important;
-  visibility: visible !important;
+  border-color: var(--checkmark-color);
 }
 
+/* Dark mode specific overrides */
+.ios.dark ion-checkbox {
+  --background: var(--ion-checkbox-background);
+  --border-color: var(--ion-checkbox-border-color);
+  --border-color-checked: var(--ion-checkbox-border-color-checked);
+  --checkmark-color: var(--ion-checkbox-checkmark-color);
+  --background-checked: var(--ion-checkbox-background-checked);
+}
+
+.ios.dark ion-checkbox::part(container) {
+  background: var(--ion-checkbox-background);
+  border-color: var(--border-color);
+}
+
+.ios.dark ion-checkbox.ion-checked::part(container) {
+  background: var(--background-checked);
+  border-color: var(--border-color-checked);
+}
+
+.ios.dark ion-checkbox.ion-checked::part(mark) {
+  border-color: var(--checkmark-color);
+}
+
+/* Light mode specific overrides */
+.ios.light ion-checkbox {
+  --background: var(--ion-checkbox-background);
+  --border-color: var(--ion-checkbox-border-color);
+  --border-color-checked: var(--ion-checkbox-border-color-checked);
+  --checkmark-color: var(--ion-checkbox-checkmark-color);
+  --background-checked: var(--ion-checkbox-background-checked);
+}
+
+.ios.light ion-checkbox::part(container) {
+  background: var(--ion-checkbox-background);
+  border-color: var(--border-color);
+}
+
+.ios.light ion-checkbox.ion-checked::part(container) {
+  background: var(--background-checked);
+  border-color: var(--border-color-checked);
+}
+
+.ios.light ion-checkbox.ion-checked::part(mark) {
+  border-color: var(--checkmark-color);
+}
+
+/* Radio button styles */
 .ios ion-radio {
   --color: var(--ion-radio-color);
   --color-checked: var(--ion-color-primary);
@@ -65,8 +107,6 @@ ion-content {
   --border-radius: 50%;
   --border-style: solid;
   --transition: background-color 0.2s, border-color 0.2s;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 .ios ion-radio::part(container) {
@@ -75,14 +115,10 @@ ion-content {
   border-radius: var(--border-radius);
   width: var(--size);
   height: var(--size);
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 .ios ion-radio::part(inner) {
   background: var(--ion-radio-inner-color);
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
 /* Card Styles */
