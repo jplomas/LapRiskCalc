@@ -1,4 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/LapRiskCalc/' : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/LapRiskCalc/' : '/',
+  transpileDependencies: []
 }
 

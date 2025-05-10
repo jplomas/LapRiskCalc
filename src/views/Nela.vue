@@ -563,7 +563,7 @@
               <ion-item @click="risk.indHaemorrhage = !risk.indHaemorrhage">
                 <ion-label>Haemorrhage</ion-label>
                 <ion-checkbox
-                  v-model="risk.indHaemorrhage"
+                  :checked="risk.indHaemorrhage"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -575,7 +575,7 @@
               <ion-item @click="risk.indAbdominalWoundDehiscence = !risk.indAbdominalWoundDehiscence">
                 <ion-label>Abdominal wound dehiscence</ion-label>
                 <ion-checkbox
-                  v-model="risk.indAbdominalWoundDehiscence"
+                  :checked="risk.indAbdominalWoundDehiscence"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -583,7 +583,7 @@
               <ion-item @click="risk.indAbdominalCompartmentSyndrome = !risk.indAbdominalCompartmentSyndrome">
                 <ion-label>Abdominal compartment syndrome</ion-label>
                 <ion-checkbox
-                  v-model="risk.indAbdominalCompartmentSyndrome"
+                  :checked="risk.indAbdominalCompartmentSyndrome"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -591,7 +591,7 @@
               <ion-item @click="risk.indPlannedRelook = !risk.indPlannedRelook">
                 <ion-label>Planned relook</ion-label>
                 <ion-checkbox
-                  v-model="risk.indPlannedRelook"
+                  :checked="risk.indPlannedRelook"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -599,7 +599,7 @@
               <ion-item @click="risk.indOther = !risk.indOther">
                 <ion-label>Other</ion-label>
                 <ion-checkbox
-                  v-model="risk.indOther"
+                  :checked="risk.indOther"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -611,7 +611,7 @@
               <ion-item @click="risk.indTenderSmallBowelObstruction = !risk.indTenderSmallBowelObstruction">
                 <ion-label>Tender Small bowel obstruction</ion-label>
                 <ion-checkbox
-                  v-model="risk.indTenderSmallBowelObstruction"
+                  :checked="risk.indTenderSmallBowelObstruction"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -619,7 +619,7 @@
               <ion-item @click="risk.indNonTenderSmallBowelObstruction = !risk.indNonTenderSmallBowelObstruction">
                 <ion-label>Non-Tender Small bowel obstruction</ion-label>
                 <ion-checkbox
-                  v-model="risk.indNonTenderSmallBowelObstruction"
+                  :checked="risk.indNonTenderSmallBowelObstruction"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -627,7 +627,7 @@
               <ion-item @click="risk.indTenderLargeBowelObstruction = !risk.indTenderLargeBowelObstruction">
                 <ion-label>Tender Large bowel obstruction</ion-label>
                 <ion-checkbox
-                  v-model="risk.indTenderLargeBowelObstruction"
+                  :checked="risk.indTenderLargeBowelObstruction"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -635,7 +635,7 @@
               <ion-item @click="risk.indNonTenderLargeBowelObstruction = !risk.indNonTenderLargeBowelObstruction">
                 <ion-label>Non-Tender Large bowel obstruction</ion-label>
                 <ion-checkbox
-                  v-model="risk.indNonTenderLargeBowelObstruction"
+                  :checked="risk.indNonTenderLargeBowelObstruction"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -643,7 +643,7 @@
               <ion-item @click="risk.indGastricOutletObstruction = !risk.indGastricOutletObstruction">
                 <ion-label>Gastric outlet obstruction</ion-label>
                 <ion-checkbox
-                  v-model="risk.indGastricOutletObstruction"
+                  :checked="risk.indGastricOutletObstruction"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -651,7 +651,7 @@
               <ion-item @click="risk.indIncarceratedHernia = !risk.indIncarceratedHernia">
                 <ion-label>Incarcerated/strangulated hernia</ion-label>
                 <ion-checkbox
-                  v-model="risk.indIncarceratedHernia"
+                  :checked="risk.indIncarceratedHernia"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -659,7 +659,7 @@
               <ion-item @click="risk.indHiatusHernia = !risk.indHiatusHernia">
                 <ion-label>Hiatus Hernia/para-oesophageal hernia</ion-label>
                 <ion-checkbox
-                  v-model="risk.indHiatusHernia"
+                  :checked="risk.indHiatusHernia"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -667,7 +667,7 @@
               <ion-item @click="risk.indVolvulus = !risk.indVolvulus">
                 <ion-label>Volvulus</ion-label>
                 <ion-checkbox
-                  v-model="risk.indVolvulus"
+                  :checked="risk.indVolvulus"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -675,7 +675,7 @@
               <ion-item @click="risk.indInternalHernia = !risk.indInternalHernia">
                 <ion-label>Internal hernia</ion-label>
                 <ion-checkbox
-                  v-model="risk.indInternalHernia"
+                  :checked="risk.indInternalHernia"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -683,7 +683,7 @@
               <ion-item @click="risk.indObstructingIncisionalHernia = !risk.indObstructingIncisionalHernia">
                 <ion-label>Obstructing incisional hernia</ion-label>
                 <ion-checkbox
-                  v-model="risk.indObstructingIncisionalHernia"
+                  :checked="risk.indObstructingIncisionalHernia"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -691,7 +691,7 @@
               <ion-item @click="risk.indIntussusception = !risk.indIntussusception">
                 <ion-label>Intussusception</ion-label>
                 <ion-checkbox
-                  v-model="risk.indIntussusception"
+                  :checked="risk.indIntussusception"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -699,7 +699,7 @@
               <ion-item @click="risk.indPseudoObstruction = !risk.indPseudoObstruction">
                 <ion-label>Pseudo-obstruction</ion-label>
                 <ion-checkbox
-                  v-model="risk.indPseudoObstruction"
+                  :checked="risk.indPseudoObstruction"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -707,7 +707,7 @@
               <ion-item @click="risk.indForeignBody = !risk.indForeignBody">
                 <ion-label>Foreign body</ion-label>
                 <ion-checkbox
-                  v-model="risk.indForeignBody"
+                  :checked="risk.indForeignBody"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -719,7 +719,7 @@
               <ion-item @click="risk.indPhlegmon = !risk.indPhlegmon">
                 <ion-label>Phlegmon</ion-label>
                 <ion-checkbox
-                  v-model="risk.indPhlegmon"
+                  :checked="risk.indPhlegmon"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -727,7 +727,7 @@
               <ion-item @click="risk.indPneumoperitoneum = !risk.indPneumoperitoneum">
                 <ion-label>Pneumoperitoneum</ion-label>
                 <ion-checkbox
-                  v-model="risk.indPneumoperitoneum"
+                  :checked="risk.indPneumoperitoneum"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -735,7 +735,7 @@
               <ion-item @click="risk.indSepsisOther = !risk.indSepsisOther">
                 <ion-label>Sepsis</ion-label>
                 <ion-checkbox
-                  v-model="risk.indSepsisOther"
+                  :checked="risk.indSepsisOther"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -743,7 +743,7 @@
               <ion-item @click="risk.indIatrogenicInjury = !risk.indIatrogenicInjury">
                 <ion-label>Iatrogenic injury</ion-label>
                 <ion-checkbox
-                  v-model="risk.indIatrogenicInjury"
+                  :checked="risk.indIatrogenicInjury"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -751,7 +751,7 @@
               <ion-item @click="risk.indAnastomoticLeak = !risk.indAnastomoticLeak">
                 <ion-label>Anastomotic leak</ion-label>
                 <ion-checkbox
-                  v-model="risk.indAnastomoticLeak"
+                  :checked="risk.indAnastomoticLeak"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -759,7 +759,7 @@
               <ion-item @click="risk.indPeritonitis = !risk.indPeritonitis">
                 <ion-label>Peritonitis</ion-label>
                 <ion-checkbox
-                  v-model="risk.indPeritonitis"
+                  :checked="risk.indPeritonitis"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -767,7 +767,7 @@
               <ion-item @click="risk.indPerforation = !risk.indPerforation">
                 <ion-label>GI Perforation</ion-label>
                 <ion-checkbox
-                  v-model="risk.indPerforation"
+                  :checked="risk.indPerforation"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -775,7 +775,7 @@
               <ion-item @click="risk.indAbdominalAbscess = !risk.indAbdominalAbscess">
                 <ion-label>Abdominal abscess</ion-label>
                 <ion-checkbox
-                  v-model="risk.indAbdominalAbscess"
+                  :checked="risk.indAbdominalAbscess"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -783,7 +783,7 @@
               <ion-item @click="risk.indIntestinalFistula = !risk.indIntestinalFistula">
                 <ion-label>Intestinal fistula</ion-label>
                 <ion-checkbox
-                  v-model="risk.indIntestinalFistula"
+                  :checked="risk.indIntestinalFistula"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -795,7 +795,7 @@
               <ion-item @click="risk.indNecrosis = !risk.indNecrosis">
                 <ion-label>Necrosis</ion-label>
                 <ion-checkbox
-                  v-model="risk.indNecrosis"
+                  :checked="risk.indNecrosis"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -803,7 +803,7 @@
               <ion-item @click="risk.indIschaemia = !risk.indIschaemia">
                 <ion-label>Ischaemia/infarction</ion-label>
                 <ion-checkbox
-                  v-model="risk.indIschaemia"
+                  :checked="risk.indIschaemia"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -811,7 +811,7 @@
               <ion-item @click="risk.indColitis = !risk.indColitis">
                 <ion-label>Colitis</ion-label>
                 <ion-checkbox
-                  v-model="risk.indColitis"
+                  :checked="risk.indColitis"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
@@ -819,7 +819,7 @@
               <ion-item @click="risk.indAcidosis = !risk.indAcidosis">
                 <ion-label>Acidosis</ion-label>
                 <ion-checkbox
-                  v-model="risk.indAcidosis"
+                  :checked="risk.indAcidosis"
                   slot="start"
                   @ionChange="indicationChange()"
                 ></ion-checkbox>
